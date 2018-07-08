@@ -15,8 +15,8 @@ public class ElementoNoEncontradoException extends Exception {
      * Creates a new instance of <code>ElementoNoEncontradoException</code>
      * without detail message.
      */
-    public ElementoNoEncontradoException() {
-    }
+  //  public ElementoNoEncontradoException() {
+  //  }
 
     /**
      * Constructs an instance of <code>ElementoNoEncontradoException</code> with

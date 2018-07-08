@@ -15,8 +15,8 @@ public class RepeticionException extends Exception {
      * Creates a new instance of <code>NewException</code> without detail
      * message.
      */
-    public RepeticionException() {
-    }
+   // public RepeticionException() {
+  //  }
 
     /**
      * Constructs an instance of <code>NewException</code> with the specified

@@ -15,8 +15,8 @@ public class IncompatibilidadContrasenaException extends Exception {
      * Creates a new instance of
      * <code>IncompatibilidadContrasenaException</code> without detail message.
      */
-    public IncompatibilidadContrasenaException() {
-    }
+    /*public IncompatibilidadContrasenaException() {
+    }*/
 
     /**
      * Constructs an instance of

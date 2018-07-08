@@ -5,14 +5,14 @@
  */
 package Controlador;
 
-import Modelo.Cliente;
+import Excepciones.ElementoNoEncontradoException;
+import Excepciones.IncompatibilidadContrasenaException;
+import Excepciones.LimiteIntentosException;
 import Modelo.Usuario;
-import Vista.VistaAltaCliente;
-import Vista.VistaControlAccionesEntidades;
 import Vista.VistaLogin; 
+import Vista.VistaLoginAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -20,76 +20,99 @@ import java.util.ArrayList;
  */
 public class ControlLogin {
     private Usuario usuario;
+    private VistaLogin loginGeneral;
+    private VistaLoginAdmin loginAdmin;
+    private int intentos;
     
-    public void login(){
-    
+    public void ControlLogin(){
+        this.usuario=null;
+        this.loginGeneral= new VistaLogin();
+        this.loginAdmin=null;
+        this.intentos=0;
+        loginGeneral.agregarListenerBotonIniciarSesión(new SesionEmpleado());
+        loginGeneral.agregarListenerBotonSesionAdmin(new CambiarTipoSesion());
+        loginGeneral.ocultarErrorBloqueo();
+        loginGeneral.ocultarErrorContrasenaIncorrects();
+        loginGeneral.ocultarErrorUsuario();
+        loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
+        loginAdmin.ocultarErrorBloqueo();
+        loginAdmin.ocultarErrorContrasenaIncorrects();
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      private Cliente cliente;
-    private VistaAltaCliente vista;
-    private VistaControlAccionesEntidades vistaMadre;
-    
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
-        this.vistaMadre= vistaRaiz;
         
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
-    }
-    
-    
-    
-    private class  ProcesoAltaCliente implements ActionListener{
+    private class  SesionEmpleado implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
-                lectura.verificarNoRepeticion(vista.obtenerRazon());
-                cliente.establecerRazonSocial(vista.obtenerRazon());
-                cliente.establecerDireccion(vista.obtenerDireccion());
-                cliente.establecerTelefono(vista.obtenerTel());
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(cliente.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                //aumentar contador clientes en archivo
-                vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
-                vista.mostrarErrorRepeticion();
-            }
+                
+                ManejoArchivo lectura= new ManejoArchivo("Usuarios.txt");
+                lectura.compararContrasenaString(lectura.obtenerLineaArchivo(lectura.busquedaDatosEnArchivo(loginGeneral.obtenerUsuario())), loginGeneral.obtenerContrasena());
+                usuario= new Usuario("Empleado", loginGeneral.obtenerUsuario(), loginGeneral.obtenerContrasena());
+                loginGeneral.resetearCampos();
+                ControlMenuPrincipalEmpleado vista=new ControlMenuPrincipalEmpleado(usuario, loginGeneral);
+            }catch(ElementoNoEncontradoException excep1){
+                    loginGeneral.resetearCampos();
+                    loginGeneral.mostrarErrorUsuario();
+            }catch(IncompatibilidadContrasenaException excep){
+                    try{
+                        intentos++;
+                        comprobarNumeroEquivocaciones();
+                        loginGeneral.mostrarErrorContrasenaIncorrects();
+                        loginGeneral.limpiarContrasena();
+                        loginGeneral.bloquearCajaUsuario();
+                    }catch(LimiteIntentosException excep4){
+                        loginGeneral.bloquearCajaContrasena();
+                    }
+                    
+             }
             
         }
+    }               
+            
+            
+     private void comprobarNumeroEquivocaciones() throws LimiteIntentosException{
+         if(intentos==3){
+             throw new LimiteIntentosException("Llegó al límite de intentos"); 
+         }
+     }   
 
-    }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
+    
+    private class  CambiarTipoSesion implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
+            loginGeneral.dispose();
+            loginAdmin = new VistaLoginAdmin();
         }
 
     }
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+    private class  SesionAdmin implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
-            vista.dispose();
+            try{
+            ManejoArchivo lectura=new ManejoArchivo("");
+            lectura.LeerArchivo();
+            lectura.compararContrasenaString(lectura.obtenerLineaArchivo(0), loginAdmin.obtenerContrasena());
+            usuario= new Usuario("Administrador", "Administrador", loginAdmin.obtenerContrasena());
+            loginAdmin.resetearCampos();
+            ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario, loginAdmin);
+            }catch(IncompatibilidadContrasenaException excep){
+                 try{
+                    intentos++;
+                    comprobarNumeroEquivocaciones();
+                    loginGeneral.mostrarErrorContrasenaIncorrects();
+                    loginGeneral.limpiarContrasena();
+                    loginGeneral.bloquearCajaUsuario();
+                }catch(LimiteIntentosException excep4){
+                    loginGeneral.bloquearCajaContrasena();
+                }
+                    
+             }
+            
         }
 
     }

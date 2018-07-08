@@ -88,11 +88,6 @@ public class VistaLogin extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 0, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Iniciar Como Administrador");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, -1, 20));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 51));
@@ -121,11 +116,6 @@ public class VistaLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new VistaLoginAdmin().setVisible(true); 
-        this.setVisible(false);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +181,7 @@ public class VistaLogin extends javax.swing.JFrame {
         contrasena= new String(temporal);
         return contrasena;
     }
-    
+
        
     //----------------------------
         
@@ -199,6 +189,9 @@ public class VistaLogin extends javax.swing.JFrame {
         jButton3.addActionListener(evento);
     }
     
+    public void agregarListenerBotonSesionAdmin(ActionListener evento){
+        jButton2.addActionListener(evento);
+    }
     
     //----------------------------------
     public void ocultarErrorUsuario(){
@@ -224,5 +217,25 @@ public class VistaLogin extends javax.swing.JFrame {
     public void mostrarErrorBloqueo(){
         jLabel4.setVisible(true);
     }
-
+    
+    //-----------------
+    public void resetearCampos(){
+        jTextField1.setText("");
+        jPasswordField1.setText("");
+    }
+    
+    public void limpiarContrasena(){
+        jPasswordField1.setText("");
+    }
+    
+    public void bloquearCajaUsuario(){
+        jTextField1.setEnabled(false);
+    }
+    public void desbloquearCajaUsuario(){
+        jTextField1.setEnabled(true);
+    }
+    
+     public void bloquearCajaContrasena(){
+        jPasswordField1.setEnabled(false);
+    }
 }

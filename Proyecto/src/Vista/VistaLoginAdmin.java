@@ -77,12 +77,6 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
-
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 200, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 51));
@@ -107,10 +101,6 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
     
     
     /**
@@ -173,9 +163,9 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
     
     //--------------
     
-    public void agregarListenerBotonSalir(ActionListener evento){
+    /*public void agregarListenerBotonSalir(ActionListener evento){
         jButton1.addActionListener(evento);
-    }
+    }*/
     
     public void agregarListenerBotonIniciarSesión(ActionListener evento){
         jButton2.addActionListener(evento);
@@ -201,6 +191,14 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
         jLabel4.setVisible(true);
     }
             
+   //---------------------
     
+    public void resetearCampos(){
+        jPasswordField1.setText("");
+    }
+    
+    public void bloquearCajaContrasena(){
+        jPasswordField1.setEnabled(false);
+    }
 
 }

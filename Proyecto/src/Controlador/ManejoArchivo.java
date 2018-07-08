@@ -1,5 +1,6 @@
 package Controlador;
 
+import Excepciones.IncompatibilidadContrasenaException;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -65,7 +66,19 @@ public class ManejoArchivo{
         return bandera;
     }
     
-    public int busquedaDatosEnArchivo(String clave){
+    public boolean compararContrasenaString (String arch, String vista) throws IncompatibilidadContrasenaException{
+        boolean bandera=false;
+        String[] arreglo=arch.split(",");
+        if(arreglo[1].equals(vista)){
+            bandera= true;
+        }
+        else{
+            throw new IncompatibilidadContrasenaException("Las contraseñas no coinciden");
+        }
+        return bandera;
+    }
+    
+    public int busquedaDatosEnArchivo(String clave)throws ElementoNoEncontradoException{
         int indice;
         LeerArchivo();
         for(indice=0; indice<ed.size(); indice++){
@@ -73,6 +86,8 @@ public class ManejoArchivo{
                 break;
             }
         }
+        if(indice)
+        
         return indice;
     }
     

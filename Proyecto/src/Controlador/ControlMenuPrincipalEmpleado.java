@@ -5,12 +5,11 @@
  */
 package Controlador;
 
-import Modelo.Cliente;
-import Vista.VistaAltaCliente;
-import Vista.VistaControlAccionesEntidades;
+import Modelo.Usuario;
+import Vista.VistaLogin;
+import Vista.VistaMenuPrincipalEmpleado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -18,74 +17,60 @@ import java.util.ArrayList;
  */
 public class ControlMenuPrincipalEmpleado {
     
+    private VistaMenuPrincipalEmpleado vista;
+    private Usuario usuario;
+    private VistaLogin vistaLogin;
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-      private Cliente cliente;
-    private VistaAltaCliente vista;
-    private VistaControlAccionesEntidades vistaMadre;
-    
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
-        this.vistaMadre= vistaRaiz;
-        
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+    public ControlMenuPrincipalEmpleado(Usuario usuario, VistaLogin vistaLogin){
+        this.usuario= usuario;
+        this.vista= new VistaMenuPrincipalEmpleado();
+        this.vistaLogin=vistaLogin;
+        vista.agregarListenerBotonClientes(new opcionClientes());
+        vista.agregarListenerBotonProductos(new opcionProductos());
+        vista.agregarListenerBotonVentas(new opcionVentas());
+        vista.agregarListenerBotonCerrarSesion(new opcionCerrarSesion());
     }
     
     
     
-    private class  ProcesoAltaCliente implements ActionListener{
+    private class  opcionClientes implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
-                ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
-                lectura.verificarNoRepeticion(vista.obtenerRazon());
-                cliente.establecerRazonSocial(vista.obtenerRazon());
-                cliente.establecerDireccion(vista.obtenerDireccion());
-                cliente.establecerTelefono(vista.obtenerTel());
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(cliente.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                //aumentar contador clientes en archivo
-                vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
-                vista.mostrarErrorRepeticion();
-            }
-            
+            ControlClientes vistaHija= new ControlClientes(usuario);
+            vista.dispose();
         }
-
     }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
+    private class  opcionProductos implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
+             ControlProductos vistaHija= new ControlProductos(usuario);
             vista.dispose();
         }
 
     }
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+    private class  opcionVentas implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
+             ControlVentas vistaHija= new ControlVentas(usuario);
             vista.dispose();
         }
 
     }
     
+       
+    private class  opcionCerrarSesion implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            vistaLogin.setVisible(true);
+            vista.dispose();
+        }
+    }
+
 }
