@@ -5,95 +5,67 @@
  */
 package Controlador;
 
-import Modelo.Cliente;
 import Modelo.Usuario;
-import Vista.VistaAltaCliente;
-import Vista.VistaControlAccionesEntidades;
+import Vista.VistaControlAccionesEmpleados;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
  * @author 1047470
  */
-public class ControlUsuarios implements ControlAccionesGenerales{
-    private Usuario usuario;
-    @Override
-    public void Alta() {
-        System.out.println(".");
-    }
-
-    @Override
-    public void Baja() {
-        System.out.println(".");
-    }
+public class ControlUsuarios {
+   
+    private VistaControlAccionesEmpleados vista;
     
-    
-    
-    
-    
-    
-    
-    
-      private Cliente cliente;
-    private VistaAltaCliente vista;
-    private VistaControlAccionesEntidades vistaMadre;
-    
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
-        this.vistaMadre= vistaRaiz;
+    public ControlUsuarios(Usuario usuario){
+        this.vista= new VistaControlAccionesEmpleados();
         
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+        
+        vista.agregarListenerBotonAlta(new opcionAltaUsuario());
+        vista.agregarListenerBotonMenu(new opcionMenu());
+        vista.agregarListenerBotonBaja(new OpcionBajaUsuario());
     }
     
+         //---------------------
     
     
-    private class  ProcesoAltaCliente implements ActionListener{
+    private class  opcionAltaUsuario implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
-                ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
-                lectura.verificarNoRepeticion(vista.obtenerRazon());
-                cliente.establecerRazonSocial(vista.obtenerRazon());
-                cliente.establecerDireccion(vista.obtenerDireccion());
-                cliente.establecerTelefono(vista.obtenerTel());
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(cliente.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                //aumentar contador clientes en archivo
-                vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
-                vista.mostrarErrorRepeticion();
-            }
+            vista.setVisible(false);
+            ControlAltaEmpleado vistaHija= new ControlAltaEmpleado(vista);
+                
+            
             
         }
-
     }
-    
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
+
+    private class  OpcionBajaUsuario implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
+            vista.setVisible(false);
+            ControlBajaEmpleado vistaHija= new ControlBajaEmpleado(vista);
+            
         }
-
+        
+        
     }
+
+        
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+   
+    private class  opcionMenu implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
+            ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado();
             vista.dispose();
+            
         }
-
     }
+
     
 }

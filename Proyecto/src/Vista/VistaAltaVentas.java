@@ -57,8 +57,12 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     }
     
     //---------
-    public void agregarListenerBotonAceptar(ActionListener evento){
+     public void agregarListenerBotonAceptar(ActionListener evento){
         jButton1.addActionListener(evento);
+    }
+     
+    public void agregarListenerBotonCancelar(ActionListener evento){
+        jButton3.addActionListener(evento);
     }
    
     public void agregarListenerBotonAgregarProducto(ActionListener evento){
@@ -69,9 +73,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jButton5.addActionListener(evento);
     }
    
-    public void agregarListenerBotonMenu(ActionListener evento){
-        jButton6.addActionListener(evento);
-    }
+   
     
      public void agregarListenerBotonAceptarMejorCaso(ActionListener evento){
         jButton4.addActionListener(evento);
@@ -85,6 +87,9 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jButton9.addActionListener(evento);
     }
     
+    public void agregarListenerBotonCancelarAltaCliente(ActionListener evento){
+        jButton8.addActionListener(evento);
+    }
    //--------------------------
     public String obtenerClaveProductoAgregado(){
         return jTextField4.getText();
@@ -104,9 +109,12 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     //-------------------------
     public void establecerIdVenta(int numero){
         String contenido= "V-"+numero; 
-        this.jTextField5.setText(contenido);
+        this.jTextField9.setText(contenido);
     }
     
+    public void establecerRFC(String rfc){
+        this.jTextField5.setText(rfc);
+    }
     
     
     public void establecerRazonSocial(String contenido){
@@ -165,6 +173,8 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     public void resetCajaEliminarProducto(){
         jTextField10.setText("");
     }
+    
+    
     //--------------------
     
     
@@ -189,7 +199,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jDialog2.setVisible(false);
     }
 
-    public void ocultararMensajeErrorProducto(){
+    public void ocultarMensajeErrorProducto(){
         jDialog4.setVisible(false);
     }
     
@@ -219,6 +229,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jDialog4 = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -249,7 +260,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextField10 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         Fondo = new javax.swing.JLabel();
@@ -296,6 +306,8 @@ public class VistaAltaVentas extends javax.swing.JFrame {
 
         jButton7.setText("Dar de alta cliente");
 
+        jButton8.setText("Cancelar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -307,7 +319,10 @@ public class VistaAltaVentas extends javax.swing.JFrame {
                         .addComponent(jLabel13))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jButton7)))
+                        .addComponent(jButton7))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jButton8)))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -317,7 +332,9 @@ public class VistaAltaVentas extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         jDialog2.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -464,9 +481,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jTextField10.setEnabled(false);
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 80, -1));
 
-        jButton6.setText("Menú");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
-
         jLabel12.setText("Fecha:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
@@ -535,8 +549,8 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

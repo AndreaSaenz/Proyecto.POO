@@ -96,7 +96,12 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     public void agregarListenerBotonAceptarErrorProducto(ActionListener evento){
         jButton9.addActionListener(evento);
     }
-   //--------------------------
+
+    public void agregarListenerBotonCancelar(ActionListener evento){
+        jButton10.addActionListener(evento);
+    }
+
+//--------------------------
     public String obtenerClaveProductoAgregado(){
         return jTextField4.getText();
     } 
@@ -289,10 +294,12 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jDialog4 = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -396,6 +403,8 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
 
         jButton8.setText("Dar de alta cliente");
 
+        jButton10.setText("Cancelar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -407,7 +416,10 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
                         .addComponent(jLabel14))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addComponent(jButton8)))
+                        .addComponent(jButton8))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jButton10)))
                 .addContainerGap(242, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -417,7 +429,9 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton8)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton10)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         jDialog3.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -455,6 +469,8 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         );
 
         jDialog4.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton6.setText("jButton6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 800));
@@ -630,10 +646,12 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;

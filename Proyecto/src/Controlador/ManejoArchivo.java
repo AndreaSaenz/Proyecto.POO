@@ -148,6 +148,15 @@ public class ManejoArchivo{
         return contadores;
     }
     
+    public int obtenerContadoresEntidades(int indiceEntidad){
+        
+        Archivo="Contadores.txt";
+        LeerArchivo();
+        String temporal=obtenerLineaArchivo(indiceEntidad);
+        String[] arreglo= temporal.split(":");
+               
+        return Integer.valueOf(arreglo[1]);
+    }
   
 
     public void modificarContadoresEntidades(int[] contadores){
@@ -159,7 +168,11 @@ public class ManejoArchivo{
         EscrituraArchivo(contadoresEntidades, false);
     }
     
-    
+    public void modificarContadoresEntidades(int indiceEntidad, String nuevaLinea){
+        Archivo="Contadores.txt";
+        LeerArchivo();
+        establecerLineaArchivo(indiceEntidad, nuevaLinea);
+    }
 
 
     public String obtenerLineaArchivo(int indice){

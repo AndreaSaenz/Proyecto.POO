@@ -8,7 +8,6 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Modelo.Usuario;
-import Vista.VistaBajaCliente;
 import Vista.VistaControlAccionesEntidades;
 
 /**
@@ -18,9 +17,11 @@ import Vista.VistaControlAccionesEntidades;
 public class ControlClientes {
     //private Cliente cliente;
     private VistaControlAccionesEntidades vista;
+    private Usuario usuario;
     
     public ControlClientes(Usuario usuario){
       //  this.cliente= new Cliente(rfc, "","","");
+        this.usuario=usuario;
         this.vista= new VistaControlAccionesEntidades();
         vista.tituloCabecera("Clientes");
         boolean alta =usuario.obtenerRol().obtenerModuloClientes().obtenerPermisoAlta();
@@ -29,14 +30,14 @@ public class ControlClientes {
         boolean consulta =usuario.obtenerRol().obtenerModuloClientes().obtenerPermisoConsulta();
         vista.establecerHabilitacionBotones(alta, baja, edicion, consulta);
         vista.agregarListenerBotonAlta(new opcionAltaCliente());
-        if(baja){
-            vista.agregarListenerBotonBaja(new OpcionBajaCliente());
-        }
         vista.agregarListenerBotonConsulta(new opcionConsultaCliente());
-        if(edicion){
+        vista.agregarListenerBotonMenu(new opcionMenu());
+        if( baja && edicion){
+            vista.agregarListenerBotonBaja(new OpcionBajaCliente());
             vista.agregarListenerBotonEdicion(new opcionEdicionCliente());
         }
-        vista.agregarListenerBotonMenu(new opcionMenu());
+        
+        
     
     }
 
@@ -50,12 +51,10 @@ public class ControlClientes {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
-                vista.setVisible(false);
-                ControlAltaCliente vistaHija= new ControlAltaCliente(NUMERO_CLIENTE,vista);
+            vista.setVisible(false);
+            ControlAltaCliente vistaHija= new ControlAltaCliente((new ManejoArchivo("").obtenerContadoresEntidades(0))+1,vista);
                 
-            }catch(Exception excep){
-            }
+            
             
         }
     }
@@ -64,10 +63,8 @@ public class ControlClientes {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
-                
-            }catch(Exception excep){
-            }
+            vista.setVisible(false);
+            ControlBajaCliente vistaHija= new ControlBajaCliente(vista);
             
         }
         
@@ -81,7 +78,7 @@ public class ControlClientes {
         public void actionPerformed(ActionEvent evento) {
             try{
                 vista.setVisible(false);
-                ControlEdicionCliente vistaHija= new ControlAltaCliente(NUMERO_CLIENTE,vista);
+                ControlEdicionCliente vistaHija= new ControlEdicionCliente(vista);
                 
             }catch(Exception excep){
             }
@@ -94,21 +91,23 @@ public class ControlClientes {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
-                vista.setVisible(false);
-                ControlAltaCliente vistaHija= new ControlAltaCliente(NUMERO_CLIENTE,vista);
-                
-            }catch(Exception excep){
-            }
+            vista.setVisible(false);
+            ControlConsultaCliente vistaHija= new ControlConsultaCliente(vista);
+           
             
         }
 
     }
-    
+   
     private class  opcionMenu implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            if(usuario.obtenerRol().obtenerModuloUsuario().obtenerPermisoAlta()){
+              ControlMenuPrincipalAdmin  vistaMadre=new ControlMenuPrincipalAdmin(usuario);
+            }else{
+                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado();
+            }
             vista.dispose();
             
         }

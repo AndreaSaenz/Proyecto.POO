@@ -25,7 +25,7 @@ public class ControlAltaEmpleado {
     private VistaAltaEmpleado vista;
     private VistaControlAccionesEmpleados vistaMadre;
     
-    public ControlAltaEmpleado(int rfc, VistaControlAccionesEmpleados vistaRaiz){
+    public ControlAltaEmpleado(VistaControlAccionesEmpleados vistaRaiz){
         this.empleado= new Usuario("Empleado","","");
         this.vista= new VistaAltaEmpleado();
         this.vistaMadre= vistaRaiz;    

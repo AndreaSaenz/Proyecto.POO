@@ -45,6 +45,7 @@ public class ControlEdicionVenta {
         vista.agregarListenerBotonEliminarProducto(new EliminarProducto());
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionVenta());
         vista.agregarListenerBotonAgregarProducto(new AgregarProducto());
+        vista.agregarListenerBotonCancelar(new CancelarProcesoEdicionVenta());
     }
     
     
@@ -102,9 +103,16 @@ public class ControlEdicionVenta {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.setVisible(false);
             ManejoArchivo lectura2=new ManejoArchivo("");
-            int[] indices=lectura2.obtenerContadoresEntidades();
-            ControlAltaCliente alta= new ControlAltaCliente(indices[0]);            
+            int indices=lectura2.obtenerContadoresEntidades(0);
+            ControlAltaCliente alta= new ControlAltaCliente(indices+1);
+            vista.ocultarMensajeErrorCliente();
+            vista.setVisible(true);
+            vista.establecerRFC("C-"+(indices+1));
+            
+                
+            
         }
 
     }

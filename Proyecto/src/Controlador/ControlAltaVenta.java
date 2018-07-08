@@ -5,12 +5,16 @@
  */
 package Controlador;
 
+
+import Excepciones.ElementoNoEncontradoException;
+import Excepciones.RepeticionException;
 import Modelo.Cliente;
-import Vista.VistaAltaCliente;
+import Modelo.Producto;
+import Modelo.Venta;
+import Vista.VistaAltaVentas;
 import Vista.VistaControlAccionesEntidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -21,61 +25,131 @@ public class ControlAltaVenta {
     
     
     
-      private Cliente cliente;
-    private VistaAltaCliente vista;
+    private Venta venta;
+    private VistaAltaVentas vista;
     private VistaControlAccionesEntidades vistaMadre;
     
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
+    public ControlAltaVenta(int id, VistaControlAccionesEntidades vistaRaiz){
+        this.venta= new Venta(id);
+        this.vista= new VistaAltaVentas();
         this.vistaMadre= vistaRaiz;
         
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+        vista.establecerIdVenta(id);
+        vista.agregarListenerBotonAceptarErrorCliente(new DarAltaCliente());
+        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaVenta());
+        vista.agregarListenerBotonAceptarErrorProducto(new ProductoNoEncontrado());
+        vista.agregarListenerBotonCancelar(new CancelarProcesoEdicionVenta());
+        vista.agregarListenerBotonEliminarProducto(new EliminarProducto());
+        vista.agregarListenerBotonAceptar(new ProcesoGuardarAltaVenta());
+        vista.agregarListenerBotonAgregarProducto(new AgregarProducto());
+        vista.agregarListenerBotonCancelarAltaCliente(new CancelarProcesoEdicionVenta());
     }
     
     
     
-    private class  ProcesoAltaCliente implements ActionListener{
+
+    private class  ProcesoGuardarAltaVenta implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                vistaMadre.setVisible(false);
-                ManejoArchivo  lectura= new ManejoArchivo("Productos.txt");
-                lectura.verificarNoRepeticion(vista.obtenerDescripcion());
-                producto.establecerDescripcion(vista.obtenerDescripcion());
-                producto.establecerPrecioUnitario(Double.valueOf(vista.obtenerPrecio()));
-                producto.establecerCantidad(Integer.valueOf(vista.obtenerCantidad()));
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(producto.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                ManejoArchivo cont= new ManejoArchivo("");
-                int[] contadoresSinModificar= cont.obtenerContadoresEntidades();
-                contadoresSinModificar[1]+=1;
-                cont.modificarContadoresEntidades(contadoresSinModificar);
+                            
+                ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
+                int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
+                venta.establecerCliente(new Cliente(clientes.obtenerLineaArchivo(claveCliente)));
+                ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
+                lectura.LeerArchivo();
+                lectura.agregarLineaArchivo(venta.toString());
+                int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
+                new ManejoArchivo("").modificarContadoresEntidades(2, "Ventas:"+(contadorVentas+1));
                 vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
-                vista.mostrarErrorRepeticion();
+            }catch(RepeticionException excep){
+                vista.mostrarMensajeErrorCliente();
             }
             
         }
 
     }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
+    
+   
+    
+    private class  DarAltaCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
+            ManejoArchivo lectura2=new ManejoArchivo("");
+            int indices=lectura2.obtenerContadoresEntidades(0);
+            indices += 1;
+            ControlAltaCliente alta= new ControlAltaCliente(indices);
+            vista.ocultarMensajeErrorProducto();
+            vista.setVisible(true);
+            vista.establecerRFC("C-"+indices);
+            
         }
 
     }
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+    
+    
+    private class  ProductoNoEncontrado implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            vista.ocultarMensajeErrorProducto();
+            vista.activarBotonAgregarProducto();
+            vista.activarCajaAgregarProducto();
+            vista.activarBotonEliminarProducto();
+            vista.activarCajaEliminarProducto();
+         }
+
+    }
+    
+    private class  EliminarProducto implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            try{
+                vista.desactivarBotonElminarProducto();
+                vista.desactivarCajaElminarProducto();
+                venta.eliminarProducto(vista.obtenerClaveProductoEliminado());
+                ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
+                
+                archivo.aumentarCantidadProducto(vista.obtenerClaveProductoEliminado());
+                venta.establecerSubtotal();
+                venta.obtenerIva();
+                venta.obtenerTotal();
+                 //actualizar tabla
+                vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
+                vista.establecerIVA(Double.toString(venta.obtenerIva()));
+                vista.establecerTotal(Double.toString(venta.obtenerTotal()));
+               
+            }catch(ElementoNoEncontradoException excep5){
+                vista.mostrarMensajeErrorProducto();
+            }finally{
+                vista.activarBotonEliminarProducto();
+                vista.activarCajaEliminarProducto();
+            }
+        }
+
+    }
+    
+    private class  MensajeAccionCompletadaAltaVenta implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            
+            vista.resetCampos();
+            venta=null;
+            int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
+            vista.establecerIdVenta(contadorVentas+1);
+            venta= new Venta(contadorVentas+1);
+            
+        }
+
+    }
+    
+    private class  CancelarProcesoEdicionVenta implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -85,6 +159,37 @@ public class ControlAltaVenta {
 
     }
     
+    private class  AgregarProducto implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            try{
+                vista.desactivarCajaAgregarProducto();
+                vista.desactivarBotonAgregarProducto();
+                
+                ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
+                int indiceProducto=archivo.busquedaDatosEnArchivo(vista.obtenerClaveProductoAgregado());
+                String cadena=archivo.obtenerLineaArchivo(indiceProducto);
+                Producto producto= new Producto(cadena);
+                venta.agregarProducto(producto);
+                archivo.disminuirCantidadProducto(indiceProducto);
+                venta.establecerSubtotal();
+                venta.obtenerIva();
+                venta.obtenerTotal();
+                 //actualizar tabla
+                vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
+                vista.establecerIVA(Double.toString(venta.obtenerIva()));
+                vista.establecerTotal(Double.toString(venta.obtenerTotal()));
+               
+            }catch(ElementoNoEncontradoException excep4){
+                vista.mostrarMensajeErrorProducto();
+            }finally{
+                vista.activarBotonAgregarProducto();
+                vista.activarCajaAgregarProducto();
+            }
+        }
+
+    }    
     
     
     

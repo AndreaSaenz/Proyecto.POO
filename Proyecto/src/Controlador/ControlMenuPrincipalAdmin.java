@@ -5,12 +5,11 @@
  */
 package Controlador;
 
-import Modelo.Cliente;
-import Vista.VistaAltaCliente;
-import Vista.VistaControlAccionesEntidades;
+import Modelo.Usuario;
+import Vista.VistaLoginAdmin;
+import Vista.VistaMenuPrincipalAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -19,64 +18,69 @@ import java.util.ArrayList;
 public class ControlMenuPrincipalAdmin {
     
     
-      private Cliente cliente;
-    private VistaAltaCliente vista;
-    private VistaControlAccionesEntidades vistaMadre;
+    private VistaMenuPrincipalAdmin vista;
+    private Usuario usuario;
     
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
-        this.vistaMadre= vistaRaiz;
+    
+    public ControlMenuPrincipalAdmin(Usuario usuario){
+        this.usuario= usuario;
+        this.vista= new VistaMenuPrincipalAdmin();
         
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+        vista.agregarListenerBotonClientes(new opcionClientes());
+        vista.agregarListenerBotonProductos(new opcionProductos());
+        vista.agregarListenerBotonVentas(new opcionVentas());
+        vista.agregarListenerBotonEmpleado(new opcionEmpleados());
+        vista.agregarListenerBotonCerrarSesion(new opcionCerrarSesion());
     }
     
     
     
-    private class  ProcesoAltaCliente implements ActionListener{
+    private class  opcionClientes implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
-                ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
-                lectura.verificarNoRepeticion(vista.obtenerRazon());
-                cliente.establecerRazonSocial(vista.obtenerRazon());
-                cliente.establecerDireccion(vista.obtenerDireccion());
-                cliente.establecerTelefono(vista.obtenerTel());
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(cliente.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                //aumentar contador clientes en archivo
-                vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
-                vista.mostrarErrorRepeticion();
-            }
+            ControlClientes vistaHija= new ControlClientes(usuario);
+            vista.dispose();
+        }
+    }
+    
+    private class  opcionProductos implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+             ControlProductos vistaHija= new ControlProductos(usuario);
+            vista.dispose();
+        }
+
+    }
+    
+    private class  opcionVentas implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+             ControlVentas vistaHija= new ControlVentas(usuario);
+            vista.dispose();
+        }
+
+    }
+    
+    private class  opcionEmpleados implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            ControlUsuarios vistaHija= new ControlUsuarios(usuario);
+            vista.dispose();
+        }
+    }
+    
+    private class  opcionCerrarSesion implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
             
         }
-
     }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
-            vista.dispose();
-        }
-
-    }
     
 }
