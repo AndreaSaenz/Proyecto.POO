@@ -33,7 +33,16 @@ public class ControlAltaCliente {
         vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
     }
     
-    
+    public ControlAltaCliente(int rfc){
+        this.cliente= new Cliente(rfc, "","","");
+        this.vista= new VistaAltaCliente();
+        this.vistaMadre= null;
+        
+        vista.establecerRFC(rfc);
+        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
+        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
+        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+    }
     
     private class  ProcesoAltaCliente implements ActionListener{
 
@@ -64,8 +73,13 @@ public class ControlAltaCliente {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
+            try{
+                vistaMadre.dispose();
+            }catch(Exception excep3){
+                System.out.println("Vista Madre inexistente");
+            }finally{
+                vista.dispose();
+            }
         }
 
     }
@@ -73,9 +87,16 @@ public class ControlAltaCliente {
     private class  CancelarProcesoAltaCliente implements ActionListener{
 
         @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
-            vista.dispose();
+        public void actionPerformed(ActionEvent evento){ 
+            try{
+                vistaMadre.setVisible(true);
+            }catch(Exception excep2){
+                    System.out.println("Vista Madre inexistente"); 
+            }finally{
+                 vista.dispose();
+            }
+            
+            
         }
 
     }

@@ -169,28 +169,10 @@
               </Border>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="5">
-                <Column editable="false" title="Clave" type="java.lang.String">
-                  <Data value="sfgs"/>
-                  <Data value="sdsdfs"/>
-                  <Data value="sdfs"/>
-                  <Data value="sdsds"/>
-                  <Data value="dssde"/>
-                </Column>
-                <Column editable="false" title="Producto" type="java.lang.String">
-                  <Data value="25"/>
-                  <Data value="78"/>
-                  <Data value="87"/>
-                  <Data value="454"/>
-                  <Data value="4"/>
-                </Column>
-                <Column editable="false" title="Precio" type="java.lang.Double">
-                  <Data value="53.5"/>
-                  <Data value="5453.5"/>
-                  <Data value="4.5"/>
-                  <Data value="453.5"/>
-                  <Data value="5.5"/>
-                </Column>
+              <Table columnCount="3" rowCount="0">
+                <Column editable="true" title="Clave" type="java.lang.String"/>
+                <Column editable="true" title="Producto" type="java.lang.String"/>
+                <Column editable="true" title="Precio" type="java.lang.Double"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -395,6 +377,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/515958.jpg"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor Por defecto"/>

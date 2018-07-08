@@ -5,12 +5,15 @@
  */
 package Controlador;
 
-import Modelo.Cliente;
-import Vista.VistaAltaCliente;
+import Excepciones.ElementoNoEncontradoException;
+import Excepciones.RepeticionException;
+
+import Modelo.Producto;
 import Vista.VistaControlAccionesEntidades;
+
+import Vista.VistaEdicionProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -19,39 +22,40 @@ import java.util.ArrayList;
 public class ControlEdicionProducto {
     
     
-      private Cliente cliente;
-    private VistaAltaCliente vista;
+    private Producto producto;
+    private VistaEdicionProducto vista;
     private VistaControlAccionesEntidades vistaMadre;
+    private int indice;
     
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
+    public ControlEdicionProducto( VistaControlAccionesEntidades vistaRaiz){
+        this.producto= null;
+        this.vista= new VistaEdicionProducto();
         this.vistaMadre= vistaRaiz;
-        
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+        this.indice=-1;
+        vistaMadre.setVisible(false);
+        vista.ocultarCampos(); 
+        vista.ocultarErrorRepeticion();
+        vista.agregarListenerBotonAceptarError(new CancelarProcesoEdicionProducto());
+        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionProducto());
+        vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionProducto());
+        vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionProducto());
     }
     
     
     
-    private class  ProcesoAltaCliente implements ActionListener{
+    private class  ProcesoGuardarEdicionProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
-                lectura.verificarNoRepeticion(vista.obtenerRazon());
-                cliente.establecerRazonSocial(vista.obtenerRazon());
-                cliente.establecerDireccion(vista.obtenerDireccion());
-                cliente.establecerTelefono(vista.obtenerTel());
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(cliente.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                //aumentar contador clientes en archivo
+                ManejoArchivo  lectura= new ManejoArchivo("Productos.txt");
+                lectura.verificarNoRepeticion(vista.obtenerDescripcion());
+                producto.establecerDescripcion(vista.obtenerDescripcion());
+                producto.establecerCantidad(Integer.valueOf(vista.obtenerCantidad()));
+                producto.establecerPrecioUnitario(Double.valueOf(vista.obtenerPrecioUnitario()));
+                lectura.establecerLineaArchivo(indice, producto.toString());
                 vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
+            }catch(RepeticionException excep){
                 vista.mostrarErrorRepeticion();
             }
             
@@ -59,7 +63,33 @@ public class ControlEdicionProducto {
 
     }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
+    
+    private class  ProcesoBusquedaEnEdicionProducto implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            try{
+                vista.deshabilitarCajaClave();
+                vista.deshabilitarBotonBuscar();
+                ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
+                indice=archivo.busquedaDatosEnArchivo(vista.obtenerClave());
+                String cadena=archivo.obtenerLineaArchivo(indice);
+                producto= new Producto(cadena);
+                vista.establecerDescripcion(producto.obtenerClave());
+                vista.establecerCantidad(Integer.toString(producto.obtenerCantidad()));
+                vista.establecerPrecioUnitario(Double.toString(producto.obtenerPrecioUnitario()));
+                vista.mostrarCampos();
+            }catch(ElementoNoEncontradoException excep){
+                vista.mostrarMensajeError();
+            }
+            
+        }
+
+    }
+    
+    
+    
+     private class  MensajeAccionCompletadaEdicionProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -69,7 +99,7 @@ public class ControlEdicionProducto {
 
     }
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+    private class  CancelarProcesoEdicionProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -78,6 +108,5 @@ public class ControlEdicionProducto {
         }
 
     }
-    
     
 }

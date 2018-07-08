@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  */
 public class ControlBajaVenta {
     
-      private VistaBajaVenta vista;
+     private VistaBajaVenta vista;
     private VistaControlAccionesEntidades vistaMadre;
     
     public ControlBajaVenta(VistaControlAccionesEntidades vistaRaiz){

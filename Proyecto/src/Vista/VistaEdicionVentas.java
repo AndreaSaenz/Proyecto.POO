@@ -65,7 +65,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     }
     //------------------
     
-    public void agregarListenerBotonAceptar(ActionListener evento){
+    public void agregarListenerBotonGuardar(ActionListener evento){
         jButton1.addActionListener(evento);
     }
    
@@ -184,7 +184,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jDialog3.setVisible(false);
      }
         
-    public void ocultararMensajeErrorProducto(){
+    public void ocultarMensajeErrorProducto(){
         jDialog4.setVisible(false);
     }
     
@@ -426,7 +426,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jDialog4.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Venta no encontrada.");
+        jLabel15.setText("Producto no encontrado.");
 
         jButton9.setText("Aceptar");
 
@@ -442,7 +442,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabel15)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,11 +564,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
 
         jFormattedTextField1.setEditable(false);
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/d"))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, -1));
 
         jButton3.setText("Buscar");
@@ -585,10 +580,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

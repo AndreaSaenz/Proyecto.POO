@@ -9,6 +9,7 @@ package Vista;
  * @author limberth
  */
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -81,9 +82,16 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
     }
     
    /* public void establecerTabla(ArrayList<> tabla){
-        object[] fila= new Object[3];
-        jTable1.rem
+        Object[] fila= new Object[3];
+        fila[0]="hola";
+        fila[1]="pez";
+        fila[2]=25.2;
+        
+        jTable1.add
     }*/
+        
+        
+    
         
     //--------------------
    
@@ -250,11 +258,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"sfgs", "25",  new Double(53.5)},
-                {"sdsdfs", "78",  new Double(5453.5)},
-                {"sdfs", "87",  new Double(4.5)},
-                {"sdsds", "454",  new Double(453.5)},
-                {"dssde", "4",  new Double(5.5)}
+
             },
             new String [] {
                 "Clave", "Producto", "Precio"
@@ -263,16 +267,9 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -336,6 +333,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
+        Fondo.setToolTipText("");
         Fondo.setAutoscrolls(true);
         Fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Fondo.setMaximumSize(new java.awt.Dimension(1400, 1080));
@@ -394,7 +392,9 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
                 VistaConsultaVenta vista= new VistaConsultaVenta();
                 vista.setVisible(true);
                 vista.mostrarMensajeGuardado();
-                vista.jTable1.removeRowSelectionInterval(0, 1);
+                
+                System.out.println(vista.jTable1.getRowCount());
+                vista.jTable1.removeRowSelectionInterval(0, vista.jTable1.getRowCount());
                 
                 //vista.cerrarVentana();
             }

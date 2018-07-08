@@ -148,6 +148,8 @@ public class ManejoArchivo{
         return contadores;
     }
     
+  
+
     public void modificarContadoresEntidades(int[] contadores){
         Archivo="Contadores.txt";
         ArrayList<String> contadoresEntidades= new ArrayList<String>();
@@ -156,6 +158,8 @@ public class ManejoArchivo{
         contadoresEntidades.add("Ventas:"+contadores[2]);
         EscrituraArchivo(contadoresEntidades, false);
     }
+    
+    
 
 
     public String obtenerLineaArchivo(int indice){
@@ -174,6 +178,21 @@ public class ManejoArchivo{
         EscrituraArchivo(cadena, true);
     }
     
+    
+    public void disminuirCantidadProducto(int indice){
+       String[] temporal=obtenerLineaArchivo(indice).split(",");
+       int cantidad=(Integer.valueOf(temporal[2]))-1;
+       establecerLineaArchivo(indice, temporal[0]+temporal[1]+Integer.toString(cantidad)+temporal[3]);
+        
+    }
+    
+    public void aumentarCantidadProducto(String clave){
+        int indice=busquedaDatosEnArchivo(clave);
+        String[] temporal=obtenerLineaArchivo(indice).split(",");
+        int cantidad=(Integer.valueOf(temporal[2]))+1;
+        establecerLineaArchivo(indice, temporal[0]+temporal[1]+Integer.toString(cantidad)+temporal[3]);
+    
+    }
     
     
     public static void main(String args[]){

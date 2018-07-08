@@ -776,6 +776,10 @@ public class VistaEdicionCliente extends javax.swing.JFrame {
         return jTextField4.getText();
     }
     
+    public String obtenerRFC() {
+        return jTextField1.getText();
+    }
+    
    //------------------------------------
     public void establecerRFC(String contenido) {
         this.jTextField1.setText(contenido);

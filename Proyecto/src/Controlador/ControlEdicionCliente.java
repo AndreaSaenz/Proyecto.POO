@@ -5,12 +5,13 @@
  */
 package Controlador;
 
+import Excepciones.ElementoNoEncontradoException;
+import Excepciones.RepeticionException;
 import Modelo.Cliente;
-import Vista.VistaAltaCliente;
+import Vista.VistaEdicionCliente;
 import Vista.VistaControlAccionesEntidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -19,24 +20,28 @@ import java.util.ArrayList;
 public class ControlEdicionCliente {
     
     
-      private Cliente cliente;
-    private VistaAltaCliente vista;
+    private Cliente cliente;
+    private VistaEdicionCliente vista;
     private VistaControlAccionesEntidades vistaMadre;
+    private int indice;
     
-    public ControlAltaCliente(int rfc, VistaControlAccionesEntidades vistaRaiz){
-        this.cliente= new Cliente(rfc, "","","");
-        this.vista= new VistaAltaCliente();
+    public ControlEdicionCliente( VistaControlAccionesEntidades vistaRaiz){
+        this.cliente= null;
+        this.vista= new VistaEdicionCliente();
         this.vistaMadre= vistaRaiz;
-        
-        vista.establecerRFC(rfc);
-        vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+         this.indice=-1;
+        vistaMadre.setVisible(false);
+        vista.ocultarCampos();
+        vista.ocultarErrorRepeticion();
+        vista.agregarListenerBotonAceptarError(new CancelarProcesoEdicionCliente());
+        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionCliente());
+        vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionCliente());
+        vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionCliente());
     }
     
     
     
-    private class  ProcesoAltaCliente implements ActionListener{
+    private class  ProcesoGuardarEdicionCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -45,13 +50,10 @@ public class ControlEdicionCliente {
                 lectura.verificarNoRepeticion(vista.obtenerRazon());
                 cliente.establecerRazonSocial(vista.obtenerRazon());
                 cliente.establecerDireccion(vista.obtenerDireccion());
-                cliente.establecerTelefono(vista.obtenerTel());
-                ArrayList<String> cadena= new ArrayList<String>();
-                cadena.add(cliente.toString());
-                lectura.EscrituraArchivo(cadena, true);
-                //aumentar contador clientes en archivo
+                cliente.establecerTelefono(vista.obtenerTelefono());
+                lectura.establecerLineaArchivo(indice, cliente.toString());
                 vista.mostrarMensajeGuardado();
-            }catch(Exception excep){
+            }catch(RepeticionException excep){
                 vista.mostrarErrorRepeticion();
             }
             
@@ -59,7 +61,33 @@ public class ControlEdicionCliente {
 
     }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
+    
+    private class  ProcesoBusquedaEnEdicionCliente implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            try{
+                vista.inhabilitarCajaRFC();
+                vista.deshabilitarBotonBuscar();
+                ManejoArchivo archivo=new ManejoArchivo("Clientes.txt");
+                indice=archivo.busquedaDatosEnArchivo(vista.obtenerRFC());
+                String cadena=archivo.obtenerLineaArchivo(indice);
+                cliente= new Cliente(cadena);
+                vista.establecerRazon(cliente.obtenerRazonSocial());
+                vista.establecerDireccion(cliente.obtenerDireccion());
+                vista.establecerTelefono(cliente.obtenerTelefono());
+                vista.mostrarCampos();
+            }catch(ElementoNoEncontradoException excep){
+                vista.mostrarMensajeError();
+            }
+            
+        }
+
+    }
+    
+    
+    
+     private class  MensajeAccionCompletadaEdicionCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -69,7 +97,7 @@ public class ControlEdicionCliente {
 
     }
     
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+    private class  CancelarProcesoEdicionCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -78,8 +106,6 @@ public class ControlEdicionCliente {
         }
 
     }
-    
-    
     
     
 }

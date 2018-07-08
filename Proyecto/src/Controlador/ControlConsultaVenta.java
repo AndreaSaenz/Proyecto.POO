@@ -53,7 +53,7 @@ public class ControlConsultaVenta {
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));
-                
+                //mostrar tabla
                 vista.mostrarCampos();
             }catch(ElementoNoEncontradoException excep){
                 vista.mostrarMensajeGuardado();
