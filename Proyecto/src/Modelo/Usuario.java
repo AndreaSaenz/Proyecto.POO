@@ -40,6 +40,10 @@ public class Usuario {
         this.contrasena=contra;
     }
     
+    public void establecerRol(String rol){
+      this.rol=new TipoUsuario(rol);
+    }
+    
     public boolean equals(String otroNombre){
         boolean bandera=false;
         if(this.nombre.equals(otroNombre)){

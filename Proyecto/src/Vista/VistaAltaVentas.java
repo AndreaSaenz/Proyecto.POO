@@ -8,17 +8,28 @@ package Vista;
  *
  * @author limberth
  */
+import Controlador.ControlAltaVenta;
+import Modelo.Producto;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class VistaAltaVentas extends javax.swing.JFrame {
+    ControlAltaVenta control;
+    List<Producto> productos;
 
     /**
      * Creates new form Ventas
      */
-    public VistaAltaVentas() {
+    public VistaAltaVentas(List<Producto> productos) {
+        this.productos = productos;
+       
         initComponents();
+          this.jTable1.setModel(new ModeloTabla(productos));
+        
+        
         
     }
     //----------------------
@@ -394,29 +405,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Producto", "Precio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(new ModeloTabla(productos));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -489,7 +478,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
         Fondo.setAutoscrolls(true);
         Fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Fondo.setMaximumSize(new java.awt.Dimension(1400, 1080));
@@ -533,7 +521,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VistaAltaVentas vista= new VistaAltaVentas();
+                VistaAltaVentas vista= new VistaAltaVentas(new ArrayList<>());
                 vista.setVisible(true);
                 vista.mostrarMensajeGuardado();
                 vista.mostrarMensajeErrorCliente();

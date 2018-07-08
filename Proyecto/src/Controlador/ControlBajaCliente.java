@@ -27,6 +27,7 @@ public class ControlBajaCliente {
         vista.agregarListenerBotonAceptar(new ProcesoBajaCliente());
         vista.agregarListenerBotonAceptarError(new MensajeErrorBajaCliente());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaCliente());
+         vista.setVisible(true);
     }
 
     
@@ -63,10 +64,10 @@ public class ControlBajaCliente {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            try{
+            
                 vistaMadre.dispose();
                 vista.dispose();
-            }
+            
                 
         }
     }

@@ -53,7 +53,11 @@ public class Producto {
     public int obtenerCantidad() {
         return cantidad;
     }
-
+    
+    public void establecerClave(String clave){
+        this.clave=clave;
+    }
+    
     public void establecerDescripcion(String Descripcion) {
         this.descripcion = Descripcion;
     }

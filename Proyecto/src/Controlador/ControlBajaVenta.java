@@ -28,6 +28,7 @@ public class ControlBajaVenta {
         vista.agregarListenerBotonAceptar(new ProcesoBajaVenta());
         vista.agregarListenerBotonAceptarError(new MensajeErrorBajaVenta());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaVenta());
+        vista.setVisible(true);
     }
 
     

@@ -26,10 +26,12 @@ public class ControlMenuPrincipalEmpleado {
         this.usuario= usuario;
         this.vista= new VistaMenuPrincipalEmpleado();
         this.vistaLogin=vistaLogin;
+        this.vistaLogin.setVisible(false);
         vista.agregarListenerBotonClientes(new opcionClientes());
         vista.agregarListenerBotonProductos(new opcionProductos());
         vista.agregarListenerBotonVentas(new opcionVentas());
         vista.agregarListenerBotonCerrarSesion(new opcionCerrarSesion());
+          vista.setVisible(true);
     }
     
     

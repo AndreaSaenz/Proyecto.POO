@@ -1,6 +1,8 @@
 package Controlador;
 
+import Excepciones.ElementoNoEncontradoException;
 import Excepciones.IncompatibilidadContrasenaException;
+import Excepciones.RepeticionException;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -86,7 +88,10 @@ public class ManejoArchivo{
                 break;
             }
         }
-        if(indice)
+        if(indice>=ed.size()){
+            indice=-1;
+            throw new ElementoNoEncontradoException("No se encontró el elemento.");
+        }
         
         return indice;
     }
@@ -96,7 +101,7 @@ public class ManejoArchivo{
         EscrituraArchivo(ed, false);
     }
     
-    public boolean verificarNoRepeticion(String noRepetir){
+    public boolean verificarNoRepeticion(String noRepetir)throws RepeticionException{
         boolean bandera=false;
         int indice;
         LeerArchivo();
@@ -105,8 +110,12 @@ public class ManejoArchivo{
             String[] arreglo= temporal.split(",");
             if(arreglo[1].equals(noRepetir)){
                 bandera=true;
+                
                 break;
             }
+        }
+        if(bandera==true){
+            throw new RepeticionException("Se encontró un elemento igual.");
         }
         return bandera;
     }
@@ -214,11 +223,12 @@ public class ManejoArchivo{
         
     }
     
-    public void aumentarCantidadProducto(String clave){
+    public void aumentarCantidadProducto(String clave) throws ElementoNoEncontradoException  {
         int indice=busquedaDatosEnArchivo(clave);
         String[] temporal=obtenerLineaArchivo(indice).split(",");
         int cantidad=(Integer.valueOf(temporal[2]))+1;
         establecerLineaArchivo(indice, temporal[0]+temporal[1]+Integer.toString(cantidad)+temporal[3]);
+        
     
     }
     

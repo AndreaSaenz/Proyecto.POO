@@ -37,6 +37,7 @@ public class ControlEdicionCliente {
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionCliente());
         vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionCliente());
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionCliente());
+          vista.setVisible(true);
     }
     
     

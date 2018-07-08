@@ -31,6 +31,7 @@ public class ControlConsultaCliente {
         vista.agregarListenerBotonBuscar(new ProcesoConsultaCliente());
         vista.agregarListenerBotonListo(new MensajeAccionCompletadaConsultaCliente());
         vista.agregarListenerBotonAceptarError(new CancelarProcesoConsultaCliente());
+        vista.setVisible(true);
     }
     
     

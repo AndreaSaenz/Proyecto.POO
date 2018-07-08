@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Modelo.Usuario;
 import Vista.VistaControlAccionesEntidades;
+import Vista.VistaLogin;
+import Vista.VistaLoginAdmin;
 
 /**
  *
@@ -36,7 +38,7 @@ public class ControlClientes {
             vista.agregarListenerBotonBaja(new OpcionBajaCliente());
             vista.agregarListenerBotonEdicion(new opcionEdicionCliente());
         }
-        
+        vista.setVisible(true);
         
     
     }
@@ -104,9 +106,9 @@ public class ControlClientes {
         @Override
         public void actionPerformed(ActionEvent evento) {
             if(usuario.obtenerRol().obtenerModuloUsuario().obtenerPermisoAlta()){
-              ControlMenuPrincipalAdmin  vistaMadre=new ControlMenuPrincipalAdmin(usuario);
+              ControlMenuPrincipalAdmin  vistaMadre= new ControlMenuPrincipalAdmin(usuario, new VistaLoginAdmin());
             }else{
-                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado();
+                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado(usuario, new VistaLogin());
             }
             vista.dispose();
             

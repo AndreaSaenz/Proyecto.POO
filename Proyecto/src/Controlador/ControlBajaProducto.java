@@ -29,6 +29,7 @@ public class ControlBajaProducto {
         vista.agregarListenerBotonAceptar(new ProcesoBajaProducto());
         vista.agregarListenerBotonAceptarError(new MensajeErrorBajaProducto());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaProducto());
+        vista.setVisible(true);
     }
 
     
@@ -40,7 +41,7 @@ public class ControlBajaProducto {
             try{
                 
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
-                int indice=archivo.busquedaDatosEnArchivo(vista.obtenerRFC());
+                int indice=archivo.busquedaDatosEnArchivo(vista.obtenerClave());
                 archivo.eliminarDatosEnArchivo(indice);
                 vista.mostrarMensajeEliminado();
             }catch(ElementoNoEncontradoException excep){

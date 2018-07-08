@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+import Excepciones.IncompatibilidadContrasenaException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -90,10 +91,11 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
     }
     ///---------------------
     
-    public boolean compararContrasenas(){
+    public boolean compararContrasenas()throws IncompatibilidadContrasenaException{
         boolean bandera=true;
         if(!(this.obtenerContrasena1().equals(this.obtenerContrasena2()))){
             bandera=false;
+            throw new IncompatibilidadContrasenaException("Las contraseñas no son iguales.");
         }
         return bandera;
     }

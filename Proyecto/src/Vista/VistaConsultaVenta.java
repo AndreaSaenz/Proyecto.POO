@@ -121,6 +121,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jTextField8.setVisible(false);
         jTable1.setVisible(false);
         jButton1.setVisible(false);
+        jTable1.setVisible(false);
        
     }
     
@@ -144,6 +145,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jTextField8.setVisible(true);
         jTable1.setVisible(true);
         jButton1.setVisible(true);
+        jTable1.setVisible(true);
         
     }
     

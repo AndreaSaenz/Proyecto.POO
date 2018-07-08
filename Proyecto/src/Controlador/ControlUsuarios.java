@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.Usuario;
 import Vista.VistaControlAccionesEmpleados;
+import Vista.VistaLoginAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,14 +18,16 @@ import java.awt.event.ActionListener;
 public class ControlUsuarios {
    
     private VistaControlAccionesEmpleados vista;
+    private Usuario usuario;
     
     public ControlUsuarios(Usuario usuario){
         this.vista= new VistaControlAccionesEmpleados();
-        
+        this.usuario=usuario;
         
         vista.agregarListenerBotonAlta(new opcionAltaUsuario());
         vista.agregarListenerBotonMenu(new opcionMenu());
         vista.agregarListenerBotonBaja(new OpcionBajaUsuario());
+        vista.setVisible(true);
     }
     
          //---------------------
@@ -61,7 +64,7 @@ public class ControlUsuarios {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado();
+            ControlMenuPrincipalAdmin vistaMadre = new ControlMenuPrincipalAdmin(usuario, new VistaLoginAdmin());
             vista.dispose();
             
         }

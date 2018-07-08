@@ -30,9 +30,11 @@ public class ControlAltaEmpleado {
         this.vista= new VistaAltaEmpleado();
         this.vistaMadre= vistaRaiz;    
         vistaMadre.setVisible(false);
+       
         vista.agregarListenerBotonRegistrar(new ProcesoAltaEmpleado());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaEmpleado());
         vista.agregarListenerBotonCancelar(new CancelarProcesoAltaEmpleado());
+        vista.setVisible(true);
     }
     
     

@@ -15,6 +15,8 @@ import Vista.VistaAltaVentas;
 import Vista.VistaControlAccionesEntidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,10 +33,11 @@ public class ControlAltaVenta {
     
     public ControlAltaVenta(int id, VistaControlAccionesEntidades vistaRaiz){
         this.venta= new Venta(id);
-        this.vista= new VistaAltaVentas();
+        this.vista= new VistaAltaVentas(venta.obtenerProductos());
         this.vistaMadre= vistaRaiz;
-        
+       
         vista.establecerIdVenta(id);
+        
         vista.agregarListenerBotonAceptarErrorCliente(new DarAltaCliente());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaVenta());
         vista.agregarListenerBotonAceptarErrorProducto(new ProductoNoEncontrado());
@@ -43,6 +46,7 @@ public class ControlAltaVenta {
         vista.agregarListenerBotonAceptar(new ProcesoGuardarAltaVenta());
         vista.agregarListenerBotonAgregarProducto(new AgregarProducto());
         vista.agregarListenerBotonCancelarAltaCliente(new CancelarProcesoEdicionVenta());
+         vista.setVisible(true);
     }
     
     
@@ -63,7 +67,7 @@ public class ControlAltaVenta {
                 int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
                 new ManejoArchivo("").modificarContadoresEntidades(2, "Ventas:"+(contadorVentas+1));
                 vista.mostrarMensajeGuardado();
-            }catch(RepeticionException excep){
+            }catch (ElementoNoEncontradoException ex) {
                 vista.mostrarMensajeErrorCliente();
             }
             

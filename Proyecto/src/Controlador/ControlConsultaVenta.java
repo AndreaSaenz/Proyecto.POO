@@ -30,6 +30,7 @@ public class ControlConsultaVenta {
         vista.agregarListenerBotonBuscar(new ProcesoConsultaVenta());
         vista.agregarListenerBotonListo(new MensajeAccionCompletadaConsultaVenta());
         vista.agregarListenerBotonAceptarError(new CancelarProcesoConsultaVenta());
+        vista.setVisible(true);
     }
     
     

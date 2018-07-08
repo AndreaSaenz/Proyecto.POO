@@ -26,11 +26,13 @@ public class ControlAltaCliente {
         this.cliente= new Cliente(rfc, "","","");
         this.vista= new VistaAltaCliente();
         this.vistaMadre= vistaRaiz;
+        
         vistaMadre.setVisible(false);
         vista.establecerRFC(rfc);
         vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
         vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+        vista.setVisible(true);
     }
     
     public ControlAltaCliente(int rfc){

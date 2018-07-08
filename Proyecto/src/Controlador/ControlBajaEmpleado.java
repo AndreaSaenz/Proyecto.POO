@@ -29,6 +29,7 @@ public class ControlBajaEmpleado {
         vista.agregarListenerBotonAceptar(new ProcesoBajaEmpleado());
         vista.agregarListenerBotonAceptarError(new MensajeErrorBajaEmpleado());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaEmpleado());
+        vista.setVisible(true);
     }
 
     

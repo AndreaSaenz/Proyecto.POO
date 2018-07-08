@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Usuario;
 import Vista.VistaControlAccionesEntidades;
+import Vista.VistaLogin;
+import Vista.VistaLoginAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,6 +37,7 @@ public class ControlVentas {
             vista.agregarListenerBotonBaja(new OpcionBajaVenta());
             vista.agregarListenerBotonEdicion(new opcionEdicionVenta());
         }
+        vista.setVisible(true);
     }
     
          //---------------------
@@ -95,9 +98,9 @@ public class ControlVentas {
         @Override
         public void actionPerformed(ActionEvent evento) {
             if(usuario.obtenerRol().obtenerModuloUsuario().obtenerPermisoAlta()){
-              ControlMenuPrincipalAdmin  vistaMadre = new ControlMenuPrincipalAdmin(usuario);
+              ControlMenuPrincipalAdmin  vistaMadre = new ControlMenuPrincipalAdmin(usuario, new VistaLoginAdmin());
             }else{
-                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado();
+                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado(usuario, new VistaLogin());
             }
             vista.dispose();
             

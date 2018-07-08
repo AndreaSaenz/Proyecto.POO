@@ -34,11 +34,14 @@ public class ControlAltaProducto {
         this.producto= new Producto(clave,"",0,0);
         this.vista= new VistaAltaProducto();
         this.vistaMadre= vistaRaiz;
+        
         vistaMadre.setVisible(false);
         vista.establecerClave(clave);
+        vista.setVisible(true);
         vista.agregarListenerBotonRegistrar(new ProcesoAltaProducto());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaProducto());
         vista.agregarListenerBotonCancelar(new CancelarProcesoAltaProducto());
+        vista.setVisible(true);
     }
     
     

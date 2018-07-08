@@ -39,6 +39,7 @@ public class ControlEdicionProducto {
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionProducto());
         vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionProducto());
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionProducto());
+          vista.setVisible(true);
     }
     
     

@@ -14,6 +14,7 @@ import Vista.VistaLoginAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  *
  * @author 1047470
@@ -25,10 +26,12 @@ public class ControlLogin {
     private int intentos;
     
     public void ControlLogin(){
-        this.usuario=null;
+        this.usuario=new Usuario("","","");
         this.loginGeneral= new VistaLogin();
-        this.loginAdmin=null;
+        this.loginAdmin=new VistaLoginAdmin();
         this.intentos=0;
+        loginGeneral.setVisible(true);
+        loginAdmin.setVisible(false);
         loginGeneral.agregarListenerBotonIniciarSesión(new SesionEmpleado());
         loginGeneral.agregarListenerBotonSesionAdmin(new CambiarTipoSesion());
         loginGeneral.ocultarErrorBloqueo();
@@ -37,6 +40,7 @@ public class ControlLogin {
         loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
         loginAdmin.ocultarErrorBloqueo();
         loginAdmin.ocultarErrorContrasenaIncorrects();
+        //loginGeneral.setVisible(true);
     }
     
         
@@ -48,7 +52,14 @@ public class ControlLogin {
                 
                 ManejoArchivo lectura= new ManejoArchivo("Usuarios.txt");
                 lectura.compararContrasenaString(lectura.obtenerLineaArchivo(lectura.busquedaDatosEnArchivo(loginGeneral.obtenerUsuario())), loginGeneral.obtenerContrasena());
-                usuario= new Usuario("Empleado", loginGeneral.obtenerUsuario(), loginGeneral.obtenerContrasena());
+                if(lectura.busquedaDatosEnArchivo(loginGeneral.obtenerUsuario())>0){
+                    usuario.establecerRol("Empleado");
+                }
+                else{
+                    usuario.establecerRol("Administrador");
+                }
+                usuario.establecerNombre(loginGeneral.obtenerUsuario());
+                usuario.establecerContrasena(loginGeneral.obtenerContrasena());
                 loginGeneral.resetearCampos();
                 ControlMenuPrincipalEmpleado vista=new ControlMenuPrincipalEmpleado(usuario, loginGeneral);
             }catch(ElementoNoEncontradoException excep1){
@@ -116,5 +127,9 @@ public class ControlLogin {
         }
 
     }
+    
+     
+        
+    
     
 }

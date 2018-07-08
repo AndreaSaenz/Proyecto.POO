@@ -7,7 +7,6 @@ package Controlador;
 
 
 import Excepciones.ElementoNoEncontradoException;
-import Excepciones.RepeticionException;
 import Modelo.Cliente;
 import Modelo.Producto;
 
@@ -46,6 +45,7 @@ public class ControlEdicionVenta {
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionVenta());
         vista.agregarListenerBotonAgregarProducto(new AgregarProducto());
         vista.agregarListenerBotonCancelar(new CancelarProcesoEdicionVenta());
+          vista.setVisible(true);
     }
     
     
@@ -61,10 +61,9 @@ public class ControlEdicionVenta {
                 venta.establecerCliente(new Cliente(clientes.obtenerLineaArchivo(indice)));
                 lectura.establecerLineaArchivo(indice, venta.toString());
                 vista.mostrarMensajeGuardado();
-            }catch(RepeticionException excep){
+            }catch(ElementoNoEncontradoException excep){
                 vista.mostrarMensajeErrorCliente();
-            }
-            
+            } 
         }
 
     }

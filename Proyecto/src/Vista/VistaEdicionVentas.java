@@ -220,6 +220,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jButton1.setVisible(false);
         jButton2.setVisible(false);
         jButton5.setVisible(false);
+        jTable1.setVisible(false);
     }
     
     public void mostrarCampos(){
@@ -246,6 +247,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jButton1.setVisible(true);
         jButton2.setVisible(true);
         jButton5.setVisible(true);
+        jTable1.setVisible(true);
     }
     //---------------------------
     public void deshabilitarBotonBuscar(){
