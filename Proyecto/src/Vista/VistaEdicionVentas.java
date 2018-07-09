@@ -8,16 +8,14 @@ package Vista;
  *
  * @author limberth
  */
-import Controlador.ControlAltaVenta;
 import Modelo.Producto;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class VistaEdicionVentas extends javax.swing.JFrame {
-    ControlAltaVenta control;
+    //ControlAltaVenta control;
     ArrayList<Producto> productos;
     /**
      * Creates new form Ventas
@@ -324,6 +322,12 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
@@ -553,11 +557,29 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
         jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/d"))));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat(""))));
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, -1));
 
         jButton3.setText("Buscar");
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
+
+        jLabel18.setText("Para agregar un producto:");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 130, 40));
+
+        jLabel19.setText("1. Escriba la clave en la caja");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, -1, 40));
+
+        jLabel20.setText("2. Click en el botón \"+\"");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, -1, -1));
+
+        jLabel16.setText("Para eliminar un producto:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 130, 40));
+
+        jLabel17.setText("1. Selecciónelo con el cursor");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 450, -1, 40));
+
+        jLabel21.setText("2. Click en el botón \"-\"");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setAutoscrolls(true);
@@ -648,7 +670,13 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

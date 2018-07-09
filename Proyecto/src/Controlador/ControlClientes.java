@@ -55,7 +55,7 @@ public class ControlClientes {
         public void actionPerformed(ActionEvent evento) {
             vista.setVisible(false);
             ControlAltaCliente vistaHija= new ControlAltaCliente((new ManejoArchivo("").obtenerContadoresEntidades(0))+1,vista);
-                
+            vista.setVisible(true);
             
             
         }

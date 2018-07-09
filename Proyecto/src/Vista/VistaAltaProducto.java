@@ -106,7 +106,6 @@ public class VistaAltaProducto extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        BarrrasInferior = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         Título = new javax.swing.JLabel();
@@ -167,9 +166,6 @@ public class VistaAltaProducto extends javax.swing.JFrame {
         jButton1.setBorder(null);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 90, 20));
 
-        BarrrasInferior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franja1.png"))); // NOI18N
-        getContentPane().add(BarrrasInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 390, 130));
-
         jLabel1.setText("Descripción:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
@@ -205,7 +201,6 @@ public class VistaAltaProducto extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 700));
 
         pack();
@@ -248,7 +243,6 @@ public class VistaAltaProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BarrrasInferior;
     private javax.swing.JTextField Cantidad;
     private javax.swing.JTextField Clave;
     private javax.swing.JTextField Descripcion;

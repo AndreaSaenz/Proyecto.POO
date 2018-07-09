@@ -64,7 +64,7 @@ public class ControlConsultaProducto {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
+            vistaMadre.setVisible(true);
             vista.dispose();
         }
 
@@ -74,8 +74,9 @@ public class ControlConsultaProducto {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
-            vista.dispose();
+            vista.mostrarCampos();
+           // vistaMadre.setVisible(true);
+            //vista.dispose();
         }
 
     }

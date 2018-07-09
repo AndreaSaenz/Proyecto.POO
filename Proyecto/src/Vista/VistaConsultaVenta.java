@@ -8,16 +8,14 @@ package Vista;
  *
  * @author limberth
  */
-import Controlador.ControlAltaVenta;
 import Modelo.Producto;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class VistaConsultaVenta extends javax.swing.JFrame {
-    ControlAltaVenta control;
+   // ControlAltaVenta control;
     ArrayList<Producto> productos;
     /**
      * Creates new form Ventas
@@ -102,8 +100,12 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         
     //--------------------
    
-    public void mostrarMensajeGuardado(){
+    public void mostrarMensajeError(){
         jDialog1.setVisible(true);
+    }
+    
+     public void cerrarMensajeError(){
+        jDialog1.dispose();
     }
     
     ///-------------
@@ -319,14 +321,13 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
         jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/d"))));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat(""))));
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, -1));
 
         jButton3.setText("Buscar");
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
         Fondo.setToolTipText("");
         Fondo.setAutoscrolls(true);
         Fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -385,7 +386,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
             public void run() {
                 VistaConsultaVenta vista= new VistaConsultaVenta(new ArrayList<>());
                 vista.setVisible(true);
-                vista.mostrarMensajeGuardado();
+                vista.mostrarMensajeError();
                 
                 System.out.println(vista.jTable1.getRowCount());
                 vista.jTable1.removeRowSelectionInterval(0, vista.jTable1.getRowCount());

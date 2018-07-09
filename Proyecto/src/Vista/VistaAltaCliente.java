@@ -24,7 +24,7 @@ public class VistaAltaCliente extends javax.swing.JFrame {
     }
     
     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/github-256-black.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage("Imagenes/github-256-black.png");
         return retValue;
     }
  
@@ -108,7 +108,6 @@ public class VistaAltaCliente extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        BarrrasInferior = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         Título = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -122,6 +121,7 @@ public class VistaAltaCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
+        jDialog1.setAlwaysOnTop(true);
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -172,9 +172,6 @@ public class VistaAltaCliente extends javax.swing.JFrame {
         jButton1.setBorder(null);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 90, 20));
 
-        BarrrasInferior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franja1.png"))); // NOI18N
-        getContentPane().add(BarrrasInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 390, 130));
-
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setText("Registrar");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, 20));
@@ -206,7 +203,6 @@ public class VistaAltaCliente extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 700));
 
         pack();
@@ -249,7 +245,6 @@ public class VistaAltaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BarrrasInferior;
     private javax.swing.JTextField Dir;
     private javax.swing.JLabel Fondo;
     private javax.swing.JTextField RFC;

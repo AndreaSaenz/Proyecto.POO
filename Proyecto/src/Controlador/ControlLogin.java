@@ -37,6 +37,7 @@ public class ControlLogin {
         loginGeneral.ocultarErrorContrasenaIncorrects();
         loginGeneral.ocultarErrorUsuario();
         loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
+        loginAdmin.agregarListenerBotonSesionEmpleado(new CambiarAGeneral());
         loginAdmin.ocultarErrorBloqueo();
         loginAdmin.ocultarErrorContrasenaIncorrects();
         loginGeneral.setVisible(true);
@@ -141,8 +142,21 @@ public class ControlLogin {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            loginGeneral.dispose();
+            loginGeneral.resetearCampos();
+            loginGeneral.setVisible(false);
             loginAdmin.setVisible(true);
+        }
+
+    }
+    
+    
+    private class  CambiarAGeneral implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            loginAdmin.limpiarContrasena();
+            loginGeneral.setVisible(true);
+            loginAdmin.setVisible(false);
         }
 
     }
@@ -156,7 +170,7 @@ public class ControlLogin {
             lectura.LeerArchivo();
             lectura.compararContrasenaString(lectura.obtenerLineaArchivo(0), loginAdmin.obtenerContrasena());
             usuario= new Usuario("Administrador", "Administrador", loginAdmin.obtenerContrasena());
-            loginAdmin.resetearCampos();
+            loginAdmin.limpiarContrasena();
             ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario, loginAdmin);
             }catch(IncompatibilidadContrasenaException excep){
                  try{

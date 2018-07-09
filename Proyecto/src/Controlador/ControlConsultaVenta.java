@@ -6,24 +6,27 @@
 package Controlador;
 
 import Excepciones.ElementoNoEncontradoException;
+import Modelo.Producto;
 import Modelo.Venta;
 import Vista.VistaConsultaVenta;
 
 import Vista.VistaControlAccionesEntidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  *
  * @author 1047470
  */
 public class ControlConsultaVenta {
-    
+    private Venta ventaTabla;
     private VistaConsultaVenta vista;
     private VistaControlAccionesEntidades vistaMadre;
     
     public ControlConsultaVenta(VistaControlAccionesEntidades vistaRaiz){
-        this.vista= new VistaConsultaVenta();
+        this.ventaTabla=new Venta(0);
+        this.vista= new VistaConsultaVenta(ventaTabla.obtenerProductos());
         this.vistaMadre= vistaRaiz;
         vistaMadre.setVisible(false);
         vista.ocultarCampos();
@@ -46,6 +49,7 @@ public class ControlConsultaVenta {
                 int indice=archivo.busquedaDatosEnArchivo(vista.obtenerIdVenta());
                 String cadena=archivo.obtenerLineaArchivo(indice);
                 Venta venta= new Venta(cadena);
+                
                 vista.establecerRFC(venta.obtenerCliente().obtenerRfc());
                 vista.establecerRazonSocial(venta.obtenerCliente().obtenerRazonSocial());
                 vista.establecerDireccion(venta.obtenerCliente().obtenerDireccion());
@@ -54,10 +58,12 @@ public class ControlConsultaVenta {
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));
-                //mostrar tabla
+                for(int i=0; i<venta.obtenerProductos().size(); i++){
+                    ventaTabla.agregarProducto(venta.obtenerProductos().get(i));
+                }
                 vista.mostrarCampos();
             }catch(ElementoNoEncontradoException excep){
-                vista.mostrarMensajeGuardado();
+                vista.mostrarMensajeError();
             }
             
         }
@@ -68,7 +74,8 @@ public class ControlConsultaVenta {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
+            vistaMadre.setVisible(true);
+            vista.cerrarMensajeError();
             vista.dispose();
         }
 
@@ -79,6 +86,7 @@ public class ControlConsultaVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             vistaMadre.setVisible(true);
+            vista.cerrarMensajeError();
             vista.dispose();
         }
 

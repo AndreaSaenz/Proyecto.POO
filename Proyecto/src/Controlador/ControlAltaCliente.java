@@ -6,12 +6,12 @@
 package Controlador;
 
 import Excepciones.RepeticionException;
+import Excepciones.VistaAnteriorInexistenteException;
 import Modelo.Cliente;
 import Vista.VistaAltaCliente;
 import Vista.VistaControlAccionesEntidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
@@ -26,8 +26,9 @@ public class ControlAltaCliente {
         this.cliente= new Cliente(rfc, "","","");
         this.vista= new VistaAltaCliente();
         this.vistaMadre= vistaRaiz;
-        
-        vistaMadre.setVisible(false);
+        if(vistaMadre!= null){
+         vistaMadre.setVisible(false);
+        }
         vista.establecerRFC(rfc);
         vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
@@ -76,8 +77,9 @@ public class ControlAltaCliente {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                existenciaVistaAnterior();
                 vistaMadre.dispose();
-            }catch(Exception excep3){
+            }catch(VistaAnteriorInexistenteException excep3){
                 System.out.println("Vista Madre inexistente");
             }finally{
                 vista.dispose();
@@ -91,8 +93,9 @@ public class ControlAltaCliente {
         @Override
         public void actionPerformed(ActionEvent evento){ 
             try{
+                existenciaVistaAnterior();
                 vistaMadre.setVisible(true);
-            }catch(Exception excep2){
+            }catch(VistaAnteriorInexistenteException excep2){
                     System.out.println("Vista Madre inexistente"); 
             }finally{
                  vista.dispose();
@@ -101,6 +104,13 @@ public class ControlAltaCliente {
             
         }
 
+    }
+    
+    
+    public void existenciaVistaAnterior() throws VistaAnteriorInexistenteException{
+        if(vistaMadre==null){
+            throw new VistaAnteriorInexistenteException("No hay vista anterior a esta");
+        }
     }
     
     

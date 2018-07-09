@@ -89,14 +89,36 @@ public class Venta {
         return total;
     }
 
-    public void establecerFecha() {
-        this.fecha = new GregorianCalendar();
+    public void establecerId(int id){
+        this.id= "V-"+id;
+    }
+    
+    public void establecerId(String id){
+        this.id=id;
+    }
+    
+    public void establecerFecha(){
+        GregorianCalendar fechaActual=new GregorianCalendar();
+        this.fecha = fechaActual;
+    }
+    
+        
+    public void establecerFecha(String fecha){
+        String[] camposFecha=fecha.split("/");
+        GregorianCalendar fechaActual= new GregorianCalendar(Integer.valueOf(camposFecha[0]), Integer.valueOf(camposFecha[1]), Integer.valueOf(camposFecha[2]));
+        this.fecha=fechaActual;
     }
 
+    public void establecerProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+    
+    
     public void establecerCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
+    
     public void establecerSubtotal() {
         if(productos.size()>0){
             for(int i=0; i<productos.size(); i++){

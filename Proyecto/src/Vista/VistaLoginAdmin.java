@@ -43,6 +43,7 @@ public Image getIconImage() {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,7 +75,7 @@ public Image getIconImage() {
         jButton2.setBackground(new java.awt.Color(0, 0, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Iniciar Sesión");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, 20));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, 20));
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Contraseña incorrecta. Inténtelo de nuevo.");
@@ -83,6 +84,11 @@ public Image getIconImage() {
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Cuenta bloqueada.");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 51));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Iniciar Como Empleado");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, 20));
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 440));
 
         pack();
@@ -133,6 +139,7 @@ public Image getIconImage() {
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -159,6 +166,10 @@ public Image getIconImage() {
         jButton2.addActionListener(evento);
     }
     
+    public void agregarListenerBotonSesionEmpleado(ActionListener evento){
+        jButton3.addActionListener(evento);
+    }
+    
     //--------------------
     
     
@@ -181,9 +192,7 @@ public Image getIconImage() {
             
    //---------------------
     
-    public void resetearCampos(){
-        jPasswordField1.setText("");
-    }
+
     
     public void bloquearCajaContrasena(){
         jPasswordField1.setEnabled(false);

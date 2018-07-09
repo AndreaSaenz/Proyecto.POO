@@ -8,18 +8,18 @@ package Vista;
  *
  * @author limberth
  */
-import Controlador.ControlAltaVenta;
 import Modelo.Producto;
+import Modelo.Venta;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class VistaAltaVentas extends javax.swing.JFrame {
-    ControlAltaVenta control;
+    //ControlAltaVenta control;
+    
     ArrayList<Producto> productos;
-
+    
     /**
      * Creates new form Ventas
      */
@@ -55,6 +55,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     public void activarBotonEliminarProducto(){
         jButton5.setEnabled(true);
     }
+    
     
     public void desactivarBotonElminarProducto(){
         jButton5.setEnabled(false);
@@ -108,6 +109,10 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     public String obtenerId(){
        return jTextField9.getText();
     }
+    
+    public String obtenerFecha(){
+        return jFormattedTextField1.getText();
+    }
     //-------------------------
     public void establecerIdVenta(int numero){
         String contenido= "V-"+numero; 
@@ -142,6 +147,8 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     public void establecerTotal(String contenido){
         this.jTextField3.setText(contenido);
     } 
+    
+    
     
     public void establecerFecha(GregorianCalendar fecha){
         String contenido;
@@ -194,7 +201,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jDialog1.setVisible(false);
     }
     
-    public void ocultarMensajeErrorVenta(){
+    public void ocultarMensajeErrorCliente(){
         jDialog2.setVisible(false);
     }
 
@@ -204,6 +211,27 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     
     
     //-----------------------
+    
+    public void cerrarMensajeGuardado(){
+        jDialog1.dispose();
+    }
+    
+     public void cerrarMensajeErrorCliente(){
+        jDialog2.dispose();
+    }
+
+      public void cerrarMensajeErrorProducto(){
+        jDialog4.dispose();
+    }
+      
+     public void cerrarMensajes(){
+        jDialog1.dispose();
+        jDialog2.dispose();
+        jDialog4.dispose();
+
+     }
+    
+    //-------------------
     
    //* public void SetTabla(ArrayList<Venta> list){//aqui se agrega el nombre de la clase del modelo que se usará
     //    String Matriz[][]=new String[list.size()][1];
@@ -260,6 +288,12 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
@@ -452,19 +486,32 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 660, -1, -1));
 
         jButton5.setText("-\n");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 40, -1));
 
         jLabel12.setText("Fecha:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
         jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/d"))));
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, -1));
+
+        jLabel14.setText("Para eliminar un producto:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 130, 40));
+
+        jLabel16.setText("1. Selecciónelo con el cursor");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 450, -1, 40));
+
+        jLabel17.setText("2. Click en el botón \"-\"");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, -1, -1));
+
+        jLabel18.setText("Para agregar un producto:");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 130, 40));
+
+        jLabel19.setText("1. Escriba la clave en la caja");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, -1, 40));
+
+        jLabel20.setText("2. Click en el botón \"+\"");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setAutoscrolls(true);
@@ -476,15 +523,17 @@ public class VistaAltaVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    
+    
+    public Producto eliminarProductoTabla() throws ArrayIndexOutOfBoundsException{
         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
         
         Producto producto = model.eliminarFila(jTable1.getSelectedRow());
-        
+        System.out.println(producto);
         System.out.println(productos);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
+        return producto;
+    } 
+            
     /**
      * @param args the command line arguments
      */
@@ -525,11 +574,26 @@ public class VistaAltaVentas extends javax.swing.JFrame {
                 productos.add(new Producto("p-4", "queso",25.99,5));
                 productos.add(new Producto("p-5", "queso",25.99,5));
                 System.out.println(productos);
-                VistaAltaVentas vista= new VistaAltaVentas(productos);
+                Venta venta=new Venta(5);
+                venta.establecerProductos(productos);
+                VistaAltaVentas vista= new VistaAltaVentas(venta.obtenerProductos());
                 vista.setVisible(true);
                 vista.mostrarMensajeGuardado();
                 vista.mostrarMensajeErrorCliente();
-                
+                Producto productoPeq=new Producto("p-6", "queso",25.99,5);
+                productos.add(productoPeq);
+                Producto productoGrande=new Producto("p-7", "queso",25.99,5);
+                productoPeq=productoGrande;
+                productos.add(productoPeq);
+                ArrayList<Producto> productosAJ=new ArrayList<Producto>();
+                productosAJ.add(new Producto("p-1", "manzana",25.99,5));
+                productosAJ.add(new Producto("p-2", "manzana",25.99,5));
+                productosAJ.add(new Producto("p-3", "manzana",25.99,5));
+                productosAJ.add(new Producto("p-4", "manzana",25.99,5));
+                productosAJ.add(new Producto("p-5", "manzana",25.99,5));
+                venta.agregarProducto(productosAJ.get(0));
+                venta.establecerProductos(productosAJ);
+               // productos.establecerProductos(productosAJ.productos);
                 //vista.cerrarVentana();
             }
         });
@@ -554,8 +618,14 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

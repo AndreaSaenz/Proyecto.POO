@@ -115,7 +115,6 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        BarrrasInferior = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         TXTNombreUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -180,9 +179,6 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
         jButton1.setBorder(null);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 90, 20));
 
-        BarrrasInferior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franja1.png"))); // NOI18N
-        getContentPane().add(BarrrasInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 390, 130));
-
         jLabel1.setText("Nombre de Usuario:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
         getContentPane().add(TXTNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 200, -1));
@@ -224,7 +220,6 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 700));
 
         pack();
@@ -267,7 +262,6 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BarrrasInferior;
     private javax.swing.JLabel Fondo;
     private javax.swing.JPasswordField TXTContrasena;
     private javax.swing.JPasswordField TXTContrasena2;

@@ -66,7 +66,7 @@ public class ControlBajaProducto {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
+            vistaMadre.setVisible(true);
             vista.dispose();       
         }
     }

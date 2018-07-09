@@ -7,7 +7,6 @@ package Controlador;
 
 
 import Excepciones.ElementoNoEncontradoException;
-import Excepciones.RepeticionException;
 import Modelo.Cliente;
 import Modelo.Producto;
 import Modelo.Venta;
@@ -15,6 +14,7 @@ import Vista.VistaAltaVentas;
 import Vista.VistaControlAccionesEntidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,8 +35,12 @@ public class ControlAltaVenta {
         this.venta= new Venta(id);
         this.vista= new VistaAltaVentas(venta.obtenerProductos());
         this.vistaMadre= vistaRaiz;
-       
+        
         vista.establecerIdVenta(id);
+        GregorianCalendar fecha= new GregorianCalendar();
+        vista.establecerFecha(fecha);
+        venta.establecerFecha(vista.obtenerFecha());
+        vista.activarCajaAgregarProducto();
         
         vista.agregarListenerBotonAceptarErrorCliente(new DarAltaCliente());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaVenta());
@@ -57,10 +61,12 @@ public class ControlAltaVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                            
+                GregorianCalendar fecha= new GregorianCalendar();
+                vista.establecerFecha(fecha);     
                 ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
                 int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
                 venta.establecerCliente(new Cliente(clientes.obtenerLineaArchivo(claveCliente)));
+                venta.establecerFecha(vista.obtenerFecha());     
                 ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
                 lectura.LeerArchivo();
                 lectura.agregarLineaArchivo(venta.toString());
@@ -85,9 +91,8 @@ public class ControlAltaVenta {
             ManejoArchivo lectura2=new ManejoArchivo("");
             int indices=lectura2.obtenerContadoresEntidades(0);
             indices += 1;
-            ControlAltaCliente alta= new ControlAltaCliente(indices);
-            vista.ocultarMensajeErrorProducto();
-            vista.setVisible(true);
+            ControlAltaCliente alta= new ControlAltaCliente(indices,null);
+            vista.ocultarMensajeErrorCliente();
             vista.establecerRFC("C-"+indices);
             
         }
@@ -104,7 +109,7 @@ public class ControlAltaVenta {
             vista.activarBotonAgregarProducto();
             vista.activarCajaAgregarProducto();
             vista.activarBotonEliminarProducto();
-            vista.activarCajaEliminarProducto();
+            
          }
 
     }
@@ -115,24 +120,25 @@ public class ControlAltaVenta {
         public void actionPerformed(ActionEvent evento) {
             try{
                 vista.desactivarBotonElminarProducto();
-                vista.desactivarCajaElminarProducto();
-                venta.eliminarProducto(vista.obtenerClaveProductoEliminado());
+               
+               
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 
-                archivo.aumentarCantidadProducto(vista.obtenerClaveProductoEliminado());
+                archivo.aumentarCantidadProducto(vista.eliminarProductoTabla().obtenerClave());
                 venta.establecerSubtotal();
-                venta.obtenerIva();
-                venta.obtenerTotal();
+                venta.establecerIva();
+                venta.establecerTotal();
                  //actualizar tabla
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));
                
-            }catch(ElementoNoEncontradoException excep5){
+            }catch(ArrayIndexOutOfBoundsException excep5){
                 vista.mostrarMensajeErrorProducto();
+            } catch (ElementoNoEncontradoException ex) {
+                vista.mostrarMensajeErrorProducto();;
             }finally{
                 vista.activarBotonEliminarProducto();
-                vista.activarCajaEliminarProducto();
             }
         }
 
@@ -144,10 +150,13 @@ public class ControlAltaVenta {
         public void actionPerformed(ActionEvent evento) {
             
             vista.resetCampos();
-            venta=null;
+            vista.ocultarMensajeGuardado();
             int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
             vista.establecerIdVenta(contadorVentas+1);
-            venta= new Venta(contadorVentas+1);
+            venta.establecerId(contadorVentas+1);
+            GregorianCalendar fecha= new GregorianCalendar();
+            vista.establecerFecha(fecha);
+            venta.establecerFecha(vista.obtenerFecha());
             
         }
 
@@ -157,6 +166,7 @@ public class ControlAltaVenta {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajes();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
@@ -180,7 +190,6 @@ public class ControlAltaVenta {
                 venta.establecerSubtotal();
                 venta.obtenerIva();
                 venta.obtenerTotal();
-                 //actualizar tabla
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));

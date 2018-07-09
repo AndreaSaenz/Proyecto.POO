@@ -24,6 +24,7 @@ public void iniciarPrograma(){
                //ControlLogin controladores= new ControlLogin(new Usuario("Empleado","",""), new VistaLogin()); 
               // VistaLogin vista=new VistaLogin();
                //vista.setVisible(true);
+               //ControlAltaCliente alta= new ControlAltaCliente(7, null);
             }
         });
      }
