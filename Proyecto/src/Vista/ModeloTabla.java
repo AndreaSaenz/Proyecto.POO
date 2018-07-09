@@ -6,7 +6,6 @@
 package Vista;
 
 import Modelo.Producto;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.TableModelEvent;
@@ -24,15 +23,17 @@ public class ModeloTabla implements TableModel {
     int CONTADOR_COLUMNAS = 3;
     
     String CLAVE = "Clave",
-            DESCRIP = "Producto",
+            DESCRIPCION = "Producto",
             PRECIO = "Precio";
+          
     
     
     final int CLAVE_C = 0,
-            DESCRIP_C = 1,
+            DESCRIPCION_C = 1,
             PRECIO_C = 2;
+       
 
-    public ModeloTabla(List<Producto> productos) {
+    public ModeloTabla(ArrayList<Producto> productos) {
         
         this.productos = productos;
         this.suscriptors = new ArrayList<>();
@@ -56,8 +57,8 @@ public class ModeloTabla implements TableModel {
         switch(i){
             case CLAVE_C:
                 return CLAVE;
-            case DESCRIP_C:
-                return DESCRIP;
+            case DESCRIPCION_C:
+                return DESCRIPCION;
             case PRECIO_C:
                 return PRECIO;
             default:
@@ -70,7 +71,7 @@ public class ModeloTabla implements TableModel {
         switch(i){
             case CLAVE_C:
                 return String.class;
-            case DESCRIP_C:
+            case DESCRIPCION_C:
                 return String.class;
             case PRECIO_C:
                 return Double.class;
@@ -90,7 +91,7 @@ public class ModeloTabla implements TableModel {
             switch(columna){
             case CLAVE_C:
                 return producto.obtenerClave();
-            case DESCRIP_C:
+            case DESCRIPCION_C:
                 return producto.obtenerDescripcion();
             case PRECIO_C:
                 return producto.obtenerPrecioUnitario();
@@ -106,7 +107,7 @@ public class ModeloTabla implements TableModel {
             case CLAVE_C:
                 producto.establecerClave((String) o);
                 break;
-            case DESCRIP_C:
+            case DESCRIPCION_C:
                 producto.establecerDescripcion((String) o);
                 break;
             case PRECIO_C:

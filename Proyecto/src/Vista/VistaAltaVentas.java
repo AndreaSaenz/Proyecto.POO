@@ -18,12 +18,12 @@ import java.util.List;
 
 public class VistaAltaVentas extends javax.swing.JFrame {
     ControlAltaVenta control;
-    List<Producto> productos;
+    ArrayList<Producto> productos;
 
     /**
      * Creates new form Ventas
      */
-    public VistaAltaVentas(List<Producto> productos) {
+    public VistaAltaVentas(ArrayList<Producto> productos) {
         this.productos = productos;
        
         initComponents();
@@ -41,13 +41,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jTextField4.setEnabled(false);
     }
     
-       public void activarCajaEliminarProducto(){
-        jTextField10.setEnabled(true);
-    }
-    
-    public void desactivarCajaElminarProducto(){
-        jTextField10.setEnabled(false);
-    }
     
    // --------------------------
     
@@ -106,9 +99,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         return jTextField4.getText();
     } 
     
-    public String obtenerClaveProductoEliminado(){
-        return jTextField10.getText();
-    } 
+   
 
     public String obtenerRFC(){
        return jTextField5.getText();
@@ -181,9 +172,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jTextField4.setText("");
     }
     
-    public void resetCajaEliminarProducto(){
-        jTextField10.setText("");
-    }
     
     
     //--------------------
@@ -270,7 +258,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         Fondo = new javax.swing.JLabel();
@@ -465,10 +452,12 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 660, -1, -1));
 
         jButton5.setText("-\n");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 40, -1));
-
-        jTextField10.setEnabled(false);
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 80, -1));
 
         jLabel12.setText("Fecha:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
@@ -483,10 +472,18 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         Fondo.setMaximumSize(new java.awt.Dimension(1400, 1080));
         Fondo.setMinimumSize(new java.awt.Dimension(1400, 1080));
         Fondo.setPreferredSize(new java.awt.Dimension(1400, 1080));
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 750));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1400, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
+        
+        Producto producto = model.eliminarFila(jTable1.getSelectedRow());
+        
+        System.out.println(productos);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,10 +518,18 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VistaAltaVentas vista= new VistaAltaVentas(new ArrayList<>());
+                ArrayList<Producto> productos=new ArrayList<Producto>();
+                productos.add(new Producto("p-1", "queso",25.99,5));
+                productos.add(new Producto("p-2", "queso",25.99,5));
+                productos.add(new Producto("p-3", "queso",25.99,5));
+                productos.add(new Producto("p-4", "queso",25.99,5));
+                productos.add(new Producto("p-5", "queso",25.99,5));
+                System.out.println(productos);
+                VistaAltaVentas vista= new VistaAltaVentas(productos);
                 vista.setVisible(true);
                 vista.mostrarMensajeGuardado();
                 vista.mostrarMensajeErrorCliente();
+                
                 //vista.cerrarVentana();
             }
         });
@@ -564,7 +569,6 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

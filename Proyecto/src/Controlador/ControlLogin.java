@@ -24,14 +24,13 @@ public class ControlLogin {
     private VistaLogin loginGeneral;
     private VistaLoginAdmin loginAdmin;
     private int intentos;
-    
-    public void ControlLogin(){
-        this.usuario=new Usuario("","","");
-        this.loginGeneral= new VistaLogin();
+
+    ControlLogin(Usuario usuario, VistaLogin vistaLogin) {
+        this.usuario=usuario;
+        this.loginGeneral= vistaLogin;
         this.loginAdmin=new VistaLoginAdmin();
         this.intentos=0;
-        loginGeneral.setVisible(true);
-        loginAdmin.setVisible(false);
+       
         loginGeneral.agregarListenerBotonIniciarSesión(new SesionEmpleado());
         loginGeneral.agregarListenerBotonSesionAdmin(new CambiarTipoSesion());
         loginGeneral.ocultarErrorBloqueo();
@@ -40,6 +39,47 @@ public class ControlLogin {
         loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
         loginAdmin.ocultarErrorBloqueo();
         loginAdmin.ocultarErrorContrasenaIncorrects();
+        loginGeneral.setVisible(true);
+        loginAdmin.setVisible(false);
+
+    }
+
+   /* public void ControlLogin(Usuario usuario, VistaLogin vistaLogin){
+        this.usuario=usuario;
+        this.loginGeneral= vistaLogin;
+        this.loginAdmin=new VistaLoginAdmin();
+        this.intentos=0;
+       
+        loginGeneral.agregarListenerBotonIniciarSesión(new SesionEmpleado());
+        loginGeneral.agregarListenerBotonSesionAdmin(new CambiarTipoSesion());
+        loginGeneral.ocultarErrorBloqueo();
+        loginGeneral.ocultarErrorContrasenaIncorrects();
+        loginGeneral.ocultarErrorUsuario();
+        loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
+        loginAdmin.ocultarErrorBloqueo();
+        loginAdmin.ocultarErrorContrasenaIncorrects();
+        loginGeneral.setVisible(true);
+        loginAdmin.setVisible(false);
+        //loginGeneral.setVisible(true);s
+    }*/
+    
+    
+    public void ControlLogin(){
+        this.usuario=new Usuario("","","");
+        this.loginGeneral= new VistaLogin();
+        this.loginAdmin=new VistaLoginAdmin();
+        this.intentos=0;
+       
+        loginGeneral.agregarListenerBotonIniciarSesión(new SesionEmpleado());
+        loginGeneral.agregarListenerBotonSesionAdmin(new CambiarTipoSesion());
+        loginGeneral.ocultarErrorBloqueo();
+        loginGeneral.ocultarErrorContrasenaIncorrects();
+        loginGeneral.ocultarErrorUsuario();
+        loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
+        loginAdmin.ocultarErrorBloqueo();
+        loginAdmin.ocultarErrorContrasenaIncorrects();
+        loginGeneral.setVisible(true);
+        loginAdmin.setVisible(false);
         //loginGeneral.setVisible(true);
     }
     
@@ -51,8 +91,10 @@ public class ControlLogin {
             try{
                 
                 ManejoArchivo lectura= new ManejoArchivo("Usuarios.txt");
-                lectura.compararContrasenaString(lectura.obtenerLineaArchivo(lectura.busquedaDatosEnArchivo(loginGeneral.obtenerUsuario())), loginGeneral.obtenerContrasena());
-                if(lectura.busquedaDatosEnArchivo(loginGeneral.obtenerUsuario())>0){
+                lectura.LeerArchivo();
+                int indice=(lectura.busquedaDatosEnArchivo(loginGeneral.obtenerUsuario()));
+                lectura.compararContrasenaString(lectura.obtenerLineaArchivo(indice), loginGeneral.obtenerContrasena());
+                if(indice>0){
                     usuario.establecerRol("Empleado");
                 }
                 else{
@@ -61,7 +103,12 @@ public class ControlLogin {
                 usuario.establecerNombre(loginGeneral.obtenerUsuario());
                 usuario.establecerContrasena(loginGeneral.obtenerContrasena());
                 loginGeneral.resetearCampos();
-                ControlMenuPrincipalEmpleado vista=new ControlMenuPrincipalEmpleado(usuario, loginGeneral);
+                if(indice>0){
+                    ControlMenuPrincipalEmpleado vista=new ControlMenuPrincipalEmpleado(usuario, loginGeneral);
+                }
+                else{
+                    ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario, loginAdmin);
+                }
             }catch(ElementoNoEncontradoException excep1){
                     loginGeneral.resetearCampos();
                     loginGeneral.mostrarErrorUsuario();
@@ -95,7 +142,7 @@ public class ControlLogin {
         @Override
         public void actionPerformed(ActionEvent evento) {
             loginGeneral.dispose();
-            loginAdmin = new VistaLoginAdmin();
+            loginAdmin.setVisible(true);
         }
 
     }
@@ -105,7 +152,7 @@ public class ControlLogin {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-            ManejoArchivo lectura=new ManejoArchivo("");
+            ManejoArchivo lectura=new ManejoArchivo("Usuarios.txt");
             lectura.LeerArchivo();
             lectura.compararContrasenaString(lectura.obtenerLineaArchivo(0), loginAdmin.obtenerContrasena());
             usuario= new Usuario("Administrador", "Administrador", loginAdmin.obtenerContrasena());
@@ -115,14 +162,16 @@ public class ControlLogin {
                  try{
                     intentos++;
                     comprobarNumeroEquivocaciones();
-                    loginGeneral.mostrarErrorContrasenaIncorrects();
-                    loginGeneral.limpiarContrasena();
-                    loginGeneral.bloquearCajaUsuario();
+                    loginAdmin.mostrarErrorContrasenaIncorrects();
+                    loginAdmin.limpiarContrasena();
+                    
                 }catch(LimiteIntentosException excep4){
                     loginGeneral.bloquearCajaContrasena();
                 }
                     
-             }
+            } /*catch (ElementoNoEncontradoException ex) {
+                 loginAdmin.bloquearCajaContrasena();
+            */
             
         }
 

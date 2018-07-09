@@ -21,10 +21,12 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
- public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/github-256-black.png"));
+   
+public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage("Imagenes/github-256-black.png");
         return retValue;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,8 +37,6 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        BarrrasInferior = new javax.swing.JLabel();
-        UserImages = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
@@ -63,37 +63,27 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 40, 30));
 
-        BarrrasInferior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franja1.png"))); // NOI18N
-        getContentPane().add(BarrrasInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 390, 130));
-
-        UserImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
-        getContentPane().add(UserImages, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 260, 260));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Administrador");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 200, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 200, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Iniciar Sesión");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, -1, 20));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, 20));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Contraseña incorrecta. Inténtelo de nuevo.");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, -1, 10));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, 10));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Cuenta bloqueada.");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
-
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1920x1080-color-background-surface-solid-wallpaper-wpt100934.jpg"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 700));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,9 +130,7 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BarrrasInferior;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel UserImages;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -199,6 +187,10 @@ public class VistaLoginAdmin extends javax.swing.JFrame {
     
     public void bloquearCajaContrasena(){
         jPasswordField1.setEnabled(false);
+    }
+
+    public void limpiarContrasena() {
+        jPasswordField1.setText("");
     }
 
 }

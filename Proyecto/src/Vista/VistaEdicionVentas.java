@@ -8,17 +8,25 @@ package Vista;
  *
  * @author limberth
  */
+import Controlador.ControlAltaVenta;
+import Modelo.Producto;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class VistaEdicionVentas extends javax.swing.JFrame {
-
+    ControlAltaVenta control;
+    ArrayList<Producto> productos;
     /**
      * Creates new form Ventas
      */
-    public VistaEdicionVentas() {
+    public VistaEdicionVentas(ArrayList<Producto> productos) {
+         this.productos = productos;
+       
         initComponents();
+          this.jTable1.setModel(new ModeloTabla(productos));
         
     }
     //----------------------
@@ -35,17 +43,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     }
     
     
-    public void activarCajaEliminarProducto(){
-        jTextField10.setEnabled(true);
-    }
     
-    public void desactivarCajaElminarProducto(){
-        jTextField10.setEnabled(false);
-    }
-   
-    public void resetCajaEliminarProducto(){
-        jTextField10.setText("");
-    }
    // --------------------------
     
     public void activarBotonAgregarProducto(){
@@ -106,10 +104,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         return jTextField4.getText();
     } 
     
-    public String obtenerClaveProductoEliminado(){
-        return jTextField10.getText();
-    } 
-
+   
     public String obtenerRFC(){
        return jTextField5.getText();
     } 
@@ -215,7 +210,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jTextField6.setVisible(false);
         jTextField7.setVisible(false);
         jTextField8.setVisible(false);
-        jTextField10.setVisible(false);
+       
         jTable1.setVisible(false);
         jButton1.setVisible(false);
         jButton2.setVisible(false);
@@ -242,7 +237,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jTextField6.setVisible(true);
         jTextField7.setVisible(true);
         jTextField8.setVisible(true);
-        jTextField10.setVisible(true);
+        
         jTable1.setVisible(true);
         jButton1.setVisible(true);
         jButton2.setVisible(true);
@@ -326,7 +321,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
@@ -495,29 +489,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Producto", "Precio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(new ModeloTabla(productos));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -548,9 +520,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 80, -1));
 
         jButton2.setText("+");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 230, 40, -1));
-
-        jTextField4.setEnabled(false);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 223, 40, 30));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, 80, -1));
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 90, -1));
 
@@ -572,10 +542,12 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 70, -1));
 
         jButton5.setText("-\n");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 40, -1));
-
-        jTextField10.setEnabled(false);
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 80, -1));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 40, 30));
 
         jLabel12.setText("Fecha:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
@@ -588,7 +560,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/515958.jpg"))); // NOI18N
         Fondo.setAutoscrolls(true);
         Fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Fondo.setMaximumSize(new java.awt.Dimension(1400, 1080));
@@ -598,6 +569,14 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
+        
+        Producto producto = model.eliminarFila(jTable1.getSelectedRow());
+        
+        System.out.println(productos);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -636,7 +615,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VistaEdicionVentas vista= new VistaEdicionVentas();
+                VistaEdicionVentas vista= new VistaEdicionVentas(new ArrayList<>());
                 vista.setVisible(true);
                 vista.mostrarMensajeGuardado();
                 
@@ -684,7 +663,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

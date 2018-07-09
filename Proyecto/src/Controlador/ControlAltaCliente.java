@@ -35,7 +35,7 @@ public class ControlAltaCliente {
         vista.setVisible(true);
     }
     
-    public ControlAltaCliente(int rfc){
+  /*  public ControlAltaCliente(int rfc){
         this.cliente= new Cliente(rfc, "","","");
         this.vista= new VistaAltaCliente();
         this.vistaMadre= null;
@@ -44,7 +44,7 @@ public class ControlAltaCliente {
         vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
         vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
         vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
-    }
+    }*/
     
     private class  ProcesoAltaCliente implements ActionListener{
 

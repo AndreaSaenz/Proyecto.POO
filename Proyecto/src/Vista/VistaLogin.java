@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -21,13 +22,15 @@ public class VistaLogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
- public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/github-256-black.png"));
+
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage("Imagenes/github-256-black.png");
         return retValue;
     }
- 
- public static String Texto1="";
- public static String Texto2="";
+
+    public static String Texto1 = "";
+    public static String Texto2 = "";
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +41,6 @@ public class VistaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        BarrrasInferior = new javax.swing.JLabel();
-        UserImages = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -69,46 +70,42 @@ public class VistaLogin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 40, 30));
 
-        BarrrasInferior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franja1.png"))); // NOI18N
-        getContentPane().add(BarrrasInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 390, 130));
-
-        UserImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
-        getContentPane().add(UserImages, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 260, 260));
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 200, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 200, -1));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 200, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 200, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Iniciar Como Administrador");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, -1, 20));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, 20));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 51));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Iniciar Sesión");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, -1, 20));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 20));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Contraseña incorrecta. Inténtelo de nuevo.");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, 10));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 10));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Cuenta bloqueada.");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("Usuario incorrecto.");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
-
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1920x1080-color-background-surface-solid-wallpaper-wpt100934.jpg"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 700));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -116,6 +113,10 @@ public class VistaLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,9 +155,7 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BarrrasInferior;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel UserImages;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -168,74 +167,72 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-    
-    
+
     //-----------------
-    public String obtenerUsuario(){
+    public String obtenerUsuario() {
         return jTextField1.getText();
     }
-    
-    public String obtenerContrasena(){
+
+    public String obtenerContrasena() {
         String contrasena;
-        char[] temporal=jPasswordField1.getPassword();
-        contrasena= new String(temporal);
+        char[] temporal = jPasswordField1.getPassword();
+        contrasena = new String(temporal);
         return contrasena;
     }
 
-       
     //----------------------------
-        
-    public void agregarListenerBotonIniciarSesión(ActionListener evento){
+    public void agregarListenerBotonIniciarSesión(ActionListener evento) {
         jButton3.addActionListener(evento);
     }
-    
-    public void agregarListenerBotonSesionAdmin(ActionListener evento){
+
+    public void agregarListenerBotonSesionAdmin(ActionListener evento) {
         jButton2.addActionListener(evento);
     }
-    
+
     //----------------------------------
-    public void ocultarErrorUsuario(){
+    public void ocultarErrorUsuario() {
         jLabel5.setVisible(false);
     }
-     
-    public void mostrarErrorUsuario(){
+
+    public void mostrarErrorUsuario() {
         jLabel5.setVisible(true);
     }
-    
-    public void ocultarErrorContrasenaIncorrects(){
+
+    public void ocultarErrorContrasenaIncorrects() {
         jLabel3.setVisible(false);
     }
-    
-    public void mostrarErrorContrasenaIncorrects(){
+
+    public void mostrarErrorContrasenaIncorrects() {
         jLabel3.setVisible(true);
     }
-    
-    public void ocultarErrorBloqueo(){
+
+    public void ocultarErrorBloqueo() {
         jLabel4.setVisible(false);
     }
-    
-    public void mostrarErrorBloqueo(){
+
+    public void mostrarErrorBloqueo() {
         jLabel4.setVisible(true);
     }
-    
+
     //-----------------
-    public void resetearCampos(){
+    public void resetearCampos() {
         jTextField1.setText("");
         jPasswordField1.setText("");
     }
-    
-    public void limpiarContrasena(){
+
+    public void limpiarContrasena() {
         jPasswordField1.setText("");
     }
-    
-    public void bloquearCajaUsuario(){
+
+    public void bloquearCajaUsuario() {
         jTextField1.setEnabled(false);
     }
-    public void desbloquearCajaUsuario(){
+
+    public void desbloquearCajaUsuario() {
         jTextField1.setEnabled(true);
     }
-    
-     public void bloquearCajaContrasena(){
+
+    public void bloquearCajaContrasena() {
         jPasswordField1.setEnabled(false);
     }
 }
