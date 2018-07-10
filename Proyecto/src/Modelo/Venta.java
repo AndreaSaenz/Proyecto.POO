@@ -70,8 +70,10 @@ public class Venta {
     }
     
     public String obtenerFechaString(){
-        return stringFecha();
+        
+        return this.fecha.get(Calendar.YEAR)+"/"+this.fecha.get(Calendar.MONTH)+"/"+this.fecha.get(Calendar.DAY_OF_MONTH);
     }
+    
 
     public Cliente obtenerCliente() {
         return cliente;
@@ -129,6 +131,7 @@ public class Venta {
     
     
     public void establecerSubtotal() {
+        this.subtotal=0;
         int tam=productos.size();
         if(tam>0){
             for(int i=0; i<tam; i++){
@@ -142,10 +145,12 @@ public class Venta {
     }
 
     public void establecerIva(){
+        this.iva=0;
         this.iva = this.subtotal * (0.16) ;
     }
 
     public void establecerTotal() {
+        this.total=0;
         this.total = this.subtotal + this.iva;
     }
     
@@ -174,22 +179,18 @@ public class Venta {
         }
     }
    
-    public String stringFecha(){
-        String contenido;
-        contenido= this.fecha.get(Calendar.YEAR)+"/"+this.fecha.get(Calendar.MONTH)+"/"+thisfecha.get(Calendar.DAY_OF_MONTH);
-        return contenido;
-    }
-       
+    
     public String stringProductos(){
        String cadenaProductos="";
        for(int i=0; i<productos.size(); i++){
-           cadenaProductos= productos.get(i).toString()+",";
+           cadenaProductos+=","+productos.get(i).toString();
        }
        return cadenaProductos;
     }
     
+    @Override
     public String toString(){
-        return id+","+stringFecha()+","+cliente.toString()+","+subtotal+","+iva+","+total+","+stringProductos();
+        return id+","+obtenerFechaString()+","+cliente.toString()+","+subtotal+","+iva+","+total+stringProductos();
     }
     
     

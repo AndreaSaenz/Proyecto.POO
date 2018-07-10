@@ -253,7 +253,11 @@ public class ManejoArchivo{
     
     
     public void disminuirCantidadProducto(int indice) throws ElementoNoEncontradoException{
+       System.out.println("Indice:"+indice);
+
        String[] temporal=obtenerLineaArchivo(indice).split(",");
+              System.out.println("Indice:"+indice);
+
        int cantidad=(Integer.parseInt(temporal[2]));
        System.out.println("Indice:"+indice);
        System.out.println(cantidad);

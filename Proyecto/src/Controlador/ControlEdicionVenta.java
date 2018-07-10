@@ -70,6 +70,7 @@ public class ControlEdicionVenta {
                 vista.establecerTelefono(venta.obtenerCliente().obtenerTelefono());
 
                 ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
+                lectura.LeerArchivo();
                 lectura.establecerLineaArchivo(indice, venta.toString());
                 vista.mostrarMensajeGuardado();
             }catch(ElementoNoEncontradoException excep){
@@ -93,7 +94,7 @@ public class ControlEdicionVenta {
                 String cadena=archivo.obtenerLineaArchivo(indice);
                 Venta otraVenta= new Venta(cadena);
                 venta.establecerId(otraVenta.obtenerId());
-                venta.establecerFecha(venta.obtenerFecha());
+                venta.establecerFecha(otraVenta.obtenerFecha());
                 
                 vista.establecerRFC(otraVenta.obtenerCliente().obtenerRfc());
                 vista.establecerRazonSocial(otraVenta.obtenerCliente().obtenerRazonSocial());
@@ -206,23 +207,23 @@ public class ControlEdicionVenta {
             try{
                 vista.desactivarCajaAgregarProducto();
                 vista.desactivarBotonAgregarProducto();
-                vista.resetCajaAgregarProducto();
+               
                 vista.ocultarMensajes();
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 int indiceProducto=archivo.busquedaDatosEnArchivo(vista.obtenerClaveProductoAgregado());
                 
                 String cadena=archivo.obtenerLineaArchivo(indiceProducto);
                 Producto producto= new Producto(cadena);
-                venta.agregarProducto(producto);
+                vista.agregarProductoTabla(producto);
                 archivo.disminuirCantidadProducto(indiceProducto);
                 venta.establecerSubtotal();
-                venta.obtenerIva();
-                venta.obtenerTotal();
+                venta.establecerIva();
+                venta.establecerTotal();
                  //actualizar tabla
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));
-               
+                 vista.resetCajaAgregarProducto();     
             }catch(ElementoNoEncontradoException excep4){
                 vista.mostrarMensajeErrorProducto();
             }finally{

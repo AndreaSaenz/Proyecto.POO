@@ -377,8 +377,8 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        Fondo = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -569,11 +569,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, 170, -1));
 
         jTextField3.setEditable(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 610, 170, -1));
 
         jButton2.setText("+");
@@ -629,6 +624,9 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jLabel21.setText("2. Click en el botón \"-\"");
         getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, -1, -1));
 
+        jButton6.setText("Cancelar");
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, -1, -1));
+
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setAutoscrolls(true);
         Fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -637,15 +635,8 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         Fondo.setPreferredSize(new java.awt.Dimension(1400, 1080));
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 750));
 
-        jButton6.setText("Cancelar");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     public Producto eliminarProductoTabla() throws ArrayIndexOutOfBoundsException{
         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
@@ -655,6 +646,19 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         System.out.println(productos);
         return producto;
     } 
+    
+      public void agregarProductoTabla(Producto producto){
+         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
+        
+        model.agregarFila(producto);
+    }
+    
+    public void resetearTablaProductos(){
+         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
+        
+        model.resetearTabla();
+    }
+    
     /**
      * @param args the command line arguments
      */

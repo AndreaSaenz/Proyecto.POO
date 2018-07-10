@@ -196,7 +196,7 @@ public class ControlAltaVenta {
             try{
                 vista.desactivarCajaAgregarProducto();
                 vista.desactivarBotonAgregarProducto();
-                vista.resetCajaAgregarProducto();
+                
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 int indiceProducto=archivo.busquedaDatosEnArchivo(vista.obtenerClaveProductoAgregado());
                 //archivo.disminuirCantidadProducto(indiceProducto);
@@ -210,7 +210,7 @@ public class ControlAltaVenta {
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));
-               
+                vista.resetCajaAgregarProducto();
             }catch(ElementoNoEncontradoException excep4){
                 vista.mostrarMensajeErrorProducto();
             }finally{
