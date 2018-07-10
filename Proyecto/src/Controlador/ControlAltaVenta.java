@@ -68,7 +68,11 @@ public class ControlAltaVenta {
                 int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
                 String temporal=clientes.obtenerLineaArchivo(claveCliente);
                 venta.establecerCliente(new Cliente(temporal));
-                venta.establecerFecha(vista.obtenerFecha());     
+                venta.establecerFecha(vista.obtenerFecha());    
+                vista.establecerRFC(venta.obtenerCliente().obtenerRfc());
+                vista.establecerRazonSocial(venta.obtenerCliente().obtenerRazonSocial());
+                vista.establecerDireccion(venta.obtenerCliente().obtenerDireccion());
+                vista.establecerTelefono(venta.obtenerCliente().obtenerTelefono());
                 ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
                 lectura.LeerArchivo();
                 lectura.agregarLineaArchivo(venta.toString());
@@ -127,7 +131,7 @@ public class ControlAltaVenta {
     private class  EliminarProducto implements ActionListener{
 
         @Override
-        @SuppressWarnings("empty-statement")
+       
         public void actionPerformed(ActionEvent evento) {
             try{
                 vista.desactivarBotonElminarProducto();
@@ -162,6 +166,7 @@ public class ControlAltaVenta {
             
             vista.resetCampos();
             vista.ocultarMensajes();
+            vista.resetearTablaProductos();
             int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
             vista.establecerIdVenta(contadorVentas+1);
             venta.establecerId(contadorVentas+1);
@@ -191,12 +196,13 @@ public class ControlAltaVenta {
             try{
                 vista.desactivarCajaAgregarProducto();
                 vista.desactivarBotonAgregarProducto();
-                
+                vista.resetCajaAgregarProducto();
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 int indiceProducto=archivo.busquedaDatosEnArchivo(vista.obtenerClaveProductoAgregado());
+                //archivo.disminuirCantidadProducto(indiceProducto);
                 String cadena=archivo.obtenerLineaArchivo(indiceProducto);
                 Producto producto= new Producto(cadena);
-                venta.agregarProducto(producto);
+                vista.agregarProductoTabla(producto);
                 archivo.disminuirCantidadProducto(indiceProducto);
                 venta.establecerSubtotal();
                 venta.establecerIva();

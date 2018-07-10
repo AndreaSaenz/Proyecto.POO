@@ -62,8 +62,13 @@ public class ControlEdicionVenta {
                 vista.ocultarMensajes();
                 ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
                 int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
-                String temporal=clientes.obtenerLineaArchivo(indice);
+                String temporal=clientes.obtenerLineaArchivo(claveCliente);
                 venta.establecerCliente(new Cliente(temporal));
+                vista.establecerRFC(venta.obtenerCliente().obtenerRfc());
+                vista.establecerRazonSocial(venta.obtenerCliente().obtenerRazonSocial());
+                vista.establecerDireccion(venta.obtenerCliente().obtenerDireccion());
+                vista.establecerTelefono(venta.obtenerCliente().obtenerTelefono());
+
                 ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
                 lectura.establecerLineaArchivo(indice, venta.toString());
                 vista.mostrarMensajeGuardado();
@@ -104,6 +109,9 @@ public class ControlEdicionVenta {
                 venta.establecerSubtotal();
                 venta.establecerIva();
                 venta.establecerTotal();
+                vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
+                vista.establecerIVA(Double.toString(venta.obtenerIva()));
+                vista.establecerTotal(Double.toString(venta.obtenerTotal()));
                 vista.mostrarCampos();
             }catch(ElementoNoEncontradoException excep){
                 vista.mostrarMensajeErrorVenta();
@@ -155,7 +163,12 @@ public class ControlEdicionVenta {
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 
                 archivo.aumentarCantidadProducto(vista.eliminarProductoTabla().obtenerClave());
-                venta.establecerSubtotal();
+                if(venta.obtenerProductos().size()>0){
+                    venta.establecerSubtotal(); 
+                }
+                else{
+                    venta.establecerSubtotal(0);
+                }
                 venta.establecerIva();
                 venta.establecerTotal();
                  //actualizar tabla
@@ -193,9 +206,11 @@ public class ControlEdicionVenta {
             try{
                 vista.desactivarCajaAgregarProducto();
                 vista.desactivarBotonAgregarProducto();
+                vista.resetCajaAgregarProducto();
                 vista.ocultarMensajes();
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 int indiceProducto=archivo.busquedaDatosEnArchivo(vista.obtenerClaveProductoAgregado());
+                
                 String cadena=archivo.obtenerLineaArchivo(indiceProducto);
                 Producto producto= new Producto(cadena);
                 venta.agregarProducto(producto);

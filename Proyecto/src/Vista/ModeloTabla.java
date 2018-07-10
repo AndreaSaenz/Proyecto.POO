@@ -143,6 +143,7 @@ public class ModeloTabla implements TableModel {
     
     public Producto eliminarFila(int fila){
         Producto product = (Producto) productos.get(fila);
+        System.out.println(product);
         productos.remove(product);
         TableModelEvent evt = new TableModelEvent(this, fila, fila, 
         TableModelEvent.ALL_COLUMNS, TableModelEvent.DELETE);
@@ -150,5 +151,31 @@ public class ModeloTabla implements TableModel {
         return product;
     }
     
+    public void agregarFila (Producto producto) { 
+    // Añade la persona al modelo 
+        productos.add (producto); 
+
+    // Avisa a los suscriptores creando un TableModelEvent... 
+        TableModelEvent evt=new TableModelEvent (this, this.getRowCount()+1, this.getRowCount()+1, 
+        TableModelEvent.ALL_COLUMNS, TableModelEvent.INSERT); 
+
+    // ... y avisando a los suscriptores
     
+        notificarSuscriptores(evt);
+        //return producto;
+    }
+    
+    public void resetearTabla () { 
+    // Añade la persona al modelo 
+        productos.removeAll(productos);
+
+    // Avisa a los suscriptores creando un TableModelEvent... 
+        TableModelEvent evt=new TableModelEvent (this, this.getRowCount()+1, this.getRowCount()+1, 
+        TableModelEvent.ALL_COLUMNS, TableModelEvent.INSERT); 
+
+    // ... y avisando a los suscriptores
+    
+        notificarSuscriptores(evt);
+        //return producto;
+    }   
 }

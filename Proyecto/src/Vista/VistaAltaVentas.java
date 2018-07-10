@@ -156,6 +156,13 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         this.jFormattedTextField1.setText(contenido);
     }
     
+    
+      public void establecerFechaSinCambios(GregorianCalendar fecha){
+        String contenido;
+        contenido=fecha.get(Calendar.YEAR)+"/"+fecha.get(Calendar.MONTH)+"/"+fecha.get(Calendar.DAY_OF_MONTH);
+        jFormattedTextField1.setText(contenido);
+    }
+    
     //---------------------
     public void resetCampos(){
         jTextField5.setText("");
@@ -457,16 +464,16 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 610, -1, -1));
 
         jTextField1.setEditable(false);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 80, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 160, -1));
 
         jTextField2.setEditable(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, 80, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, 160, -1));
 
         jTextField3.setEditable(false);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 80, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 180, -1));
 
         jButton2.setText("+");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 230, 40, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 213, 40, 40));
 
         jTextField4.setEnabled(false);
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, 80, -1));
@@ -538,10 +545,27 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
         
         Producto producto = model.eliminarFila(jTable1.getSelectedRow());
+        System.out.println("pRODUCTO ELIMINADO:");
+
         System.out.println(producto);
+                System.out.println("ARREGLO PRODUCTOS:");
+
         System.out.println(productos);
         return producto;
     } 
+    
+    public void agregarProductoTabla(Producto producto){
+         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
+        
+        model.agregarFila(producto);
+    }
+    
+    public void resetearTablaProductos(){
+         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
+        
+        model.resetearTabla();
+    }
+    
             
     /**
      * @param args the command line arguments

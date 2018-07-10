@@ -130,11 +130,11 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     } 
     
     public void establecerDireccion(String contenido){
-        this.jTextField7.setText(contenido);
+        this.jTextField8.setText(contenido);
     } 
     
     public void establecerTelefono(String contenido){
-        this.jTextField8.setText(contenido);
+        this.jTextField7.setText(contenido);
     } 
     
     public void establecerSubtotal(String contenido){
@@ -154,6 +154,13 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         contenido=fecha.get(Calendar.YEAR)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.DAY_OF_MONTH);
         jFormattedTextField1.setText(contenido);
     }
+    
+    public void establecerFechaSinCambios(GregorianCalendar fecha){
+        String contenido;
+        contenido=fecha.get(Calendar.YEAR)+"/"+fecha.get(Calendar.MONTH)+"/"+fecha.get(Calendar.DAY_OF_MONTH);
+        jFormattedTextField1.setText(contenido);
+    }
+ 
     
     //--------------------
 
@@ -553,16 +560,21 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, -1, -1));
 
         jLabel4.setText("Total");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 610, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 610, 30, -1));
 
         jTextField1.setEditable(false);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 80, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 150, -1));
 
         jTextField2.setEditable(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, 80, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, 170, -1));
 
         jTextField3.setEditable(false);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 80, -1));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 610, 170, -1));
 
         jButton2.setText("+");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 223, 40, 30));
@@ -630,6 +642,10 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     public Producto eliminarProductoTabla() throws ArrayIndexOutOfBoundsException{
         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();

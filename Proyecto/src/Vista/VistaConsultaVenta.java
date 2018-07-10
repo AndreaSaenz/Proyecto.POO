@@ -66,11 +66,11 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
     } 
     
     public void establecerDireccion(String contenido){
-        this.jTextField7.setText(contenido);
+        this.jTextField8.setText(contenido);
     } 
     
     public void establecerTelefono(String contenido){
-        this.jTextField8.setText(contenido);
+        this.jTextField7.setText(contenido);
     } 
     
     public void establecerSubtotal(String contenido){
@@ -87,7 +87,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
     
     public void establecerFecha(GregorianCalendar fecha){
         String contenido;
-        contenido= fecha.get(Calendar.YEAR)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.DAY_OF_MONTH);
+        contenido= fecha.get(Calendar.YEAR)+"/"+fecha.get(Calendar.MONTH)+"/"+fecha.get(Calendar.DAY_OF_MONTH);
         this.jFormattedTextField1.setText(contenido);
     }
     
@@ -302,13 +302,18 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 610, -1, -1));
 
         jTextField1.setEditable(false);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 80, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 160, -1));
 
         jTextField2.setEditable(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, 80, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, 170, -1));
 
         jTextField3.setEditable(false);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 80, -1));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 610, 180, -1));
 
         jTextField5.setEditable(false);
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 90, -1));
@@ -354,6 +359,10 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments

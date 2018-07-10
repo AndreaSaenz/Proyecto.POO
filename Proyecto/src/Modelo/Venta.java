@@ -68,11 +68,16 @@ public class Venta {
     public GregorianCalendar obtenerFecha() {
         return fecha;
     }
+    
+    public String obtenerFechaString(){
+        return stringFecha();
+    }
 
     public Cliente obtenerCliente() {
         return cliente;
     }
-
+    
+    
     public ArrayList<Producto> obtenerProductos() {
         return productos;
     }
@@ -98,7 +103,8 @@ public class Venta {
     }
     
     public void establecerFecha(){
-        GregorianCalendar fechaActual=new GregorianCalendar();
+        GregorianCalendar fecha1=new GregorianCalendar();
+        GregorianCalendar fechaActual= new GregorianCalendar(fecha1.get(Calendar.YEAR), fecha1.get(Calendar.MONTH), fecha1.get(Calendar.DAY_OF_MONTH));
         this.fecha = fechaActual;
     }
     
@@ -129,6 +135,10 @@ public class Venta {
                 this.subtotal += productos.get(i).obtenerPrecioUnitario();
             }
         }          
+    }
+    
+    public void establecerSubtotal(int i){
+        this.subtotal=0;
     }
 
     public void establecerIva(){
@@ -166,7 +176,7 @@ public class Venta {
    
     public String stringFecha(){
         String contenido;
-        contenido= fecha.get(Calendar.DAY_OF_MONTH)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR);
+        contenido= this.fecha.get(Calendar.YEAR)+"/"+this.fecha.get(Calendar.MONTH)+"/"+thisfecha.get(Calendar.DAY_OF_MONTH);
         return contenido;
     }
        
@@ -179,7 +189,7 @@ public class Venta {
     }
     
     public String toString(){
-        return id+","+this.stringFecha()+","+cliente.toString()+","+subtotal+","+iva+","+total+","+this.stringProductos();
+        return id+","+stringFecha()+","+cliente.toString()+","+subtotal+","+iva+","+total+","+stringProductos();
     }
     
     

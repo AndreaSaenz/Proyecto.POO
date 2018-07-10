@@ -252,11 +252,17 @@ public class ManejoArchivo{
     }
     
     
-    public void disminuirCantidadProducto(int indice){
+    public void disminuirCantidadProducto(int indice) throws ElementoNoEncontradoException{
        String[] temporal=obtenerLineaArchivo(indice).split(",");
-       int cantidad=(Integer.parseInt(temporal[2]))-1;
-       establecerLineaArchivo(indice, temporal[0]+","+temporal[1]+","+Integer.toString(cantidad)+","+temporal[3]);
-        
+       int cantidad=(Integer.parseInt(temporal[2]));
+       System.out.println("Indice:"+indice);
+       System.out.println(cantidad);
+       if(cantidad==0){
+           throw new ElementoNoEncontradoException("Productos insuficientes");
+       }else{
+           cantidad -=1;
+           establecerLineaArchivo(indice, temporal[0]+","+temporal[1]+","+Integer.toString(cantidad)+","+temporal[3]);
+       }
     }
     
     public void aumentarCantidadProducto(String clave) throws ElementoNoEncontradoException  {
