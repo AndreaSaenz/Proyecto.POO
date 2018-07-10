@@ -34,7 +34,7 @@ public class Producto {
         cadena= datos.split(",");
         this.clave = cadena[0];
         this.descripcion = cadena[1];
-        this.cantidad = Integer.valueOf(cadena[2]);
+        this.cantidad = Integer.parseInt(cadena[2]);
         this.precioUnitario = Double.valueOf(cadena[3]);
     }
 

@@ -99,7 +99,26 @@ public class ManejoArchivo{
         EscrituraArchivo(ed, false);
     }
     
-    public boolean verificarNoRepeticion(String noRepetir)throws RepeticionException{
+    public boolean verificarNoRepeticion(String noRepetir, String clave)throws RepeticionException{
+        boolean bandera=false;
+        int indice;
+        LeerArchivo();
+        for(indice=0; indice<ed.size(); indice++){
+            String temporal=ed.get(indice);
+            String[] arreglo= temporal.split(",");
+            if(arreglo[1].equals(noRepetir) && !arreglo[0].equals(clave)){
+                bandera=true;
+                
+                break;
+            }
+        }
+        if(bandera==true){
+            throw new RepeticionException("Se encontró un elemento igual.");
+        }
+        return bandera;
+    }
+    
+     public boolean verificarNoRepeticion(String noRepetir)throws RepeticionException{
         boolean bandera=false;
         int indice;
         LeerArchivo();
@@ -107,6 +126,25 @@ public class ManejoArchivo{
             String temporal=ed.get(indice);
             String[] arreglo= temporal.split(",");
             if(arreglo[1].equals(noRepetir)){
+                bandera=true;
+                
+                break;
+            }
+        }
+        if(bandera==true){
+            throw new RepeticionException("Se encontró un elemento igual.");
+        }
+        return bandera;
+    }
+
+       public boolean verificarNoRepeticionUsuario(String noRepetir)throws RepeticionException{
+        boolean bandera=false;
+        int indice;
+        LeerArchivo();
+        for(indice=0; indice<ed.size(); indice++){
+            String temporal=ed.get(indice);
+            String[] arreglo= temporal.split(",");
+            if(arreglo[0].equals(noRepetir)){
                 bandera=true;
                 
                 break;
@@ -165,7 +203,7 @@ public class ManejoArchivo{
         for(int i=0; i<3; i++){
             String temporal=ed.get(i);
             String[] arreglo= temporal.split(":");
-            contadores[i]=Integer.valueOf(arreglo[1]);
+            contadores[i]=Integer.parseInt(arreglo[1]);
         }
         return contadores;
     }
@@ -177,7 +215,7 @@ public class ManejoArchivo{
         String temporal=obtenerLineaArchivo(indiceEntidad);
         String[] arreglo= temporal.split(":");
                
-        return Integer.valueOf(arreglo[1]);
+        return Integer.parseInt(arreglo[1]);
     }
   
 
@@ -216,16 +254,16 @@ public class ManejoArchivo{
     
     public void disminuirCantidadProducto(int indice){
        String[] temporal=obtenerLineaArchivo(indice).split(",");
-       int cantidad=(Integer.valueOf(temporal[2]))-1;
-       establecerLineaArchivo(indice, temporal[0]+temporal[1]+Integer.toString(cantidad)+temporal[3]);
+       int cantidad=(Integer.parseInt(temporal[2]))-1;
+       establecerLineaArchivo(indice, temporal[0]+","+temporal[1]+","+Integer.toString(cantidad)+","+temporal[3]);
         
     }
     
     public void aumentarCantidadProducto(String clave) throws ElementoNoEncontradoException  {
         int indice=busquedaDatosEnArchivo(clave);
         String[] temporal=obtenerLineaArchivo(indice).split(",");
-        int cantidad=(Integer.valueOf(temporal[2]))+1;
-        establecerLineaArchivo(indice, temporal[0]+temporal[1]+Integer.toString(cantidad)+temporal[3]);
+        int cantidad=(Integer.parseInt(temporal[2]))+1;
+        establecerLineaArchivo(indice, temporal[0]+","+temporal[1]+","+Integer.toString(cantidad)+","+temporal[3]);
         
     
     }

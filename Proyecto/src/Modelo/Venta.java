@@ -48,7 +48,7 @@ public class Venta {
         cadena= datos.split(",");
         this.id= cadena[0];
         String[] camposFecha=cadena[1].split("/");
-        this.fecha= new GregorianCalendar(Integer.valueOf(camposFecha[0]), Integer.valueOf(camposFecha[1]), Integer.valueOf(camposFecha[2]));
+        this.fecha= new GregorianCalendar(Integer.parseInt(camposFecha[0]), Integer.parseInt(camposFecha[1]), Integer.parseInt(camposFecha[2]));
         this.cliente=new Cliente(cadena[2],cadena[3],cadena[4],cadena[5]);
         this.subtotal= Double.valueOf(cadena[6]);
         this.iva=Double.valueOf(cadena[7]);
@@ -56,7 +56,7 @@ public class Venta {
         this.productos= new ArrayList<Producto>();
         if(cadena.length>9){
             for(int i=9; i<(cadena.length); i=i+4){
-                productos.add(new Producto(cadena[i], cadena[i+1], Double.valueOf(cadena[i+3]), Integer.valueOf(cadena[i+2])));
+                productos.add(new Producto(cadena[i], cadena[i+1], Double.valueOf(cadena[i+3]), Integer.parseInt(cadena[i+2])));
             }
         }
     }
@@ -108,7 +108,7 @@ public class Venta {
         
     public void establecerFecha(String fecha){
         String[] camposFecha=fecha.split("/");
-        GregorianCalendar fechaActual= new GregorianCalendar(Integer.valueOf(camposFecha[0]), Integer.valueOf(camposFecha[1]), Integer.valueOf(camposFecha[2]));
+        GregorianCalendar fechaActual= new GregorianCalendar(Integer.parseInt(camposFecha[0]), Integer.parseInt(camposFecha[1]), Integer.parseInt(camposFecha[2]));
         this.fecha=fechaActual;
     }
 

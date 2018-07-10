@@ -62,7 +62,8 @@ public class ControlEdicionVenta {
                 vista.ocultarMensajes();
                 ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
                 int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
-                venta.establecerCliente(new Cliente(clientes.obtenerLineaArchivo(indice)));
+                String temporal=clientes.obtenerLineaArchivo(indice);
+                venta.establecerCliente(new Cliente(temporal));
                 ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
                 lectura.establecerLineaArchivo(indice, venta.toString());
                 vista.mostrarMensajeGuardado();
@@ -155,8 +156,8 @@ public class ControlEdicionVenta {
                 
                 archivo.aumentarCantidadProducto(vista.eliminarProductoTabla().obtenerClave());
                 venta.establecerSubtotal();
-                venta.obtenerIva();
-                venta.obtenerTotal();
+                venta.establecerIva();
+                venta.establecerTotal();
                  //actualizar tabla
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));

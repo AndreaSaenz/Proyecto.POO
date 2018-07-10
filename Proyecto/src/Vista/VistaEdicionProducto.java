@@ -409,15 +409,15 @@ public class VistaEdicionProducto extends javax.swing.JFrame {
     }
     
     public String obtenerDescripcion( ) {
-        return jTextField1.getText();
+        return jTextField2.getText();
     }
     
     public String obtenerCantidad( ) {
-        return jTextField1.getText();
+        return jTextField3.getText();
     }
     
     public String obtenerPrecioUnitario( ) {
-        return jTextField1.getText();
+        return jTextField4.getText();
     }
     
     //---------------

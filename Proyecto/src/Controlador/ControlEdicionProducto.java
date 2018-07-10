@@ -15,6 +15,7 @@ import Vista.VistaEdicionProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  *
  * @author 1047470
@@ -50,14 +51,16 @@ public class ControlEdicionProducto {
         public void actionPerformed(ActionEvent evento) {
             try{
                 ManejoArchivo  lectura= new ManejoArchivo("Productos.txt");
-                lectura.verificarNoRepeticion(vista.obtenerDescripcion());
+                lectura.verificarNoRepeticion(vista.obtenerDescripcion(), producto.obtenerClave());
                 producto.establecerDescripcion(vista.obtenerDescripcion());
-                producto.establecerCantidad(Integer.valueOf(vista.obtenerCantidad()));
+                int i=Integer.parseInt(vista.obtenerCantidad().trim());
+                producto.establecerCantidad(i);
                 producto.establecerPrecioUnitario(Double.valueOf(vista.obtenerPrecioUnitario()));
                 lectura.establecerLineaArchivo(indice, producto.toString());
                 vista.mostrarMensajeGuardado();
-            }catch(RepeticionException excep){
+           }catch(RepeticionException excep){
                 vista.mostrarErrorRepeticion();
+                
             }
             
         }
@@ -79,7 +82,7 @@ public class ControlEdicionProducto {
                 indice=archivo.busquedaDatosEnArchivo(vista.obtenerClave());
                 String cadena=archivo.obtenerLineaArchivo(indice);
                 producto= new Producto(cadena);
-                vista.establecerDescripcion(producto.obtenerClave());
+                vista.establecerDescripcion(producto.obtenerDescripcion());
                 vista.establecerCantidad(Integer.toString(producto.obtenerCantidad()));
                 vista.establecerPrecioUnitario(Double.toString(producto.obtenerPrecioUnitario()));
                 vista.mostrarCampos();

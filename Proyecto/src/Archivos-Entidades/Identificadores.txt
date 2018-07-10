@@ -1,4 +1,3 @@
-Clientes:0
-Productos:0
-Ventas:0
-
+Clientes:5
+Productos:8
+Ventas:2

@@ -52,7 +52,7 @@ public class ControlEdicionCliente {
                 vista.ocultarMensajeError();
                 vista.ocultarMensajeGuardado();
                 ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
-                lectura.verificarNoRepeticion(vista.obtenerRazon());
+                lectura.verificarNoRepeticion(vista.obtenerRazon(), cliente.obtenerRfc());
                 cliente.establecerRazonSocial(vista.obtenerRazon());
                 cliente.establecerDireccion(vista.obtenerDireccion());
                 cliente.establecerTelefono(vista.obtenerTelefono());

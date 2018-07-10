@@ -55,7 +55,7 @@ public class ControlAltaProducto {
                 lectura.verificarNoRepeticion(vista.obtenerDescripcion());
                 producto.establecerDescripcion(vista.obtenerDescripcion());
                 producto.establecerPrecioUnitario(Double.valueOf(vista.obtenerPrecio()));
-                producto.establecerCantidad(Integer.valueOf(vista.obtenerCantidad()));
+                producto.establecerCantidad(Integer.parseInt(vista.obtenerCantidad()));
                 lectura.agregarLineaArchivo(producto.toString());
                 ManejoArchivo cont= new ManejoArchivo("");
                 int[] contadoresSinModificar= cont.obtenerContadoresEntidades();
@@ -64,6 +64,7 @@ public class ControlAltaProducto {
                 vista.mostrarMensajeGuardado();
             }catch(RepeticionException excep){
                 vista.mostrarErrorRepeticion();
+                
             }
             
         }

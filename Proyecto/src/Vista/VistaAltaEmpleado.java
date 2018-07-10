@@ -44,13 +44,13 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
     }
     //------------------------
     public void ocultarErrorRepeticion(){
-        jLabel8.setVisible(false);
-        jLabel2.setVisible(false);
+        jLabel6.setVisible(false);
+        jLabel9.setVisible(false);
     }
      
     public void mostrarErrorRepeticion(){
-        jLabel8.setVisible(true);
-        jLabel2.setVisible(true);
+        jLabel6.setVisible(true);
+        jLabel9.setVisible(true);
 
     }
     //-----------------
@@ -71,7 +71,15 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
     public String obtenerNombreUsuario(){
         return TXTNombreUsuario.getText();
     }
+    //--------------------------
+    public void resetearContrasenas(){
+        TXTContrasena.setText("");
+        TXTContrasena2.setText("");
+    }
     
+    public void resetearNombre(){
+        TXTNombreUsuario.setText("");
+    }
     //------------------------
     public void agregarListenerBotonCancelar(ActionListener evento){
         jButton1.addActionListener(evento);

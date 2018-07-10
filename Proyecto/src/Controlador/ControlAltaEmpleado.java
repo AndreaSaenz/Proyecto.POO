@@ -46,7 +46,7 @@ public class ControlAltaEmpleado {
         public void actionPerformed(ActionEvent evento) {
             try{
                 ManejoArchivo  lectura= new ManejoArchivo("Usuarios.txt");
-                lectura.verificarNoRepeticion(vista.obtenerNombreUsuario());
+                lectura.verificarNoRepeticionUsuario(vista.obtenerNombreUsuario());
                 empleado.establecerNombre(vista.obtenerNombreUsuario());
                 vista.compararContrasenas();
                 empleado.establecerContrasena(vista.obtenerContrasena1());
@@ -54,8 +54,10 @@ public class ControlAltaEmpleado {
                 vista.mostrarMensajeGuardado();
             }catch(RepeticionException excep){
                 vista.mostrarErrorRepeticion();
+                vista.resetearNombre();
             }catch(IncompatibilidadContrasenaException excep2){
                 vista.mostrarErrorConstrasena();
+                vista.resetearContrasenas();
             }
             
         }

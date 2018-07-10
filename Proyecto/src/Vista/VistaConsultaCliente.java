@@ -464,7 +464,7 @@ public class VistaConsultaCliente extends javax.swing.JFrame {
     
     //--------------
     public String obtenerRFC( ) {
-        return TxtRFC.getText();
+        return jTextField1.getText();
     }
     //-------------
     

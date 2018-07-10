@@ -152,7 +152,7 @@ public class VistaAltaVentas extends javax.swing.JFrame {
     
     public void establecerFecha(GregorianCalendar fecha){
         String contenido;
-        contenido= fecha.get(Calendar.DAY_OF_MONTH)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR);
+        contenido= fecha.get(Calendar.YEAR)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.DAY_OF_MONTH);
         this.jFormattedTextField1.setText(contenido);
     }
     

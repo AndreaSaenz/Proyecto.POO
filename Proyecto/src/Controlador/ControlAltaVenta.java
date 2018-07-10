@@ -49,7 +49,7 @@ public class ControlAltaVenta {
         vista.agregarListenerBotonEliminarProducto(new EliminarProducto());
         vista.agregarListenerBotonAceptar(new ProcesoGuardarAltaVenta());
         vista.agregarListenerBotonAgregarProducto(new AgregarProducto());
-        vista.agregarListenerBotonCancelarAltaCliente(new CancelarProcesoEdicionVenta());
+        vista.agregarListenerBotonCancelarAltaCliente(new CancelarAltaCliente());
          vista.setVisible(true);
     }
     
@@ -66,7 +66,8 @@ public class ControlAltaVenta {
                 vista.establecerFecha(fecha);     
                 ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
                 int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
-                venta.establecerCliente(new Cliente(clientes.obtenerLineaArchivo(claveCliente)));
+                String temporal=clientes.obtenerLineaArchivo(claveCliente);
+                venta.establecerCliente(new Cliente(temporal));
                 venta.establecerFecha(vista.obtenerFecha());     
                 ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
                 lectura.LeerArchivo();
@@ -102,7 +103,13 @@ public class ControlAltaVenta {
 
     }
     
-    
+    private class CancelarAltaCliente implements ActionListener{
+        @Override
+        public void actionPerformed (ActionEvent evento){
+            vista.ocultarMensajes();
+        
+        }
+    }
     
     private class  ProductoNoEncontrado implements ActionListener{
 
@@ -192,8 +199,8 @@ public class ControlAltaVenta {
                 venta.agregarProducto(producto);
                 archivo.disminuirCantidadProducto(indiceProducto);
                 venta.establecerSubtotal();
-                venta.obtenerIva();
-                venta.obtenerTotal();
+                venta.establecerIva();
+                venta.establecerTotal();
                 vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
                 vista.establecerIVA(Double.toString(venta.obtenerIva()));
                 vista.establecerTotal(Double.toString(venta.obtenerTotal()));
