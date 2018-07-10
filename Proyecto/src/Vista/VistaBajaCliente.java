@@ -236,11 +236,11 @@ public class VistaBajaCliente extends javax.swing.JFrame {
     }  
     
     public void cerrarMensajeEliminado(){
-        jDialog2.setVisible(false);
+        jDialog2.dispose();
     }
     
     public void cerrarMensajeError(){
-        jDialog1.setVisible(false);
+        jDialog1.dispose();
     }  
     
     public void cerrarMensajes(){

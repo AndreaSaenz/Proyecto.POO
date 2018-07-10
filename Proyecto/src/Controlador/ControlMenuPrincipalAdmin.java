@@ -20,14 +20,15 @@ public class ControlMenuPrincipalAdmin {
     
     private VistaMenuPrincipalAdmin vista;
     private Usuario usuario;
-    private VistaLoginAdmin vistaLogin;
+    private ControlLogin vistaLogin;
     
     
-    public ControlMenuPrincipalAdmin(Usuario usuario, VistaLoginAdmin vistaLogin){
+    public ControlMenuPrincipalAdmin(Usuario usuario /*, ControlLogin control*/){
         this.usuario= usuario;
         this.vista= new VistaMenuPrincipalAdmin();
-        this.vistaLogin=vistaLogin;
-        this.vistaLogin.setVisible(false);
+      //  this.vistaLogin=control;
+       // this.vistaLogin.setVisible(false);
+       
         vista.agregarListenerBotonClientes(new opcionClientes());
         vista.agregarListenerBotonProductos(new opcionProductos());
         vista.agregarListenerBotonVentas(new opcionVentas());
@@ -80,8 +81,7 @@ public class ControlMenuPrincipalAdmin {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaLogin.setVisible(true);
-            
+           ControlLogin vistaLogin=new ControlLogin();
             vista.dispose();
         }
     }

@@ -76,6 +76,7 @@ public class ControlLogin {
         loginGeneral.ocultarErrorContrasenaIncorrects();
         loginGeneral.ocultarErrorUsuario();
         loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
+        loginAdmin.agregarListenerBotonSesionEmpleado(new CambiarAGeneral());
         loginAdmin.ocultarErrorBloqueo();
         loginAdmin.ocultarErrorContrasenaIncorrects();
         loginGeneral.setVisible(true);
@@ -123,11 +124,13 @@ public class ControlLogin {
                 usuario.establecerContrasena(loginGeneral.obtenerContrasena());
                 loginGeneral.resetearCampos();
                 if(indice>0){
-                    ControlMenuPrincipalEmpleado vista=new ControlMenuPrincipalEmpleado(usuario, loginGeneral);
+                    ControlMenuPrincipalEmpleado vista=new ControlMenuPrincipalEmpleado(usuario/*, loginGeneral*/);
                 }
                 else{
-                    ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario, loginAdmin);
+                    ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario/*, null*/ );
                 }
+                loginAdmin.dispose();
+                loginGeneral.dispose();
             }catch(ElementoNoEncontradoException excep1){
                     loginGeneral.resetearCampos();
                     loginGeneral.mostrarErrorUsuario();
@@ -189,7 +192,9 @@ public class ControlLogin {
             lectura.compararContrasenaString(lectura.obtenerLineaArchivo(0), loginAdmin.obtenerContrasena());
             usuario= new Usuario("Administrador", "Administrador", loginAdmin.obtenerContrasena());
             loginAdmin.limpiarContrasena();
-            ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario, loginAdmin);
+            ControlMenuPrincipalAdmin vista=new ControlMenuPrincipalAdmin(usuario/*, null*/);
+            loginAdmin.dispose();
+            loginGeneral.dispose();
             }catch(IncompatibilidadContrasenaException excep){
                  try{
                     intentos++;

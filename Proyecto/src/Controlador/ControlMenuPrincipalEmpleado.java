@@ -22,11 +22,11 @@ public class ControlMenuPrincipalEmpleado {
     private VistaLogin vistaLogin;
     
     
-    public ControlMenuPrincipalEmpleado(Usuario usuario, VistaLogin vistaLogin){
+    public ControlMenuPrincipalEmpleado(Usuario usuario/*, VistaLogin vistaLogin*/){
         this.usuario= usuario;
         this.vista= new VistaMenuPrincipalEmpleado();
-        this.vistaLogin=vistaLogin;
-        this.vistaLogin.setVisible(false);
+        //this.vistaLogin=vistaLogin;
+       // this.vistaLogin.setVisible(false);
         vista.agregarListenerBotonClientes(new opcionClientes());
         vista.agregarListenerBotonProductos(new opcionProductos());
         vista.agregarListenerBotonVentas(new opcionVentas());
@@ -70,7 +70,8 @@ public class ControlMenuPrincipalEmpleado {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vistaLogin.setVisible(true);
+           // vistaLogin.setVisible(true);
+            ControlLogin login=new ControlLogin();
             vista.dispose();
         }
     }

@@ -106,9 +106,9 @@ public class ControlClientes {
         @Override
         public void actionPerformed(ActionEvent evento) {
             if(usuario.obtenerRol().obtenerModuloUsuario().obtenerPermisoAlta()){
-              ControlMenuPrincipalAdmin  vistaMadre= new ControlMenuPrincipalAdmin(usuario, new VistaLoginAdmin());
+              ControlMenuPrincipalAdmin  vistaMadre= new ControlMenuPrincipalAdmin(usuario/*, new ControlLogin()/*/);
             }else{
-                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado(usuario, new VistaLogin());
+                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado(usuario/*, new VistaLogin()*/);
             }
             vista.dispose();
             

@@ -64,7 +64,7 @@ public class ControlUsuarios {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            ControlMenuPrincipalAdmin vistaMadre = new ControlMenuPrincipalAdmin(usuario, new VistaLoginAdmin());
+            ControlMenuPrincipalAdmin vistaMadre = new ControlMenuPrincipalAdmin(usuario/*, new ControlLogin()*/);
             vista.dispose();
             
         }

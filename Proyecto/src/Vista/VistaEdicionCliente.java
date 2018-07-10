@@ -889,9 +889,9 @@ public class VistaEdicionCliente extends javax.swing.JFrame {
     }
     
     public void cerrarMensajes(){
-        jDialog1.setVisible(true);
+        jDialog1.dispose();
     
-        jDialog2.setVisible(true);
+        jDialog2.dispose();
     }
     ///-------------
     

@@ -46,7 +46,7 @@ public class ControlProductos {
         @Override
         public void actionPerformed(ActionEvent evento) {
             vista.setVisible(false);
-            ControlAltaCliente vistaHija= new ControlAltaCliente((new ManejoArchivo("").obtenerContadoresEntidades(1))+1,vista);
+            ControlAltaProducto vistaHija= new ControlAltaProducto((new ManejoArchivo("").obtenerContadoresEntidades(1))+1,vista);
                 
             
             
@@ -58,7 +58,7 @@ public class ControlProductos {
         @Override
         public void actionPerformed(ActionEvent evento) {
             vista.setVisible(false);
-            ControlBajaCliente vistaHija= new ControlBajaCliente(vista);
+            ControlBajaProducto vistaHija= new ControlBajaProducto(vista);
             
         }
         
@@ -98,10 +98,10 @@ public class ControlProductos {
         @Override
         public void actionPerformed(ActionEvent evento) {
             if(usuario.obtenerRol().obtenerModuloUsuario().obtenerPermisoAlta()){
-              ControlMenuPrincipalAdmin  vistaMadre=new ControlMenuPrincipalAdmin(usuario, new VistaLoginAdmin());
+              ControlMenuPrincipalAdmin  vistaMadre=new ControlMenuPrincipalAdmin(usuario/*, new ControlLogin()*/);
               
             }else{
-                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado(usuario,new VistaLogin());
+                ControlMenuPrincipalEmpleado vistaMadre=new ControlMenuPrincipalEmpleado(usuario/*,new VistaLogin()*/);
             }
             vista.dispose();
             

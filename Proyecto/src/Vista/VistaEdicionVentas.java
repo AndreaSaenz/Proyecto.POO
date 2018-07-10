@@ -219,13 +219,13 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     
     
      public void cerrarMensajes(){
-        jDialog1.setVisible(true);
+        jDialog1.dispose();
     
-        jDialog2.setVisible(true);
+        jDialog2.dispose();
     
-        jDialog3.setVisible(true);
+        jDialog3.dispose();
      
-        jDialog4.setVisible(true);
+        jDialog4.dispose();
     }
     
     
