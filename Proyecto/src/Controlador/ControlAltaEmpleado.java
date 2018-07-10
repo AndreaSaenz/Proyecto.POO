@@ -30,10 +30,11 @@ public class ControlAltaEmpleado {
         this.vista= new VistaAltaEmpleado();
         this.vistaMadre= vistaRaiz;    
         vistaMadre.setVisible(false);
-       
+        vista.ocultarErrorConstrasena();
+        vista.ocultarErrorRepeticion();
         vista.agregarListenerBotonRegistrar(new ProcesoAltaEmpleado());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaEmpleado());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaEmpleado());
+        vista.agregarListenerBotonAceptarMejorCaso(new CerrarProcesoAltaEmpleado());
+        vista.agregarListenerBotonCancelar(new CerrarProcesoAltaEmpleado());
         vista.setVisible(true);
     }
     
@@ -61,21 +62,14 @@ public class ControlAltaEmpleado {
 
     }
     
-    private class  MensajeAccionCompletadaAltaEmpleado implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
+   
     
-    private class  CancelarProcesoAltaEmpleado implements ActionListener{
+    private class  CerrarProcesoAltaEmpleado implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
             vistaMadre.setVisible(true);
+            vista.cerrarMensajeGuardado();
             vista.dispose();
         }
 

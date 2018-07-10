@@ -30,14 +30,17 @@ public class ControlEdicionVenta {
     private int indice;
     
     public ControlEdicionVenta( VistaControlAccionesEntidades vistaRaiz){
-        this.venta= null;
-        this.vista= new VistaEdicionVentas();
+        this.venta=new Venta(0);
+        this.vista= new VistaEdicionVentas(venta.obtenerProductos());
         this.vistaMadre= vistaRaiz;
         this.indice=-1;
         vistaMadre.setVisible(false);
+        vista.activarCajaAgregarProducto();
+        vista.activarBotonEliminarProducto();
+        vista.activarBotonAgregarProducto();
         vista.ocultarCampos(); 
         vista.agregarListenerBotonAceptarErrorCliente(new DarAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionVenta());
+        vista.agregarListenerBotonAceptarMejorCaso(new CancelarProcesoEdicionVenta());
         vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionVenta());
         vista.agregarListenerBotonAceptarErrorProducto(new ProductoNoEncontrado());
         vista.agregarListenerBotonAceptarErrorVenta(new CancelarProcesoEdicionVenta());
@@ -45,7 +48,8 @@ public class ControlEdicionVenta {
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionVenta());
         vista.agregarListenerBotonAgregarProducto(new AgregarProducto());
         vista.agregarListenerBotonCancelar(new CancelarProcesoEdicionVenta());
-          vista.setVisible(true);
+        vista.agregarListenerBotonCancelarPrincipal(new CancelarProcesoEdicionVenta());
+        vista.setVisible(true);
     }
     
     
@@ -55,10 +59,11 @@ public class ControlEdicionVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
+                vista.ocultarMensajes();
                 ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
                 int claveCliente=clientes.busquedaDatosEnArchivo(vista.obtenerRFC());
                 venta.establecerCliente(new Cliente(clientes.obtenerLineaArchivo(indice)));
+                ManejoArchivo  lectura= new ManejoArchivo("Ventas.txt");
                 lectura.establecerLineaArchivo(indice, venta.toString());
                 vista.mostrarMensajeGuardado();
             }catch(ElementoNoEncontradoException excep){
@@ -74,21 +79,30 @@ public class ControlEdicionVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+               vista.ocultarMensajes();
                 vista.deshabilitarCajaId();
                 vista.deshabilitarBotonBuscar();
                 ManejoArchivo archivo=new ManejoArchivo("Ventas.txt");
                 indice=archivo.busquedaDatosEnArchivo(vista.obtenerId());
                 String cadena=archivo.obtenerLineaArchivo(indice);
-                venta= new Venta(cadena);
-                vista.establecerRFC(venta.obtenerCliente().obtenerRfc());
-                vista.establecerRazonSocial(venta.obtenerCliente().obtenerRazonSocial());
-                vista.establecerDireccion(venta.obtenerCliente().obtenerDireccion());
-                vista.establecerTelefono(venta.obtenerCliente().obtenerTelefono());
-                vista.establecerFecha(venta.obtenerFecha());
-                vista.establecerSubtotal(Double.toString(venta.obtenerSubtotal()));
-                vista.establecerIVA(Double.toString(venta.obtenerIva()));
-                vista.establecerTotal(Double.toString(venta.obtenerTotal()));
-                //mostrar tabla
+                Venta otraVenta= new Venta(cadena);
+                venta.establecerId(otraVenta.obtenerId());
+                venta.establecerFecha(venta.obtenerFecha());
+                
+                vista.establecerRFC(otraVenta.obtenerCliente().obtenerRfc());
+                vista.establecerRazonSocial(otraVenta.obtenerCliente().obtenerRazonSocial());
+                vista.establecerDireccion(otraVenta.obtenerCliente().obtenerDireccion());
+                vista.establecerTelefono(otraVenta.obtenerCliente().obtenerTelefono());
+                vista.establecerFecha(otraVenta.obtenerFecha());
+                vista.establecerSubtotal(Double.toString(otraVenta.obtenerSubtotal()));
+                vista.establecerIVA(Double.toString(otraVenta.obtenerIva()));
+                vista.establecerTotal(Double.toString(otraVenta.obtenerTotal()));
+                for(int i=0; i<otraVenta.obtenerProductos().size(); i++){
+                    venta.agregarProducto(otraVenta.obtenerProductos().get(i));
+                }
+                venta.establecerSubtotal();
+                venta.establecerIva();
+                venta.establecerTotal();
                 vista.mostrarCampos();
             }catch(ElementoNoEncontradoException excep){
                 vista.mostrarMensajeErrorVenta();
@@ -102,16 +116,13 @@ public class ControlEdicionVenta {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vista.setVisible(false);
+           // vista.setVisible(false);
+            vista.ocultarMensajes();
             ManejoArchivo lectura2=new ManejoArchivo("");
             int indices=lectura2.obtenerContadoresEntidades(0);
-            ControlAltaCliente alta= new ControlAltaCliente(indices+1);
-            vista.ocultarMensajeErrorCliente();
-            vista.setVisible(true);
-            vista.establecerRFC("C-"+(indices+1));
-            
-                
-            
+            indices +=1;
+            ControlAltaCliente alta= new ControlAltaCliente(indices, null);
+            vista.establecerRFC("C-"+indice);
         }
 
     }
@@ -122,12 +133,12 @@ public class ControlEdicionVenta {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            vista.ocultarMensajeErrorProducto();
+            vista.ocultarMensajes();
             vista.activarBotonAgregarProducto();
             vista.activarCajaAgregarProducto();
             vista.activarBotonEliminarProducto();
-            vista.activarCajaEliminarProducto();
-         }
+           
+        }
 
     }
     
@@ -136,12 +147,13 @@ public class ControlEdicionVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarMensajes();
                 vista.desactivarBotonElminarProducto();
-                vista.desactivarCajaElminarProducto();
-                venta.eliminarProducto(vista.obtenerClaveProductoEliminado());
+               
+                
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 
-                archivo.aumentarCantidadProducto(vista.obtenerClaveProductoEliminado());
+                archivo.aumentarCantidadProducto(vista.eliminarProductoTabla().obtenerClave());
                 venta.establecerSubtotal();
                 venta.obtenerIva();
                 venta.obtenerTotal();
@@ -154,26 +166,19 @@ public class ControlEdicionVenta {
                 vista.mostrarMensajeErrorProducto();
             }finally{
                 vista.activarBotonEliminarProducto();
-                vista.activarCajaEliminarProducto();
+                
             }
         }
 
     }
     
-    private class  MensajeAccionCompletadaEdicionVenta implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
+   
     
     private class  CancelarProcesoEdicionVenta implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajes();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
@@ -187,7 +192,7 @@ public class ControlEdicionVenta {
             try{
                 vista.desactivarCajaAgregarProducto();
                 vista.desactivarBotonAgregarProducto();
-                
+                vista.ocultarMensajes();
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
                 int indiceProducto=archivo.busquedaDatosEnArchivo(vista.obtenerClaveProductoAgregado());
                 String cadena=archivo.obtenerLineaArchivo(indiceProducto);

@@ -34,13 +34,13 @@ public class ControlAltaProducto {
         this.producto= new Producto(clave,"",0,0);
         this.vista= new VistaAltaProducto();
         this.vistaMadre= vistaRaiz;
-        
+        vista.ocultarErrorRepeticion();
         vistaMadre.setVisible(false);
         vista.establecerClave(clave);
         vista.setVisible(true);
         vista.agregarListenerBotonRegistrar(new ProcesoAltaProducto());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaProducto());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaProducto());
+        vista.agregarListenerBotonAceptarMejorCaso(new CerrarProcesoAltaProducto());
+        vista.agregarListenerBotonCancelar(new CerrarProcesoAltaProducto());
         vista.setVisible(true);
     }
     
@@ -70,21 +70,13 @@ public class ControlAltaProducto {
 
     }
     
-    private class  MensajeAccionCompletadaAltaProducto implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
-    
-    private class  CancelarProcesoAltaProducto implements ActionListener{
+   
+    private class  CerrarProcesoAltaProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
             vistaMadre.setVisible(true);
+            vista.cerrarMensajeGuardado();
             vista.dispose();
         }
 

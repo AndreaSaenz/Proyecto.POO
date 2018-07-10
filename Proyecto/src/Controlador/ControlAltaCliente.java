@@ -26,13 +26,14 @@ public class ControlAltaCliente {
         this.cliente= new Cliente(rfc, "","","");
         this.vista= new VistaAltaCliente();
         this.vistaMadre= vistaRaiz;
+        vista.ocultarErrorRepeticion();
         if(vistaMadre!= null){
          vistaMadre.setVisible(false);
         }
         vista.establecerRFC(rfc);
         vista.agregarListenerBotonRegistrar(new ProcesoAltaCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaAltaCliente());
-        vista.agregarListenerBotonCancelar(new CancelarProcesoAltaCliente());
+        vista.agregarListenerBotonAceptarMejorCaso(new CerrarProcesoAltaCliente());
+        vista.agregarListenerBotonCancelar(new CerrarProcesoAltaCliente());
         vista.setVisible(true);
     }
     
@@ -72,23 +73,8 @@ public class ControlAltaCliente {
 
     }
     
-    private class  MensajeAccionCompletadaAltaCliente implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            try{
-                existenciaVistaAnterior();
-                vistaMadre.dispose();
-            }catch(VistaAnteriorInexistenteException excep3){
-                System.out.println("Vista Madre inexistente");
-            }finally{
-                vista.dispose();
-            }
-        }
-
-    }
-    
-    private class  CancelarProcesoAltaCliente implements ActionListener{
+ 
+    private class  CerrarProcesoAltaCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento){ 
@@ -98,6 +84,7 @@ public class ControlAltaCliente {
             }catch(VistaAnteriorInexistenteException excep2){
                     System.out.println("Vista Madre inexistente"); 
             }finally{
+                vista.cerrarMensajeGuardado();
                  vista.dispose();
             }
             

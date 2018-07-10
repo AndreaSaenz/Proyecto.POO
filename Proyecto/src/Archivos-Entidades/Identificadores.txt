@@ -1,0 +1,4 @@
+Clientes:0
+Productos:0
+Ventas:0
+

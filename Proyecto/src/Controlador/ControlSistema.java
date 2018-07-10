@@ -11,14 +11,16 @@ import Vista.VistaLoginAdmin;
 
 /**
  *
- * @author andrea
+ * @author andreas
  */
 public class ControlSistema {
     
 public void iniciarPrograma(){
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              ControlLogin controlador= new ControlLogin(new Usuario("Empleado","",""), new VistaLogin());
+              ControlLogin controlador= new ControlLogin();
+
+              //ControlLogin controlador= new ControlLogin(new Usuario("Empleado","",""), new VistaLogin());
                //ControlProductos controller= new ControlProductos(new Usuario("Empleado","",""));
                //ControlMenuPrincipalAdmin hey=new ControlMenuPrincipalAdmin(new Usuario("Administrador", "Administrador",""),new VistaLoginAdmin());
                //ControlLogin controladores= new ControlLogin(new Usuario("Empleado","",""), new VistaLogin()); 

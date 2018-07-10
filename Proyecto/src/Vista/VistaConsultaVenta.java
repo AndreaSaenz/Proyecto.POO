@@ -42,6 +42,11 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jButton4.addActionListener(evento);
     }
     
+    public void agregarListenerBotonCancelar(ActionListener evento){
+        jButton5.addActionListener(evento);
+    }
+    
+    
    //--------------------------
   
 
@@ -103,6 +108,11 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
     public void mostrarMensajeError(){
         jDialog1.setVisible(true);
     }
+        
+     public void ocultarMensajeError(){
+        jDialog1.setVisible(false);
+    }
+
     
      public void cerrarMensajeError(){
         jDialog1.dispose();
@@ -131,6 +141,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jTable1.setVisible(false);
         jButton1.setVisible(false);
         jTable1.setVisible(false);
+        Fondo.setVisible(false);
        
     }
     
@@ -155,6 +166,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jTable1.setVisible(true);
         jButton1.setVisible(true);
         jTable1.setVisible(true);
+        Fondo.setVisible(true);
         
     }
     
@@ -210,6 +222,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
@@ -327,6 +340,9 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
         jButton3.setText("Buscar");
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
+        jButton5.setText("Cancelar");
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 170, -1, -1));
+
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setToolTipText("");
         Fondo.setAutoscrolls(true);
@@ -401,6 +417,7 @@ public class VistaConsultaVenta extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;

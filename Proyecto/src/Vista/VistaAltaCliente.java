@@ -90,6 +90,15 @@ public class VistaAltaCliente extends javax.swing.JFrame {
         jDialog1.setVisible(true);
     }
     
+     public void ocultarMensajeGuardado(){
+        jDialog1.setVisible(false);
+     }
+        
+     public void cerrarMensajeGuardado(){
+        jDialog1.dispose();
+    }
+   
+    
     
     //-------------
     

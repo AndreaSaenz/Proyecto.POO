@@ -242,6 +242,30 @@ public class VistaBajaVenta extends javax.swing.JFrame {
         jDialog1.setVisible(true);
     }
     
+    public void ocultarMensajeEliminado(){
+        jDialog2.setVisible(false);
+    }
+    
+    public void ocultarMensajeError(){
+        jDialog1.setVisible(false);
+    }
+    
+    
+    public void cerrarMensajeEliminado(){
+        jDialog2.dispose();
+    }
+    
+    public void cerrarMensajeError(){
+        jDialog1.dispose();
+    }
+    
+    
+    public void cerrarMensajes(){
+        jDialog2.dispose();
+    
+        jDialog1.dispose();
+    }
+    
     //----------------
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

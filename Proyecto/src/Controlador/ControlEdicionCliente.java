@@ -34,9 +34,10 @@ public class ControlEdicionCliente {
         vista.ocultarCampos();
         vista.ocultarErrorRepeticion();
         vista.agregarListenerBotonAceptarError(new CancelarProcesoEdicionCliente());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionCliente());
+        vista.agregarListenerBotonAceptarMejorCaso(new CancelarProcesoEdicionCliente());
         vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionCliente());
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionCliente());
+       
           vista.setVisible(true);
     }
     
@@ -47,6 +48,9 @@ public class ControlEdicionCliente {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarErrorRepeticion();
+                vista.ocultarMensajeError();
+                vista.ocultarMensajeGuardado();
                 ManejoArchivo  lectura= new ManejoArchivo("Clientes.txt");
                 lectura.verificarNoRepeticion(vista.obtenerRazon());
                 cliente.establecerRazonSocial(vista.obtenerRazon());
@@ -68,6 +72,9 @@ public class ControlEdicionCliente {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarErrorRepeticion();
+                vista.ocultarMensajeError();
+                vista.ocultarMensajeGuardado();
                 vista.inhabilitarCajaRFC();
                 vista.deshabilitarBotonBuscar();
                 ManejoArchivo archivo=new ManejoArchivo("Clientes.txt");
@@ -87,21 +94,12 @@ public class ControlEdicionCliente {
     }
     
     
-    
-     private class  MensajeAccionCompletadaEdicionCliente implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
-    
+        
     private class  CancelarProcesoEdicionCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajes();
             vistaMadre.setVisible(true);
             vista.dispose();
         }

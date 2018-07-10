@@ -209,6 +209,15 @@ public class VistaAltaVentas extends javax.swing.JFrame {
         jDialog4.setVisible(false);
     }
     
+     public void ocultarMensajes(){
+        jDialog1.setVisible(false);
+   
+        jDialog2.setVisible(false);
+    
+        jDialog4.setVisible(false);
+    }
+
+    
     
     //-----------------------
     
@@ -576,10 +585,8 @@ public class VistaAltaVentas extends javax.swing.JFrame {
                 System.out.println(productos);
                 Venta venta=new Venta(5);
                 venta.establecerProductos(productos);
-                VistaAltaVentas vista= new VistaAltaVentas(venta.obtenerProductos());
-                vista.setVisible(true);
-                vista.mostrarMensajeGuardado();
-                vista.mostrarMensajeErrorCliente();
+                
+                
                 Producto productoPeq=new Producto("p-6", "queso",25.99,5);
                 productos.add(productoPeq);
                 Producto productoGrande=new Producto("p-7", "queso",25.99,5);
@@ -593,6 +600,13 @@ public class VistaAltaVentas extends javax.swing.JFrame {
                 productosAJ.add(new Producto("p-5", "manzana",25.99,5));
                 venta.agregarProducto(productosAJ.get(0));
                 venta.establecerProductos(productosAJ);
+                Venta venta1=new Venta(5);
+                venta.establecerProductos(productosAJ);
+                venta=venta1;
+                VistaAltaVentas vista= new VistaAltaVentas(venta.obtenerProductos());
+                vista.setVisible(true);
+                vista.mostrarMensajeGuardado();
+                vista.mostrarMensajeErrorCliente();
                // productos.establecerProductos(productosAJ.productos);
                 //vista.cerrarVentana();
             }

@@ -36,7 +36,7 @@ public class ControlEdicionProducto {
         vista.ocultarCampos(); 
         vista.ocultarErrorRepeticion();
         vista.agregarListenerBotonAceptarError(new CancelarProcesoEdicionProducto());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaEdicionProducto());
+        vista.agregarListenerBotonAceptarMejorCaso(new CancelarProcesoEdicionProducto());
         vista.agregarListenerBotonBuscar(new ProcesoBusquedaEnEdicionProducto());
         vista.agregarListenerBotonGuardar(new ProcesoGuardarEdicionProducto());
           vista.setVisible(true);
@@ -70,6 +70,9 @@ public class ControlEdicionProducto {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarErrorRepeticion();
+                vista.ocultarMensajeError();
+                vista.ocultarMensajeGuardado();
                 vista.deshabilitarCajaClave();
                 vista.deshabilitarBotonBuscar();
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
@@ -90,20 +93,12 @@ public class ControlEdicionProducto {
     
     
     
-     private class  MensajeAccionCompletadaEdicionProducto implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
-    
+   
     private class  CancelarProcesoEdicionProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajes();
             vistaMadre.setVisible(true);
             vista.dispose();
         }

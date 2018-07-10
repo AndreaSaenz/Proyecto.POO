@@ -26,8 +26,8 @@ public class ControlBajaVenta {
         this.vistaMadre= vistaRaiz;
         vistaMadre.setVisible(false);
         vista.agregarListenerBotonAceptar(new ProcesoBajaVenta());
-        vista.agregarListenerBotonAceptarError(new MensajeErrorBajaVenta());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaVenta());
+        vista.agregarListenerBotonAceptarError(new CerrarBajaVenta());
+        vista.agregarListenerBotonAceptarMejorCaso(new CerrarBajaVenta());
         vista.setVisible(true);
     }
 
@@ -38,7 +38,8 @@ public class ControlBajaVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                
+                vista.ocultarMensajeError();
+                vista.ocultarMensajeError();
                 ManejoArchivo archivo=new ManejoArchivo("Ventas.txt");
                 int indice=archivo.busquedaDatosEnArchivo(vista.obtenerId());
                 archivo.eliminarDatosEnArchivo(indice);
@@ -51,23 +52,16 @@ public class ControlBajaVenta {
     }  
         
         
-    private class MensajeErrorBajaVenta implements ActionListener{
+    private class CerrarBajaVenta implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajes();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
     }
         
         
-    private class MensajeAccionCompletadaBajaVenta implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();       
-        }
-    }
-    
+        
 }

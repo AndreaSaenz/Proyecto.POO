@@ -102,6 +102,9 @@ public class Venta {
         this.fecha = fechaActual;
     }
     
+    public void establecerFecha(GregorianCalendar fecha){
+        this.fecha=fecha;
+    }
         
     public void establecerFecha(String fecha){
         String[] camposFecha=fecha.split("/");
@@ -120,8 +123,9 @@ public class Venta {
     
     
     public void establecerSubtotal() {
-        if(productos.size()>0){
-            for(int i=0; i<productos.size(); i++){
+        int tam=productos.size();
+        if(tam>0){
+            for(int i=0; i<tam; i++){
                 this.subtotal += productos.get(i).obtenerPrecioUnitario();
             }
         }          

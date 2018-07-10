@@ -96,7 +96,11 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
     public void agregarListenerBotonCancelar(ActionListener evento){
         jButton10.addActionListener(evento);
     }
-
+    
+    public void agregarListenerBotonCancelarPrincipal(ActionListener evento){
+        jButton6.addActionListener(evento);
+    }
+    
 //--------------------------
     public String obtenerClaveProductoAgregado(){
         return jTextField4.getText();
@@ -186,6 +190,44 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jDialog4.setVisible(false);
     }
     
+    public void ocultarMensajes(){
+        jDialog1.setVisible(false);
+        jDialog2.setVisible(false);
+    
+        jDialog3.setVisible(false);
+   
+        jDialog4.setVisible(false);
+    }
+    
+    //---------------------------
+    
+    public void cerrarMensajeGuardado(){
+        jDialog1.dispose();
+    }
+    
+    public void cerrarMensajeErrorVenta(){
+        jDialog2.dispose();
+    }
+    
+     public void cerrarMensajeErrorCliente(){
+        jDialog3.dispose();
+     }
+        
+    public void cerrarMensajeErrorProducto(){
+        jDialog4.dispose();
+    }
+    
+    
+     public void cerrarMensajes(){
+        jDialog1.setVisible(true);
+    
+        jDialog2.setVisible(true);
+    
+        jDialog3.setVisible(true);
+     
+        jDialog4.setVisible(true);
+    }
+    
     
     //-----------------------
     
@@ -208,7 +250,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jTextField6.setVisible(false);
         jTextField7.setVisible(false);
         jTextField8.setVisible(false);
-       
+        Fondo.setVisible(false);
         jTable1.setVisible(false);
         jButton1.setVisible(false);
         jButton2.setVisible(false);
@@ -226,6 +268,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jLabel7.setVisible(true);
         jLabel8.setVisible(true);
         jLabel12.setVisible(true);
+        Fondo.setVisible(true);
         jFormattedTextField1.setVisible(true);
         jTextField1.setVisible(true);
         jTextField2.setVisible(true);
@@ -294,7 +337,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -329,6 +371,7 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -470,8 +513,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
 
         jDialog4.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButton6.setText("jButton6");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -546,11 +587,6 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 70, -1));
 
         jButton5.setText("-\n");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 40, 30));
 
         jLabel12.setText("Fecha:");
@@ -589,17 +625,20 @@ public class VistaEdicionVentas extends javax.swing.JFrame {
         Fondo.setPreferredSize(new java.awt.Dimension(1400, 1080));
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 750));
 
+        jButton6.setText("Cancelar");
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    public Producto eliminarProductoTabla() throws ArrayIndexOutOfBoundsException{
         ModeloTabla model = (ModeloTabla) this.jTable1.getModel();
         
         Producto producto = model.eliminarFila(jTable1.getSelectedRow());
-        
+        System.out.println(producto);
         System.out.println(productos);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
+        return producto;
+    } 
     /**
      * @param args the command line arguments
      */

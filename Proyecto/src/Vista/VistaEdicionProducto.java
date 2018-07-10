@@ -486,6 +486,28 @@ public class VistaEdicionProducto extends javax.swing.JFrame {
     public void mostrarMensajeError(){
         jDialog2.setVisible(true);
     }
+    
+     public void ocultarMensajeGuardado(){
+        jDialog1.setVisible(false);
+    }
+    
+    public void ocultarMensajeError(){
+        jDialog2.setVisible(false);
+    }
+    
+     public void cerrarMensajeGuardado(){
+        jDialog1.dispose();
+    }
+    
+    public void cerrarMensajeError(){
+        jDialog2.dispose();
+    }
+    
+     public void cerrarMensajes(){
+        jDialog1.setVisible(true);
+
+        jDialog2.setVisible(true);
+    }
     ///-------------
     
     

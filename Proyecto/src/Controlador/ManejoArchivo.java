@@ -160,7 +160,7 @@ public class ManejoArchivo{
     
     public int[] obtenerContadoresEntidades(){
         int[] contadores={0,0,0};
-        Archivo="Contadores.txt";
+        Archivo="Identificadores.txt";
         LeerArchivo();
         for(int i=0; i<3; i++){
             String temporal=ed.get(i);
@@ -172,7 +172,7 @@ public class ManejoArchivo{
     
     public int obtenerContadoresEntidades(int indiceEntidad){
         
-        Archivo="Contadores.txt";
+        Archivo="Identificadores.txt";
         LeerArchivo();
         String temporal=obtenerLineaArchivo(indiceEntidad);
         String[] arreglo= temporal.split(":");
@@ -182,7 +182,7 @@ public class ManejoArchivo{
   
 
     public void modificarContadoresEntidades(int[] contadores){
-        Archivo="Contadores.txt";
+        Archivo="Identificadores.txt";
         ArrayList<String> contadoresEntidades= new ArrayList<String>();
         contadoresEntidades.add("Clientes:"+contadores[0]);
         contadoresEntidades.add("Productos:"+contadores[1]);
@@ -191,7 +191,7 @@ public class ManejoArchivo{
     }
     
     public void modificarContadoresEntidades(int indiceEntidad, String nuevaLinea){
-        Archivo="Contadores.txt";
+        Archivo="Identificadores.txt";
         LeerArchivo();
         establecerLineaArchivo(indiceEntidad, nuevaLinea);
     }

@@ -27,8 +27,8 @@ public class ControlBajaEmpleado {
         this.vistaMadre= vistaRaiz;
         vistaMadre.setVisible(false);
         vista.agregarListenerBotonAceptar(new ProcesoBajaEmpleado());
-        vista.agregarListenerBotonAceptarError(new MensajeErrorBajaEmpleado());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaEmpleado());
+        vista.agregarListenerBotonAceptarError(new CerrarBajaEmpleado());
+        vista.agregarListenerBotonAceptarMejorCaso(new CerrarBajaEmpleado());
         vista.setVisible(true);
     }
 
@@ -39,7 +39,8 @@ public class ControlBajaEmpleado {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
-                
+                vista.ocultarMensajeEliminado();
+                vista.ocultarMensajeError();
                 ManejoArchivo archivo=new ManejoArchivo("Usuarios.txt");
                 int indice=archivo.busquedaDatosEnArchivo(vista.obtenerNombre());
                 archivo.eliminarDatosEnArchivo(indice);
@@ -52,24 +53,15 @@ public class ControlBajaEmpleado {
     }  
         
         
-    private class MensajeErrorBajaEmpleado implements ActionListener{
+    private class CerrarBajaEmpleado implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajes();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
     }
         
         
-    private class MensajeAccionCompletadaBajaEmpleado implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-          
-                
-        }
-    }
 }

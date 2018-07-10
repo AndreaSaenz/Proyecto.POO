@@ -30,8 +30,8 @@ public class ControlConsultaProducto {
         vistaMadre.setVisible(false);
         vista.ocultarCampos();
         vista.agregarListenerBotonBuscar(new ProcesoConsultaProducto());
-        vista.agregarListenerBotonListo(new MensajeAccionCompletadaConsultaProducto());
-        vista.agregarListenerBotonAceptarError(new CancelarProcesoConsultaProducto());
+        vista.agregarListenerBotonListo(new CerrarAccionCompletadaConsultaProducto());
+        vista.agregarListenerBotonAceptarError(new CerrarAccionCompletadaConsultaProducto());
         vista.setVisible(true);
     }
     
@@ -42,6 +42,7 @@ public class ControlConsultaProducto {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarMensajeGuardado();
                 vista.inhabilitarCajaClave();
                 vista.deshabilitarBotonBuscar();
                 ManejoArchivo archivo=new ManejoArchivo("Productos.txt");
@@ -60,27 +61,18 @@ public class ControlConsultaProducto {
 
     }
     
-    private class  MensajeAccionCompletadaConsultaProducto implements ActionListener{
+    private class  CerrarAccionCompletadaConsultaProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajeGuardado();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
 
     }
     
-    private class  CancelarProcesoConsultaProducto implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vista.mostrarCampos();
-           // vistaMadre.setVisible(true);
-            //vista.dispose();
-        }
-
-    }
-    
+       
     
     
     

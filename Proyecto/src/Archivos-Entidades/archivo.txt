@@ -2,7 +2,3 @@ hola
 queso
 hola
 queso
-hola
-queso
-hola
-queso

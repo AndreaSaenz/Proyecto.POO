@@ -61,6 +61,7 @@ public class ControlAltaVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarMensajes();
                 GregorianCalendar fecha= new GregorianCalendar();
                 vista.establecerFecha(fecha);     
                 ManejoArchivo clientes=new ManejoArchivo("Clientes.txt");
@@ -71,7 +72,8 @@ public class ControlAltaVenta {
                 lectura.LeerArchivo();
                 lectura.agregarLineaArchivo(venta.toString());
                 int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
-                new ManejoArchivo("").modificarContadoresEntidades(2, "Ventas:"+(contadorVentas+1));
+                contadorVentas+=1;
+                new ManejoArchivo("").modificarContadoresEntidades(2, "Ventas:"+contadorVentas);
                 vista.mostrarMensajeGuardado();
             }catch (ElementoNoEncontradoException ex) {
                 vista.mostrarMensajeErrorCliente();
@@ -88,6 +90,7 @@ public class ControlAltaVenta {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.ocultarMensajes();
             ManejoArchivo lectura2=new ManejoArchivo("");
             int indices=lectura2.obtenerContadoresEntidades(0);
             indices += 1;
@@ -117,6 +120,7 @@ public class ControlAltaVenta {
     private class  EliminarProducto implements ActionListener{
 
         @Override
+        @SuppressWarnings("empty-statement")
         public void actionPerformed(ActionEvent evento) {
             try{
                 vista.desactivarBotonElminarProducto();
@@ -150,7 +154,7 @@ public class ControlAltaVenta {
         public void actionPerformed(ActionEvent evento) {
             
             vista.resetCampos();
-            vista.ocultarMensajeGuardado();
+            vista.ocultarMensajes();
             int contadorVentas=new ManejoArchivo("").obtenerContadoresEntidades(2);
             vista.establecerIdVenta(contadorVentas+1);
             venta.establecerId(contadorVentas+1);

@@ -521,6 +521,14 @@ public class VistaConsultaCliente extends javax.swing.JFrame {
     public void mostrarMensajeGuardado(){
         jDialog1.setVisible(true);
     }
+    
+    public void ocultarMensajeGuardado(){
+        jDialog1.setVisible(false);
+    }
+    
+    public void cerrarMensajeGuardado(){
+        jDialog1.dispose();
+    }
     //--------------------
     
     public void agregarListenerBotonListo(ActionListener evento){

@@ -25,7 +25,7 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
  public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/github-256-black.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage("Imagenes/github-256-black.png");
         return retValue;
     }
     //--------------------------
@@ -88,6 +88,14 @@ public class VistaAltaEmpleado extends javax.swing.JFrame {
     //------------------------------
     public void mostrarMensajeGuardado(){
         jDialog1.setVisible(true);
+    }
+
+    public void ocultarMensajeGuardado(){
+        jDialog1.setVisible(false);
+    }
+    
+    public void cerrarMensajeGuardado(){
+        jDialog1.dispose();
     }
     ///---------------------
     

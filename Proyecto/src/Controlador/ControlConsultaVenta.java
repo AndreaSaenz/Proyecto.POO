@@ -31,8 +31,9 @@ public class ControlConsultaVenta {
         vistaMadre.setVisible(false);
         vista.ocultarCampos();
         vista.agregarListenerBotonBuscar(new ProcesoConsultaVenta());
-        vista.agregarListenerBotonListo(new MensajeAccionCompletadaConsultaVenta());
+        vista.agregarListenerBotonListo(new CancelarProcesoConsultaVenta());
         vista.agregarListenerBotonAceptarError(new CancelarProcesoConsultaVenta());
+        vista.agregarListenerBotonCancelar(new CancelarProcesoConsultaVenta());
         vista.setVisible(true);
     }
     
@@ -43,6 +44,7 @@ public class ControlConsultaVenta {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try{
+                vista.ocultarMensajeError();
                 vista.inhabilitarCajaId();
                 vista.deshabilitarBotonBuscar();
                 ManejoArchivo archivo=new ManejoArchivo("Ventas.txt");
@@ -70,16 +72,7 @@ public class ControlConsultaVenta {
 
     }
     
-    private class  MensajeAccionCompletadaConsultaVenta implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
-            vista.cerrarMensajeError();
-            vista.dispose();
-        }
-
-    }
     
     private class  CancelarProcesoConsultaVenta implements ActionListener{
 

@@ -27,8 +27,8 @@ public class ControlBajaProducto {
         this.vistaMadre= vistaRaiz;
         vistaMadre.setVisible(false);
         vista.agregarListenerBotonAceptar(new ProcesoBajaProducto());
-        vista.agregarListenerBotonAceptarError(new MensajeErrorBajaProducto());
-        vista.agregarListenerBotonAceptarMejorCaso(new MensajeAccionCompletadaBajaProducto());
+        vista.agregarListenerBotonAceptarError(new CerrarBajaProducto());
+        vista.agregarListenerBotonAceptarMejorCaso(new CerrarBajaProducto());
         vista.setVisible(true);
     }
 
@@ -52,23 +52,18 @@ public class ControlBajaProducto {
     }  
         
         
-    private class MensajeErrorBajaProducto implements ActionListener{
+    private class CerrarBajaProducto implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.ocultarMensajeEliminado();
+            vista.ocultarMensajeError();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
     }
         
         
-    private class MensajeAccionCompletadaBajaProducto implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.setVisible(true);
-            vista.dispose();       
-        }
-    }
      
 }

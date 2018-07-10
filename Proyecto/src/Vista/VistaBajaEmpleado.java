@@ -231,6 +231,28 @@ public class VistaBajaEmpleado extends javax.swing.JFrame {
     public void mostrarMensajeError(){
         jDialog1.setVisible(true);
     }
+    
+    public void ocultarMensajeEliminado(){
+        jDialog2.setVisible(true);
+    }
+    
+    public void ocultarMensajeError(){
+        jDialog1.setVisible(true);
+    }
+    
+    public void cerrarMensajeEliminado(){
+        jDialog2.dispose();
+    }
+    
+    public void cerrarMensajeError(){
+        jDialog1.dispose();
+    }
+    
+    public void cerrarMensajes(){
+        jDialog2.dispose();
+        jDialog1.dispose();
+    }
+    
    
     //---------------
     

@@ -63,9 +63,27 @@ public class ControlLogin {
         loginAdmin.setVisible(false);
         //loginGeneral.setVisible(true);s
     }*/
+
+    ControlLogin() {
+         this.usuario=new Usuario("","","");
+        this.loginGeneral= new VistaLogin();
+        this.loginAdmin=new VistaLoginAdmin();
+        this.intentos=0;
+       
+        loginGeneral.agregarListenerBotonIniciarSesión(new SesionEmpleado());
+        loginGeneral.agregarListenerBotonSesionAdmin(new CambiarTipoSesion());
+        loginGeneral.ocultarErrorBloqueo();
+        loginGeneral.ocultarErrorContrasenaIncorrects();
+        loginGeneral.ocultarErrorUsuario();
+        loginAdmin.agregarListenerBotonIniciarSesión(new SesionAdmin());
+        loginAdmin.ocultarErrorBloqueo();
+        loginAdmin.ocultarErrorContrasenaIncorrects();
+        loginGeneral.setVisible(true);
+        loginAdmin.setVisible(false);
+    }
     
     
-    public void ControlLogin(){
+    /*public void ControlLogin(){
         this.usuario=new Usuario("","","");
         this.loginGeneral= new VistaLogin();
         this.loginAdmin=new VistaLoginAdmin();
@@ -83,7 +101,7 @@ public class ControlLogin {
         loginAdmin.setVisible(false);
         //loginGeneral.setVisible(true);
     }
-    
+    */
         
     private class  SesionEmpleado implements ActionListener{
 

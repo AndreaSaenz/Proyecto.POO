@@ -29,8 +29,8 @@ public class ControlConsultaCliente {
         vistaMadre.setVisible(false);
         vista.ocultarCampos();
         vista.agregarListenerBotonBuscar(new ProcesoConsultaCliente());
-        vista.agregarListenerBotonListo(new MensajeAccionCompletadaConsultaCliente());
-        vista.agregarListenerBotonAceptarError(new CancelarProcesoConsultaCliente());
+        vista.agregarListenerBotonListo(new CerrarProcesoConsultaCliente());
+        vista.agregarListenerBotonAceptarError(new CerrarProcesoConsultaCliente());
         vista.setVisible(true);
     }
     
@@ -59,20 +59,13 @@ public class ControlConsultaCliente {
 
     }
     
-    private class  MensajeAccionCompletadaConsultaCliente implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            vistaMadre.dispose();
-            vista.dispose();
-        }
-
-    }
     
-    private class  CancelarProcesoConsultaCliente implements ActionListener{
+    
+    private class  CerrarProcesoConsultaCliente implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent evento) {
+            vista.cerrarMensajeGuardado();
             vistaMadre.setVisible(true);
             vista.dispose();
         }
