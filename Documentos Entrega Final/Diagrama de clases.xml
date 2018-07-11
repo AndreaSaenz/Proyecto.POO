@@ -1,0 +1,1232 @@
+<diagram program="umletino" version="14.2"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>5033</x><y>1480</y><w>600</w><h>150</h></coordinates><panel_attributes>ControlBajaProducto
+-
+-vista:VistaBajaProducto 
+-vistaMadre:VistaControlAccionesEntidades 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4833</x><y>3750</y><w>400</w><h>310</h></coordinates><panel_attributes>VistaAltaProducto
+-
+
+-
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonCancelar(ActionListener evento)  :void
++agregarListenerBotonRegistrar(ActionListener evento)  :void
++cerrarMensajeGuardado()  :void
++establecerCantidad(String contenido)  :void
++establecerClave(int numero)  :void
++establecerDescripcion(String contenido)  :void
++establecerPrecio(String contenido) :void 
+ +mostrarErrorRepeticion()  :void
++mostrarMensajeGuardado()  :void
++obtenerCantidad():String
++obtenerClave()  :String
++obtenerDescripcion()  :String
++obtenerPrecio()  :String
++ocultarErrorRepeticion()  :void
++ocultarMensajeGuardado()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5043</x><y>1730</y><w>590</w><h>210</h></coordinates><panel_attributes>ControlAltaProducto
+-
+-producto:Producto 
+- vista:VistaAltaProducto 
+- vistaMadre: VistaControlAccionesEntidades
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5013</x><y>1240</y><w>620</w><h>150</h></coordinates><panel_attributes>ControlConsultaProducto
+-
+- vista: VistaConsultaProducto
+- vistaMadre: VistaControlAccionesEntidades 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6043</x><y>1600</y><w>830</w><h>280</h></coordinates><panel_attributes>ControlAltaVenta
+-
+-  venta : Venta 
+-  vista: VistaAltaVentas
+-vistaMadre: VistaControlAccionesEntidades 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6533</x><y>3890</y><w>400</w><h>240</h></coordinates><panel_attributes>VistaBajaVenta
+-
+
+-
++agregarListenerBotonAceptar(ActionListener evento)  :void
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++cerrarMensajeEliminado()  :void
++cerrarMensajeError()  :void
++cerrarMensajes()  :void
++mostrarMensajeEliminado()  :void
++mostrarMensajeError()  :void
++obtenerId()  :String
++ocultarMensajeEliminado()  :void
++ocultarMensajeError()  :void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6123</x><y>1150</y><w>650</w><h>180</h></coordinates><panel_attributes>ControlConsultaVenta
+-
+- ventaTabla:Venta
+- vista:VistaConsultaVenta
+-  vistaMadre: VistaControlAccionesEntidades
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6113</x><y>1390</y><w>650</w><h>150</h></coordinates><panel_attributes>ControlBajaVenta
+-
+- vista:VistaBajaVenta
+- vistaMadre: VistaControlAccionesEntidades
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7693</x><y>1660</y><w>280</w><h>320</h></coordinates><panel_attributes>ControlAltaEmpleado
+-
+- empleado: Usuario 
+- vista:VistaAltaEmpleado
+- vistaMadre: VistaControlAccionesEmpleados
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6513</x><y>4270</y><w>430</w><h>830</h></coordinates><panel_attributes>VistaEdicionVentas
+-
+-Productos: ArrayList&lt;Producto&gt;
+-
++activarBotonAgregarProducto()  :void
++activarBotonEliminarProducto()  :void
++activarCajaAgregarProducto()  :void
++agregarListenerBotonAceptarErrorCliente(ActionListener evento)  :void
++agregarListenerBotonAceptarErrorProducto(ActionListener evento)  :void
++agregarListenerBotonAceptarErrorVenta(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonAgregarProducto(ActionListener evento) :void 
++agregarListenerBotonBuscar(ActionListener evento)  :void
++agregarListenerBotonCancelar(ActionListener evento)  :void
++agregarListenerBotonCancelarPrincipal(ActionListener evento)  :void
++agregarListenerBotonEliminarProducto(ActionListener evento)  :void
++agregarListenerBotonGuardar(ActionListener evento)  :void
++agregarProductoTabla(Producto producto)  :void
++cerrarMensajeErrorCliente()  :void
++cerrarMensajeErrorProducto()  :void
++cerrarMensajeErrorVenta()  :void
++cerrarMensajeGuardado()  :void
++cerrarMensajes()  :void
++desactivarBotonAgregarProducto()  :void
++desactivarBotonElminarProducto()  :void
++desactivarCajaAgregarProducto()  :void
++deshabilitarBotonBuscar()  :void
++deshabilitarCajaId()  :void
++eliminarProductoTabla()  :Producto 
++establecerDireccion(String contenido)  :void
++establecerFecha(GregorianCalendar fecha)  :void
++establecerFechaSinCambios(GregorianCalendar fecha)  :void
++establecerIdVenta(int numero)  :void
++establecerIVA(String contenido)  :void
++establecerRazonSocial(String contenido)  :void
++establecerRFC(String contenido)  :void
++establecerSubtotal(String contenido)  :void
++establecerTelefono(String contenido)  :void
++establecerTotal(String contenido)  :void
++habilitarBotonBuscar()  :void
++habilitarCajaId()  :void
++mostrarCampos()  :void
++mostrarMensajeErrorCliente()  :void
++mostrarMensajeErrorProducto()  :void
++mostrarMensajeErrorVenta()  :void
++mostrarMensajeGuardado()  :void
++obtenerClaveProductoAgregado()  :String
++obtenerId():StringobtenerRFC()  :String
++ocultarCampos()  :void
++ocultarMensajeErrorCliente()  :void
++ocultarMensajeErrorProducto()  :void
++ocultarMensajeErrorVenta()  :void
++ocultarMensajeGuardado():void  
++ocultarMensajes()  :void
++resetCajaAgregarProducto()  :void
++resetearTablaProductos()  :void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9143</x><y>3550</y><w>390</w><h>280</h></coordinates><panel_attributes>VistaLogin
+-
+
+-
++agregarListenerBotonIniciarSesión(ActionListener evento)  :void
++agregarListenerBotonSesionAdminActionListener evento)  :void
++bloquearCajaContrasena()  :void
++bloquearCajaUsuario()  :void
++desbloquearCajaUsuario()  :void
++limpiarContrasena()  :void
++mostrarErrorBloqueo()  :void
++mostrarErrorContrasenaIncorrects()  :void
++mostrarErrorUsuario()  :void
++obtenerContrasena()  :String
++obtenerUsuario()  :String
++ocultarErrorBloqueo()  :void
++ocultarErrorContrasenaIncorrects()  :void
++ocultarErrorUsuario()  :void
++resetearCampos()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4823</x><y>4470</y><w>430</w><h>260</h></coordinates><panel_attributes>VistaConsultaProducto
+-
+
+-
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonBuscar(ActionListener evento)  :void
++agregarListenerBotonListo(ActionListener evento)  :void
++cerrarMensajeGuardado()  :void
++deshabilitarBotonBuscar()  :void
++establecerCantidad(String TxtRazon1)  :void
++establecerDescripcion(String TxtDireccion)  :void
++establecerPrecioUnitario(String TxtPrUn)  :void
++inhabilitarCajaClave()  :void
++mostrarCampos()  :void
++mostrarMensajeGuardado()  :void
++obtenerClave()  :String
++ocultarCampos()  :void
++ocultarMensajeGuardado()  :void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3693</x><y>3770</y><w>360</w><h>270</h></coordinates><panel_attributes>VistaAltaCliente
+-
+
+-
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonCancelar(ActionListener evento) :void 
++agregarListenerBotonRegistrar(ActionListener evento) :void 
++cerrarMensajeGuardado()  :void
++establecerRFC(int numero)  :void
++mostrarErrorRepeticion()  :void
++mostrarMensajeGuardado()  :void
++obtenerDireccion()  :String 
++obtenerRazon()   :String 
++obtenerRFC()  :String
++obtenerTel()  :String
++ocultarErrorRepeticion()  :void
++ocultarMensajeGuardado()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7393</x><y>3410</y><w>390</w><h>110</h></coordinates><panel_attributes>VistaControlAccionesEmpleados
+-
+
+-
++agregarListenerBotonAlta(ActionListener evento)  :void
++agregarListenerBotonBaja(event.ActionListener evento)  :void
++agregarListenerBotonMenu(event.ActionListener evento)  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3683</x><y>4170</y><w>370</w><h>220</h></coordinates><panel_attributes>VistaBajaCliente
+-
+
+-
++agregarListenerBotonAceptar(ActionListener evento)  :void
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++cerrarMensajeEliminado()  :void
++cerrarMensajeError()  :void
++cerrarMensajes()  :void
++mostrarMensajeEliminado()  :void
++mostrarMensajeError()  :void
++obtenerRFC()  :String
++ocultarMensajeEliminado()  :void
++ocultarMensajeError()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4813</x><y>4190</y><w>400</w><h>220</h></coordinates><panel_attributes>VistaBajaProducto
+-
+
+-
++agregarListenerBotonAceptar(ActionListener evento)  :void
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++cerrarMensajeEliminado()  :void
++cerrarMensajeError()  :void
++cerrarMensajes()  :void
++mostrarMensajeEliminado()  :void
++mostrarMensajeError()  :void
++obtenerClave()  :String
++ocultarMensajeEliminado()  :void
++ocultarMensajeError()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4843</x><y>4800</y><w>410</w><h>420</h></coordinates><panel_attributes>VistaEdicionProducto
+-
+
+-
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonBuscar(ActionListener evento)  :void
++agregarListenerBotonGuardar(ActionListener evento)  :void
++cerrarMensajeError()  :void
++cerrarMensajeGuardado()  :void
++cerrarMensajes()  :void
++deshabilitarBotonBuscar()  :void
++deshabilitarCajaClave()  :void
++establecerCantidad(String contenido)  :void
++establecerDescripcion(String contenido) :void 
++establecerPrecioUnitario(String contenido)  :void
++mostrarCampos()  :void
++mostrarErrorRepeticion()  :void
++mostrarMensajeError()  :void
++mostrarMensajeGuardado()  :void
++obtenerCantidad()  :String
++obtenerClave():String
++obtenerDescripcion()  :String
++obtenerPrecioUnitario()  :String
++ocultarCampos()  :void
++ocultarErrorRepeticion()  :void
++ocultarMensajeError()  :void
++ocultarMensajeGuardado()  :void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5943</x><y>4680</y><w>390</w><h>350</h></coordinates><panel_attributes>VistaConsultaVenta
+-
+-Productos: ArrayList&lt;Producto&gt;
+-
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonBuscar(ActionListener evento)  :void
++agregarListenerBotonCancelar(ActionListener evento)  :void
++agregarListenerBotonListo(ActionListener evento)  :void
+ +cerrarMensajeError()  :void
++deshabilitarBotonBuscar()  :void
++establecerDireccion(String contenido)  :void
+ +establecerFecha(GregorianCalendar fecha)  :void
+ +establecerIVA(String contenido)  :void
++establecerRazonSocial(String contenido)  :void
+ +establecerRFC(String contenido)  :void
+ +establecerSubtotal(String contenido)  :void
+ +establecerTelefono(String contenido)  :void
+ +establecerTotal(String contenido)  :void
++inhabilitarCajaId()  :void
++mostrarCampos()  :void
++mostrarMensajeError()  :void
++obtenerIdVenta()  :String
++ocultarCampos()  :void
++ocultarMensajeError()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7293</x><y>1650</y><w>290</w><h>320</h></coordinates><panel_attributes>ControlBajaEmpleado
+-
+-vista: VistaBajaEmpleado 
+- vistaMadre: VistaControlAccionesEmpleados 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7373</x><y>4430</y><w>410</w><h>220</h></coordinates><panel_attributes>VistaBajaEmpleado
+-
+
+-
++agregarListenerBotonAceptar(ActionListener evento)  :void
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++cerrarMensajeEliminado()  :void
++cerrarMensajeError()  :void
++cerrarMensajes()  :void
++mostrarMensajeEliminado()  :void
++mostrarMensajeError()  :void
++obtenerNombre()  :String
++ocultarMensajeEliminado()  :void
++ocultarMensajeError()  :void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7383</x><y>4040</y><w>400</w><h>290</h></coordinates><panel_attributes>VistaAltaEmpleado
+-
+
+-
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonCancelar(ActionListener evento)  :void
++agregarListenerBotonRegistrar(ActionListener evento) :void 
++cerrarMensajeGuardado()  :void
++compararContrasenas():boolean 
++mostrarErrorConstrasena():void  
++mostrarErrorRepeticion()  :void
++mostrarMensajeGuardado()  :void
++obtenerContrasena1() :String 
++obtenerContrasena2()  :String
++obtenerNombreUsuario():String
++ocultarErrorConstrasena()  :void
++ocultarErrorRepeticion()  :void
++ocultarMensajeGuardado()  :void
++resetearContrasenas()  :void
++resetearNombre()  :void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8383</x><y>2100</y><w>210</w><h>90</h></coordinates><panel_attributes>ControlSistema
+-
+
+-
++iniciarPrograma() :void 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7263</x><y>2180</y><w>690</w><h>220</h></coordinates><panel_attributes>ControlUsuarios
+-
+-vista: VistaControlAccionesEmpleados 
+- usuario: Usuario 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8233</x><y>3770</y><w>430</w><h>140</h></coordinates><panel_attributes>VistaMenuPrincipalAdmin
+-
+
+-
++agregarListenerBotonCerrarSesion(ActionListener evento)  :void
++agregarListenerBotonClientes(ActionListener evento):void  
++agregarListenerBotonEmpleadoActionListener evento)  :void
++agregarListenerBotonProductos(ActionListener evento):void  
++agregarListenerBotonVentas(ActionListener evento)  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8213</x><y>3460</y><w>460</w><h>130</h></coordinates><panel_attributes>VistaMenuPrincipalEmpleado
+-
+
+-
++agregarListenerBotonCerrarSesion(ActionListenert evento)  :void
++agregarListenerBotonClientes(ActionListener evento)  :void
++agregarListenerBotonProductos(ActionListener evento)  :void
++agregarListenerBotonVentas(ActionListener evento)  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9013</x><y>3920</y><w>400</w><h>200</h></coordinates><panel_attributes>VistaLoginAdmin
+-
+
+-
++agregarListenerBotonIniciarSesión(ActionListener evento)  :void
++agregarListenerBotonSesionEmpleado(ActionListener evento) :void 
++bloquearCajaContrasena()  :void
++limpiarContrasena()  :void
++mostrarErrorBloqueo()  :void
++mostrarErrorContrasenaIncorrects()  :void
++obtenerContrasena()  :String
++ocultarErrorBloqueo()  :void
++ocultarErrorContrasenaIncorrects()  :void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7403</x><y>4720</y><w>340</w><h>250</h></coordinates><panel_attributes>ModeloTabla
+-
+ -productos: List&lt;Producto&gt; 
+ -  suscriptors:List&lt;TableModelListener&gt;
+-
++addTableModelListener(TableModelListener tl)  :void 
++agregarFila(Producto producto)  :void 
++eliminarFila(int fila)  :Producto 
++getColumnClass(int i) : Class&lt;?&gt; 
++getColumnCount()  :int 
+ +getColumnName(int i)  :String
++getRowCount()  :int 
++getValueAt(int fila, int columna)  :Object
++isCellEditable(int i, int i1) :boolean 
++removeTableModelListener(tableModelListener tl)  :void 
++resetearTabla()  :void 
++setValueAt(Object o, int fila, int columna)  :void 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5353</x><y>200</y><w>430</w><h>340</h></coordinates><panel_attributes>ManejoArchivo
+-
+-Archivo: String 
+- ed: ArrayList&lt;String&gt;
+-
++agregarLineaArchivo(String datos)  :void 
++aumentarCantidadProducto(String clave)  :void 
++busquedaDatosEnArchivo(String clave)  :int 
++compararContrasenaString(String arch,String vista)  :boolean 
++compararIdentificadoresString(String arch, String vista)  :boolean 
++disminuirCantidadProducto(int indice)  :void 
++eliminarDatosEnArchivo(int indice)  :void 
++EscrituraArchivo(ArrayList&lt;String&gt; Arch, boolean tipoEscritura):void   
++establecerLineaArchivo(int indice, String nuevaLinea)  :void 
++LeerArchivo()  :void 
++modificarContadoresEntidades(int[] contadores)  :void 
++modificarContadoresEntidades(int indiceEntidad, String nuevaLinea)  :void 
++obtenerContadoresEntidades()  :int[]
++obtenerContadoresEntidades(int indiceEntidad) :int  
++obtenerLineaArchivo(int indice)  :String
++verificarNoRepeticion(String noRepetir)  :boolean 
++verificarNoRepeticion(String noRepetir, String clave) :boolean 
++verificarNoRepeticionUsuario(String noRepetir)  :boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5093</x><y>2390</y><w>690</w><h>210</h></coordinates><panel_attributes>ControlMenuPrincipalEmpleado
+-
+-vista: VistaMenuPrincipalEmpleado 
+- usuario: Usuario 
+-vistaLogin: VistaLogin 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3693</x><y>4500</y><w>370</w><h>270</h></coordinates><panel_attributes>VistaConsultaCliente
+-
+
+-
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonBuscar(ActionListener evento)  :void
++agregarListenerBotonListo(ActionListener evento) :void 
++cerrarMensajeGuardado()  :void
++deshabilitarBotonBuscar()  :void
++establecerDireccion(String contenido)  :void
++establecerRazon(String contenido) :void 
++establecerTelefono(String contenido)  :void
++inhabilitarCajaRFC()  :void
++mostrarCampos()  :void
++mostrarMensajeGuardado()  :void
++obtenerRFC()  :String
++ ocultarCampos()  :void
++ocultarMensajeGuardado()  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3683</x><y>4820</y><w>400</w><h>430</h></coordinates><panel_attributes>VistaEdicionCliente
+-
+
+-
++agregarListenerBotonAceptarError(ActionListener evento)  :void
++agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonBuscar(ActionListener evento)  :void
++agregarListenerBotonGuardar(ActionListener evento)  :void
++cerrarMensajeError()  :void
++cerrarMensajeGuardado()  :void
++cerrarMensajes()  :void
++deshabilitarBotonBuscar()  :void
++establecerDireccion(String contenido)  :void
++establecerRazon(String contenido)  :void
++establecerRFC(String contenido)  :void
++establecerTelefono(String contenido)  :void
++inhabilitarCajaRFC()  :void
++mostrarCampos()  :void
++mostrarErrorRepeticion()  :void
++mostrarMensajeError():void
++mostrarMensajeGuardado()  :void
++obtenerDireccion() :String
++obtenerRazon()  :String
++obtenerRFC()  :String
++obtenerTelefono()  :String
++ocultarCampos()  :void
++ocultarErrorRepeticion()  :void
++ocultarMensajeError()  :void
++ocultarMensajeGuardado():void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5943</x><y>3890</y><w>430</w><h>710</h></coordinates><panel_attributes>VistaAltaVentas
+-
+-Productos: ArrayList&lt;Producto&gt;
+-
++activarBotonAgregarProducto()  :void
++activarBotonEliminarProducto()  :void
++activarCajaAgregarProducto()  :void
++agregarListenerBotonAceptar(ActionListener evento)  :void
++agregarListenerBotonAceptarErrorCliente(ActionListener evento)  :void
++agregarListenerBotonAceptarErrorProducto(ActionListener evento)  :void
+ +agregarListenerBotonAceptarMejorCaso(ActionListener evento)  :void
++agregarListenerBotonAgregarProducto(ActionListener evento)  :void
++agregarListenerBotonCancelar(ActionListener evento)  :void
++agregarListenerBotonCancelarAltaCliente(ActionListener evento):void  
++agregarListenerBotonEliminarProducto(ActionListener evento)  :void
++agregarProductoTabla(Producto producto)  :void
++cerrarMensajeErrorCliente()  :void
++cerrarMensajeErrorProducto()  :void
++cerrarMensajeGuardado()  :void
++cerrarMensajes()  :void
++desactivarBotonAgregarProducto()  :void
++desactivarBotonElminarProducto()  :void
++desactivarCajaAgregarProducto()  :void
++eliminarProductoTabla()  :Producto 
++establecerDireccion(String contenido)  :void
++establecerFecha(GregorianCalendar fecha) :void 
++establecerFechaSinCambios(GregorianCalendar fecha)  :void
++establecerIdVenta(int numero)  :void
++establecerIVA(String contenido)  :void
++establecerRazonSocial(String contenido)  :void
++establecerRFC(String rfc)  :void
++ establecerSubtotal(String contenido)  :void
++establecerTelefono(String contenido)  :void
++establecerTotal(String contenido)  :void
++ mostrarMensajeErrorCliente()  :void
++mostrarMensajeErrorProducto()  :void
++ mostrarMensajeGuardado()  :void
++obtenerClaveProductoAgregado()  :String
++obtenerFecha()  :String
++obtenerId()  :String
++obtenerRFC()  :String
++ocultarMensajeErrorCliente()  :void
++ocultarMensajeErrorProducto()  :void
++ocultarMensajeGuardado()  :void
++ocultarMensajes()  :void
++resetCajaAgregarProducto()  :void
++resetCampos()  :void
++resetearTablaProductos()  :void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4833</x><y>3420</y><w>870</w><h>190</h></coordinates><panel_attributes>VistaControlAccionesEntidades
+-
+
+-
++agregarListenerBotonAlta(ActionListener evento)  :void
++agregarListenerBotonBaja(ActionListener evento)  :void
++agregarListenerBotonConsulta(ActionListener evento)  :void
++agregarListenerBotonEdicion(ActionListener evento) :void 
++agregarListenerBotonMenu(ActionListener evento)  :void
++establecerHabilitacionBotones(boolean alta, boolean baja, boolean edicion, boolean consulta)  :void
++tituloCabecera(String palabra)  :void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3663</x><y>830</y><w>660</w><h>230</h></coordinates><panel_attributes>ControlEdicionCliente
+-
+- cliente:Cliente
+- vista:VistaEdicionCliente
+-  vistaMadre: VistaControlAccionesEntidades
+- indice: int 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3703</x><y>1170</y><w>620</w><h>190</h></coordinates><panel_attributes>ControlConsultaCliente
+-
+- vista: VistaConsultaCliente
+-vistaMadre: VistaControlAccionesEntidades 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6073</x><y>2010</y><w>840</w><h>240</h></coordinates><panel_attributes>ControlVentas
+-
+-vista: VistaControlAccionesEntidades 
+- usuario: Usuario 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5033</x><y>890</y><w>610</w><h>240</h></coordinates><panel_attributes>ControlEdicionProducto
+-
+-producto: Producto 
+-vista: VistaEdicionProducto 
+- vistaMadre: VistaControlAccionesEntidades 
+- indice: int 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>2150</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=4</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>2050</y><w>200</w><h>190</h></coordinates><panel_attributes>Permiso
+--
+-permisoAlta: boolean
+-permisoBaja:boolean
+-permisoEdicion: boolean
+-permisoConsulta:boolean
+--
++obtenerPermisoAlta(): boolean
++obtenerPermisoBaja()    :boolean 
++obtenerPermisoConsulta()    :boolean 
++obtenerPermisoEdicion()    :boolean 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>2050</y><w>210</w><h>190</h></coordinates><panel_attributes>TipoUsuario
+--
+-moduloVenta: Permiso
+-moduloClientes: Permiso
+-moduloProductos:Permiso
+-moduloUsuario: Permiso
+-
++obtenerModuloClientes()  :Permiso 
++obtenerModuloProductos()  :Permiso 
++obtenerModuloUsuario()  :Permiso 
++obtenerModuloVenta()  :Permiso 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>2190</y><w>170</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>2120</y><w>210</w><h>250</h></coordinates><panel_attributes>Usuario
+--
+-rol: TipoUsuario
+-nombre: String
+-contrasena: String
+--
++equals(String otroNombre):boolean   
++establecerContrasena(String contra)  :void 
++establecerNombre(String nombre)  :void 
++establecerRol(String rol)  :void 
++obtenerContrasena()  :String
++obtenerNombre()  :String
++obtenerRol()  :TipoUsuario 
++toString()  :String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>1870</y><w>3120</w><h>1810</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+
+m2=0...*
+fg=red</panel_attributes><additional_attributes>3100;10;2590;40;2440;1310;110;1790;10;820</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>2670</y><w>160</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>140;220;10;220;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>2790</y><w>350</w><h>550</h></coordinates><panel_attributes>Venta
+--
+-id: String
+-fecha: GregorianCalendar
+-cliente: Cliente
+-productos: ArrayList&lt;Producto&gt;
+-subtotal: double
+-iva: double
+-total: double
+-
++agregarProducto(Producto producto):void   
++buscarProducto(String clave)  :int 
++eliminarProducto(String clave) :void  
++establecerCliente(Cliente cliente)  :void 
++establecerFecha()  :void 
++establecerFecha(GregorianCalendar fecha)  :void 
++establecerFecha(String fecha)  :void 
++establecerId(int id)  :void 
++establecerId(String id)  :void 
++establecerIva()  :void 
++establecerProductos(ArrayList&lt;Producto&gt; productos) :void  
++establecerSubtotal()  :void 
++establecerSubtotal(int i)  :void 
++establecerTotal()  :void 
++obtenerCliente()  :Cliente 
++ obtenerFecha():GregorianCalendar
+ +obtenerFechaString()  :String
++obtenerId() :String 
++obtenerIva()  :double 
+ +obtenerProductos()  :ArrayList&lt;Producto&gt;
++obtenerSubtotal()  :double 
++obtenerTotal()  :double 
++stringProductos()  :String
++ toString()  :String
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1630</x><y>1830</y><w>3430</w><h>770</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+fg=yellow</panel_attributes><additional_attributes>3410;10;3030;750;10;700</additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>1080</y><w>4900</w><h>1970</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0....*</panel_attributes><additional_attributes>4880;10;4670;360;4710;1870;10;1940</additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>2710</y><w>230</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1...*</panel_attributes><additional_attributes>10;180;190;180;190;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>1940</y><w>160</w><h>110</h></coordinates><panel_attributes>TPV
+--
++Modelo
++Vista
++Controlador
+bg=gray
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>2440</y><w>250</w><h>240</h></coordinates><panel_attributes>Cliente
+--
+-rfc: String
+-razonSocial: String
+-direccion: String
+-telefono:String
+-
++equals(String otraRazonSocial) : boolean  
++establecerDireccion(String Direccion)  :void 
++establecerRazonSocial(String RazonSocial)  :void 
++establecerTelefono( String Telefono)  :void 
++obtenerDireccion()  :String
++obtenerRazonSocial()  :String
++obtenerRfc()  :String
++obtenerTelefono()  :String
++toString()  :String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1310</x><y>2450</y><w>330</w><h>270</h></coordinates><panel_attributes>Producto
+--
+-clave: int
+-descripcion: String
+-precioUnitario: double
+-cantidad: int
+-
++equals(String otraDescripcion) :boolean
++establecerCantidad(int Cantidad)  :void 
++establecerClave(String clave)  :void 
++establecerDescripcion(String Descripcion)  :void 
++establecerPrecioUnitario(double PrecioUnitario)  :void 
++obtenerCantidad()  :int 
++obtenerClave()  :String
++obtenerDescripcion()  :String
++obtenerPrecioUnitario()  :double 
++toString()  :String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3663</x><y>1800</y><w>660</w><h>190</h></coordinates><panel_attributes>ControlAltaCliente
+-
+- cliente:Cliente
+- vista:VistaAltaCliente 
+- vistaMadre: VistaControlAccionesEntidades 
+-
++existenciaVistaAnterior() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3620</x><y>2240</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionAltaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3620</x><y>2310</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionBajaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3890</x><y>2310</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionConsultaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4170</x><y>2270</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionMenu
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4960</x><y>2140</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionAltaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4960</x><y>2210</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionBajaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5230</x><y>2140</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionEdicionProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5230</x><y>2210</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionConsultaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3603</x><y>2170</y><w>830</w><h>210</h></coordinates><panel_attributes>ControlClientes
+-
+ - vista:VistaControlAccionesEntidades
+ -usuario:Usuario 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4943</x><y>2070</y><w>850</w><h>210</h></coordinates><panel_attributes>ControlProductos
+-
+ - vista:VistaControlAccionesEntidades
+ -usuario:Usuario 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6080</x><y>2100</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionAltaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6080</x><y>2170</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionBajaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6350</x><y>2100</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionEdicionVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6350</x><y>2170</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionConsultaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6640</x><y>2140</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionMenu
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7290</x><y>2250</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionAltaUsuario
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7290</x><y>2320</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionBajaUsuario
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7640</x><y>2280</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionMenu
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5130</x><y>2470</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionClientes
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5130</x><y>2530</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionProductos
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5490</x><y>2530</y><w>260</w><h>50</h></coordinates><panel_attributes>opcionCerrarSesion
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6400</x><y>2450</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionClientes
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6730</x><y>2450</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionVentas
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6400</x><y>2510</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionProductos
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6730</x><y>2510</y><w>260</w><h>50</h></coordinates><panel_attributes>opcionEmpleados
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6550</x><y>2570</y><w>260</w><h>50</h></coordinates><panel_attributes>opcionCerrarSesion
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8180</x><y>2580</y><w>250</w><h>50</h></coordinates><panel_attributes>comprobarNumeroEquivocaciones
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8180</x><y>2640</y><w>250</w><h>50</h></coordinates><panel_attributes>SesionAdmin
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8510</x><y>2580</y><w>250</w><h>60</h></coordinates><panel_attributes>CambiarTipoSesion
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8330</x><y>2710</y><w>260</w><h>50</h></coordinates><panel_attributes>SesionEmpleado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8520</x><y>2650</y><w>260</w><h>50</h></coordinates><panel_attributes>CambiarAGeneral
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>8113</x><y>2480</y><w>720</w><h>290</h></coordinates><panel_attributes>ControlLogin
+-
+-usuario: Usuario 
+- loginGeneral: VistaLogin 
+- loginAdmin: VistaLoginAdmin 
+ - intentos: int 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3900</x><y>2240</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionEdicionCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3740</x><y>1260</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoConsultaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3700</x><y>1540</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionBajaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3700</x><y>1910</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarProcesoAltaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4010</x><y>1900</y><w>250</w><h>60</h></coordinates><panel_attributes>ProcesoAltaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5060</x><y>1840</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoAltaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5340</x><y>1840</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarProcesoAltaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6470</x><y>1470</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarBajaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6170</x><y>1470</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoBajaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5360</x><y>1550</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarBajaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7710</x><y>1860</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarProcesoAltaEmpleado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6050</x><y>1690</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoGuardarAltaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6050</x><y>1760</y><w>250</w><h>50</h></coordinates><panel_attributes>ProductoNoEncontrado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6330</x><y>1690</y><w>250</w><h>50</h></coordinates><panel_attributes>DarAltaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6320</x><y>1760</y><w>250</w><h>50</h></coordinates><panel_attributes>EliminarProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6620</x><y>1690</y><w>250</w><h>50</h></coordinates><panel_attributes>CancelarAltaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6610</x><y>1760</y><w>250</w><h>50</h></coordinates><panel_attributes>MensajeAccionCompletadaAltaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6470</x><y>1820</y><w>250</w><h>50</h></coordinates><panel_attributes>AgregarProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6170</x><y>1820</y><w>250</w><h>50</h></coordinates><panel_attributes>CancelarProcesoEdicionVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4020</x><y>1540</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarBajaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3653</x><y>1460</y><w>650</w><h>210</h></coordinates><panel_attributes>ProcesoBajaCliente
+-
+-vista: VistaBajaCliente 
+- vistaMadre: VistaControlAccionesEntidades
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7310</x><y>1830</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarBajaEmpleado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7310</x><y>1730</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoBajaEmpleado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7710</x><y>1750</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoAltaEmpleado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4050</x><y>1260</y><w>250</w><h>50</h></coordinates><panel_attributes>CerrarProcesoConsultaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5050</x><y>1550</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoBajaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6160</x><y>1240</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoConsultaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5050</x><y>1320</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoConsultaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5340</x><y>1320</y><w>260</w><h>50</h></coordinates><panel_attributes>CerrarAccionCompletadaConsultaProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6480</x><y>1240</y><w>250</w><h>50</h></coordinates><panel_attributes>CancelarProcesoConsultaVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6080</x><y>870</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoGuardarEdicionVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3720</x><y>930</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoGuardarEdicionCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>4040</x><y>930</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoBusquedaEnEdicionCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3850</x><y>1000</y><w>250</w><h>50</h></coordinates><panel_attributes>CancelarProcesoEdicionCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5060</x><y>1000</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoGuardarEdicionProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5350</x><y>1000</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoBusquedaEnEdicionProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5200</x><y>1070</y><w>250</w><h>50</h></coordinates><panel_attributes>CancelarProcesoEdicionProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6043</x><y>770</y><w>950</w><h>310</h></coordinates><panel_attributes>ControlEdicionVenta
+-
+-Venta venta;
+- vista: VistaEdicionVentas 
+-vistaMadre: VistaControlAccionesEntidades 
+- indice: int 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6700</x><y>940</y><w>250</w><h>50</h></coordinates><panel_attributes>CancelarProcesoEdicionVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6090</x><y>950</y><w>250</w><h>50</h></coordinates><panel_attributes>ProductoNoEncontrado
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6380</x><y>870</y><w>250</w><h>50</h></coordinates><panel_attributes>ProcesoBusquedaEnEdicionVenta
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6390</x><y>950</y><w>250</w><h>50</h></coordinates><panel_attributes>EliminarProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6700</x><y>870</y><w>250</w><h>50</h></coordinates><panel_attributes>DarAltaCliente
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6370</x><y>1020</y><w>250</w><h>50</h></coordinates><panel_attributes>AgregarProducto
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>5510</x><y>2170</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionMenu
+-
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>3370</x><y>1560</y><w>330</w><h>2740</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>270;10;10;10;30;2710;310;2710</additional_attributes></element><element><id>Relation</id><coordinates><x>3460</x><y>1920</y><w>250</w><h>2020</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>200;10;10;10;30;1990;230;1990</additional_attributes></element><element><id>Relation</id><coordinates><x>3280</x><y>1260</y><w>440</w><h>3400</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=2
+fg=orange</panel_attributes><additional_attributes>420;40;10;10;30;3370;410;3370</additional_attributes></element><element><id>Relation</id><coordinates><x>3200</x><y>920</y><w>500</w><h>4120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>460;10;10;10;40;4090;480;4090</additional_attributes></element><element><id>Relation</id><coordinates><x>3990</x><y>1980</y><w>40</w><h>210</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>10;10;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>4080</x><y>1590</y><w>310</w><h>600</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>230;10;290;10;290;500;10;500;10;580</additional_attributes></element><element><id>Relation</id><coordinates><x>4200</x><y>1270</y><w>220</w><h>920</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=orange</panel_attributes><additional_attributes>130;10;200;10;200;770;10;770;10;900</additional_attributes></element><element><id>Relation</id><coordinates><x>4280</x><y>920</y><w>180</w><h>1270</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>50;10;150;30;160;1140;10;1140;10;1250</additional_attributes></element><element><id>Relation</id><coordinates><x>5320</x><y>1930</y><w>40</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>5410</x><y>1490</y><w>280</w><h>600</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>230;10;260;10;260;500;10;500;10;580</additional_attributes></element><element><id>Relation</id><coordinates><x>5530</x><y>1310</y><w>190</w><h>780</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=orange</panel_attributes><additional_attributes>110;10;170;10;170;670;10;670;10;760</additional_attributes></element><element><id>Relation</id><coordinates><x>5610</x><y>940</y><w>150</w><h>1150</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>40;10;120;10;120;550;130;1020;10;1020;10;1130</additional_attributes></element><element><id>Relation</id><coordinates><x>6570</x><y>1870</y><w>40</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>6660</x><y>1430</y><w>280</w><h>600</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>110;10;260;10;260;500;10;500;10;580</additional_attributes></element><element><id>Relation</id><coordinates><x>6760</x><y>1250</y><w>210</w><h>780</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=orange</panel_attributes><additional_attributes>10;10;190;10;190;670;30;670;30;760</additional_attributes></element><element><id>Relation</id><coordinates><x>6860</x><y>1070</y><w>150</w><h>960</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>120;10;130;830;10;830;10;940</additional_attributes></element><element><id>Relation</id><coordinates><x>7430</x><y>1960</y><w>40</w><h>240</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>10;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>4470</x><y>910</y><w>580</w><h>4120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>560;10;10;10;40;4090;370;4090</additional_attributes></element><element><id>Relation</id><coordinates><x>4640</x><y>1550</y><w>410</w><h>2740</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>390;10;10;10;30;2710;170;2710</additional_attributes></element><element><id>Relation</id><coordinates><x>4730</x><y>1910</y><w>330</w><h>2020</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>310;10;10;10;30;1990;100;1990</additional_attributes></element><element><id>Relation</id><coordinates><x>7820</x><y>1970</y><w>40</w><h>230</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>10;10;10;210</additional_attributes></element><element><id>Relation</id><coordinates><x>5820</x><y>780</y><w>710</w><h>4330</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>230;10;10;10;10;4300;690;4300</additional_attributes></element><element><id>Relation</id><coordinates><x>5870</x><y>1190</y><w>270</w><h>3680</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=2
+fg=orange</panel_attributes><additional_attributes>250;10;10;10;20;3650;70;3650</additional_attributes></element><element><id>Relation</id><coordinates><x>5950</x><y>1440</y><w>610</w><h>2630</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>170;10;10;10;30;1050;30;2380;510;2380;510;2600;590;2600</additional_attributes></element><element><id>Relation</id><coordinates><x>6000</x><y>1780</y><w>70</w><h>2130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>50;10;10;10;30;2110</additional_attributes></element><element><id>Relation</id><coordinates><x>7170</x><y>1970</y><w>650</w><h>2210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>620;10;620;60;10;60;20;2180;210;2180</additional_attributes></element><element><id>Relation</id><coordinates><x>7100</x><y>1700</y><w>290</w><h>2860</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=green</panel_attributes><additional_attributes>200;10;10;10;20;720;20;2830;270;2830</additional_attributes></element><element><id>Relation</id><coordinates><x>6340</x><y>4590</y><w>1090</w><h>590</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=blue</panel_attributes><additional_attributes>10;10;10;570;750;570;750;200;1070;200</additional_attributes></element><element><id>Relation</id><coordinates><x>6930</x><y>4920</y><w>490</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=gray</panel_attributes><additional_attributes>10;10;470;10</additional_attributes></element><element><id>Relation</id><coordinates><x>6190</x><y>4830</y><w>1240</w><h>400</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=orange
+</panel_attributes><additional_attributes>10;200;10;380;970;380;970;10;1220;10</additional_attributes></element><element><id>Relation</id><coordinates><x>7630</x><y>2390</y><w>40</w><h>1040</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;1020</additional_attributes></element><element><id>Relation</id><coordinates><x>4270</x><y>2370</y><w>580</w><h>1160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>20;10;10;1130;560;1130</additional_attributes></element><element><id>Relation</id><coordinates><x>5040</x><y>2270</y><w>50</w><h>1170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;20;1150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>5490</x><y>2470</y><w>250</w><h>50</h></coordinates><panel_attributes>opcionVentas
+-
++actionPerformed(ActionEvent evento):void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>5700</x><y>2250</y><w>540</w><h>1290</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>510;10;520;1260;10;1260</additional_attributes></element><element><id>Relation</id><coordinates><x>4350</x><y>2370</y><w>760</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;110;740;110</additional_attributes></element><element><id>Relation</id><coordinates><x>5420</x><y>2270</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>5780</x><y>2240</y><w>400</w><h>280</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>370;10;370;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>5780</x><y>2220</y><w>590</w><h>260</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;180;10;180;230;570;230</additional_attributes></element><element><id>Relation</id><coordinates><x>6680</x><y>2240</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>4110</x><y>2370</y><w>2260</w><h>340</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;320;2000;320;2000;230;2240;230</additional_attributes></element><element><id>Relation</id><coordinates><x>7050</x><y>2300</y><w>230</w><h>170</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;</panel_attributes><additional_attributes>210;10;100;10;100;150;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>5040</x><y>2270</y><w>50</w><h>1170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;20;1150</additional_attributes></element><element><id>Relation</id><coordinates><x>5390</x><y>2600</y><w>2840</w><h>990</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;750;1590;750;1590;960;2820;960</additional_attributes></element><element><id>Relation</id><coordinates><x>6690</x><y>2620</y><w>1560</w><h>1220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;1150;400;1150;400;1200;1540;1200</additional_attributes></element><element><id>Relation</id><coordinates><x>5450</x><y>2600</y><w>3290</w><h>750</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;730;3260;730;3260;170</additional_attributes></element><element><id>Relation</id><coordinates><x>6820</x><y>2620</y><w>1820</w><h>540</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;520;1790;510;1790;150</additional_attributes></element><element><id>Relation</id><coordinates><x>8820</x><y>2680</y><w>560</w><h>890</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>530;870;520;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>8830</x><y>2740</y><w>280</w><h>1200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>250;1180;240;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>8460</x><y>2180</y><w>40</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;300</additional_attributes></element><element><id>Relation</id><coordinates><x>3960</x><y>220</y><w>1410</w><h>620</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1390;10;10;10;10;600</additional_attributes></element><element><id>Relation</id><coordinates><x>4310</x><y>270</y><w>1060</w><h>950</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1040;10;60;10;60;920;10;920</additional_attributes></element><element><id>Relation</id><coordinates><x>4300</x><y>320</y><w>1070</w><h>1240</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1050;10;110;10;110;1210;10;1210</additional_attributes></element><element><id>Relation</id><coordinates><x>4310</x><y>360</y><w>1060</w><h>1550</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1040;10;140;10;150;1520;10;1520</additional_attributes></element><element><id>Relation</id><coordinates><x>3960</x><y>220</y><w>1410</w><h>620</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1390;10;10;10;10;600</additional_attributes></element><element><id>Relation</id><coordinates><x>4310</x><y>270</y><w>1060</w><h>950</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1040;10;60;10;60;920;10;920</additional_attributes></element><element><id>Relation</id><coordinates><x>4300</x><y>320</y><w>1070</w><h>1240</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>1050;10;110;10;110;1210;10;1210</additional_attributes></element><element><id>Relation</id><coordinates><x>5340</x><y>530</y><w>60</w><h>380</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>20;10;10;360</additional_attributes></element><element><id>Relation</id><coordinates><x>4940</x><y>510</y><w>430</w><h>850</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>410;10;20;10;10;820;70;820</additional_attributes></element><element><id>Relation</id><coordinates><x>4890</x><y>460</y><w>480</w><h>1090</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>460;10;10;10;20;1060;140;1060</additional_attributes></element><element><id>Relation</id><coordinates><x>4840</x><y>430</y><w>530</w><h>1410</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>510;10;10;10;30;1380;200;1380</additional_attributes></element><element><id>Relation</id><coordinates><x>5410</x><y>530</y><w>680</w><h>1530</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;10;330;300;330;300;1500;660;1500</additional_attributes></element><element><id>Relation</id><coordinates><x>5450</x><y>530</y><w>610</w><h>1170</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;10;270;290;270;300;1140;590;1140</additional_attributes></element><element><id>Relation</id><coordinates><x>5510</x><y>530</y><w>620</w><h>990</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;10;210;290;210;290;960;600;960</additional_attributes></element><element><id>Relation</id><coordinates><x>5570</x><y>540</y><w>560</w><h>750</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;10;160;290;160;290;730;540;720</additional_attributes></element><element><id>Relation</id><coordinates><x>4430</x><y>390</y><w>940</w><h>1900</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>920;10;70;10;80;1870;10;1870</additional_attributes></element><element><id>Relation</id><coordinates><x>4740</x><y>410</y><w>630</w><h>1820</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>610;10;10;10;30;1790;200;1790</additional_attributes></element><element><id>Relation</id><coordinates><x>5630</x><y>540</y><w>420</w><h>450</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;10;140;250;140;250;420;400;420</additional_attributes></element><element><id>Relation</id><coordinates><x>5780</x><y>510</y><w>1610</w><h>1150</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;430;10;430;190;1560;190;1580;1130</additional_attributes></element><element><id>Relation</id><coordinates><x>5780</x><y>430</y><w>2040</w><h>1250</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;490;10;490;170;1990;170;2010;1230</additional_attributes></element><element><id>Relation</id><coordinates><x>5810</x><y>400</y><w>2400</w><h>2090</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..*
+m2=1
+fg=red</panel_attributes><additional_attributes>10;10;570;10;570;170;2340;180;2370;2070</additional_attributes></element><element><id>Relation</id><coordinates><x>4560</x><y>1290</y><w>480</w><h>3370</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=2
+fg=orange</panel_attributes><additional_attributes>460;10;10;30;30;3340;270;3340</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>3430</x><y>3230</y><w>6240</w><h>2070</h></coordinates><panel_attributes>Vista
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1370</x><y>50</y><w>6940</w><h>2450</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..1
+fg=pink</panel_attributes><additional_attributes>6910;2430;6830;10;140;50;200;2130;10;2130</additional_attributes></element><element><id>Relation</id><coordinates><x>1380</x><y>2200</y><w>2250</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=pink</panel_attributes><additional_attributes>2230;20;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>2230</y><w>3600</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=pink</panel_attributes><additional_attributes>3580;30;3060;160;2360;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>2320</y><w>5030</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=pink</panel_attributes><additional_attributes>5010;180;4480;50;3700;60;2800;170;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>2340</y><w>3760</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=pink</panel_attributes><additional_attributes>3740;110;3490;140;2560;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>2300</y><w>5920</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=pink</panel_attributes><additional_attributes>5900;70;5670;30;3680;50;2770;160;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>6363</x><y>2380</y><w>700</w><h>260</h></coordinates><panel_attributes>ControlMenuPrincipalAdmin
+-
+-vista:VistaMenuPrincipalAdmin 
+-usuario: Usuario 
+- vistaLogin: ControlLogin 
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>3590</x><y>0</y><w>5510</w><h>2850</h></coordinates><panel_attributes>Controlador
+fg=black</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1370</x><y>2250</y><w>4780</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+fg=pink</panel_attributes><additional_attributes>4760;10;4490;50;3720;60;2780;190;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>1630</x><y>1600</y><w>3420</w><h>980</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+
+fg=yellow</panel_attributes><additional_attributes>3400;10;3030;960;10;910</additional_attributes></element><element><id>Relation</id><coordinates><x>1630</x><y>1380</y><w>3420</w><h>1180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+
+fg=yellow</panel_attributes><additional_attributes>3400;10;2910;1160;10;1100</additional_attributes></element><element><id>Relation</id><coordinates><x>1630</x><y>1020</y><w>3420</w><h>1470</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+
+fg=yellow</panel_attributes><additional_attributes>3400;10;2910;1430;10;1440</additional_attributes></element><element><id>Relation</id><coordinates><x>1620</x><y>990</y><w>4440</w><h>1690</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+
+fg=yellow</panel_attributes><additional_attributes>4420;10;4210;1110;4180;1650;3030;1670;10;1650</additional_attributes></element><element><id>Relation</id><coordinates><x>1630</x><y>1270</y><w>4510</w><h>1440</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+
+fg=yellow</panel_attributes><additional_attributes>4490;10;4230;860;4200;1400;3050;1420;10;1400</additional_attributes></element><element><id>Relation</id><coordinates><x>1640</x><y>1820</y><w>4420</w><h>930</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0...*
+
+fg=yellow</panel_attributes><additional_attributes>4400;10;4240;350;4210;890;3060;910;10;890</additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>1620</y><w>3080</w><h>2000</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+
+m2=0...*
+fg=red</panel_attributes><additional_attributes>3060;10;2530;250;2300;1470;130;1980;10;1070</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>1320</y><w>3080</w><h>2240</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+
+m2=0...*
+fg=red</panel_attributes><additional_attributes>3060;10;2440;470;2190;1700;150;2220;10;1360</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>1020</y><w>3000</w><h>2470</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+
+m2=0...*
+fg=red</panel_attributes><additional_attributes>2980;10;2370;720;2040;1930;180;2450;30;1900;10;1670</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>1060</y><w>5550</w><h>2650</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+
+m2=0...*
+fg=red</panel_attributes><additional_attributes>5530;10;5400;370;5330;1690;2710;1730;2520;2380;100;2630;10;1620</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>1720</y><w>5700</w><h>2020</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+
+m2=0...*
+fg=red</panel_attributes><additional_attributes>5680;10;5630;90;5570;270;5510;1100;2890;1140;2700;1790;250;2000;10;1210;180;900</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>1230</y><w>4930</w><h>1880</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0....*</panel_attributes><additional_attributes>4910;10;4690;270;4730;1780;10;1850</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>1470</y><w>4930</w><h>1710</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0....*</panel_attributes><additional_attributes>4910;10;4760;220;4760;1580;10;1680</additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>1870</y><w>4890</w><h>1400</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0....*</panel_attributes><additional_attributes>4870;10;4830;300;4830;1330;10;1370</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>340</x><y>1950</y><w>1340</w><h>1490</h></coordinates><panel_attributes>Modelo
+fg=orange</panel_attributes><additional_attributes></additional_attributes></element></diagram>
